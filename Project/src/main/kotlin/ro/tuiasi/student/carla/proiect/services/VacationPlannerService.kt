@@ -30,10 +30,8 @@ class VacationPlannerService : IVacationPlannerService {
                     phone = "Phone1",
                     website = "Website1",
                     schedule = "Schedule1",
-                    map = Map(
-                        latitude = 48.8584,
-                        longitude = 2.2945
-                    )
+                    latitude = 48.8584,
+                    longitude = 2.2945
                 ),
                 Poi(
                     name = "Poi2",
@@ -45,10 +43,8 @@ class VacationPlannerService : IVacationPlannerService {
                     phone = "Phone2",
                     website = "Website2",
                     schedule = "Schedule2",
-                    map = Map(
-                        latitude = 44.8584,
-                        longitude = 44.2945
-                    )
+                    latitude = 44.8584,
+                    longitude = 44.2945
                 )
             )
         )

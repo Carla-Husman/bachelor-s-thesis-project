@@ -11,3 +11,11 @@ integration:
       model: gpt-3.5-turbo
       base-uri: https://api.openai.com/v1/chat/completions
       api-key: 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
+    maps:
+      places:
+        endpoint-text-search: https://maps.googleapis.com/maps/api/place/textsearch/json
+        endpoint-details: https://maps.googleapis.com/maps/api/place/details/json
+        api-key: AIzaSyCI1fWshdzjt6duD1oftwVk8FECV92VoRs
+      elevation:
+        endpoint: https://maps.googleapis.com
+        api-key: AIzaSyAlXNAAHt9wpg0knB8wtZ2qW-My-u_gP4Q

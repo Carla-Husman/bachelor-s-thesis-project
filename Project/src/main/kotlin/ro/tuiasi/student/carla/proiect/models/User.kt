@@ -7,7 +7,8 @@ data class User(
     val password: String,
     val avatar: String?,
     val location: String?,
-    val map: Map?,
+    val longitude: Double,
+    val latitude: Double,
     val year: Int?,
     val gender: String?
 )
