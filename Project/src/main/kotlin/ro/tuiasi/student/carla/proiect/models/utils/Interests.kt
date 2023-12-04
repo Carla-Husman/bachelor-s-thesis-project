@@ -16,7 +16,7 @@ enum class Interests {
     FOOD,
     GALLERY,
     HIKING,
-    HISTORICAL,
+    HISTORY,
     HUNTING,
     LIBRARY,
     MOUNTAIN,
