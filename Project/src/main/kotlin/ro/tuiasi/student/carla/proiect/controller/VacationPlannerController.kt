@@ -7,6 +7,8 @@ import org.json.JSONObject
 import org.springframework.web.bind.annotation.*
 import ro.tuiasi.student.carla.proiect.gateways.places.PlacesApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.places.dto.PlaceDetails
+import ro.tuiasi.student.carla.proiect.gateways.search.SearchApiGateway
+import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
 import ro.tuiasi.student.carla.proiect.models.utils.Interests
@@ -22,7 +24,8 @@ import java.util.*
 class VacationPlannerController(
     private val vacationPlannerService: VacationPlannerService,
     private val chatGptService: ChatGptService,
-    private val placesApiGateway: PlacesApiGateway
+    private val placesApiGateway: PlacesApiGateway,
+    private val searchGateway: SearchApiGateway
 ){
     @Operation(
         summary = "Vacation Planner", description = "This operation return a vacation for a given input"
@@ -42,9 +45,15 @@ class VacationPlannerController(
         )
     }
 
-    // a function for testing the chatgpt service
+    // a function for testing the places service
     @GetMapping("/places")
     fun places(): PlaceDetails? {
         return placesApiGateway.searchPlace("Botanical Garden, Iasi, Romania")
+    }
+
+    // a function for testing the custom search
+    @GetMapping("/custom-search")
+    fun customSearch(): List<SearchDetails> {
+        return searchGateway.search("Best Cheap Romania travel destinations Autumn intext:(art OR museum OR history)")
     }
 }

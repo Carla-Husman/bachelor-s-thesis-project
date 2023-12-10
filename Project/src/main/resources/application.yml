@@ -3,9 +3,9 @@ integration:
     chatgpt:
       timeouts:
         rest:
-          socket-timeout: 90
-          connection-timeout: 90
-          connection-request-timeout: 90
+          socket-timeout: 120
+          connection-timeout: 120
+          connection-request-timeout: 120
       number-of-connections-pool: 20
       number-of-connections-pool-per-route: 20
       model: gpt-3.5-turbo
@@ -19,3 +19,10 @@ integration:
       elevation:
         endpoint: https://maps.googleapis.com
         api-key: AIzaSyAlXNAAHt9wpg0knB8wtZ2qW-My-u_gP4Q
+    google-search:
+      endpoint: https://www.googleapis.com/customsearch/v1?
+      api-key: AIzaSyDI8i1fKP2Hztqtt8JOqY-Vmnz_Dw5cDLo
+      cx: a022e7c8cfbdd4596
+
+# Endpoint to access the cache
+# https://webcache.googleusercontent.com/search?q=cache:CACHEDID:LINK
