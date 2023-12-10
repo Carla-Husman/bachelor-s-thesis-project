@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.json.JSONObject
 import org.springframework.web.bind.annotation.*
+import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.Itinerary
 import ro.tuiasi.student.carla.proiect.gateways.places.PlacesApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.places.dto.PlaceDetails
 import ro.tuiasi.student.carla.proiect.gateways.search.SearchApiGateway
@@ -32,12 +33,26 @@ class VacationPlannerController(
     )
     @PostMapping("/planner")
     fun vacationPlanner(@RequestBody vacationPlannerInput: VacationPlannerInput): VacationPlannerOutput {
+        /* An input for testing
+        {
+            "destination": "Iasi",
+            "startingPoint": "Bucuresti",
+            "age": 25,
+            "gender": "FEMALE",
+            "attendant": "Family",
+            "season": "SUMMER",
+            "transport": "CAR",
+            "budget": "MIDRANGE",
+            "interests": ["MUSEUM", "FOOD", "BOOKS"],
+            "otherInterests": "Some other interests"
+        }
+         */
         return vacationPlannerService.vacationPlanner(vacationPlannerInput)
     }
 
     // a function for testing the chatgpt service
-    @GetMapping
-    fun chatGpt(): String? {
+    @GetMapping("/chatgpt")
+    fun chatGpt(): Itinerary? {
         return chatGptService.generatePoi(
             city = "Iasi, Romania",
             transport = Transport.WALKING.toString().lowercase(Locale.getDefault()),

@@ -7,9 +7,9 @@ data class Poi(
     val longitude: Double,
     val latitude: Double,
     val tags: List<String>,
-    val stars: Double,
+    val stars: Float,
     val address: String,
     val phone: String?,
     val website: String?,
-    val schedule: String?,
+    val schedule: Any?,
 )

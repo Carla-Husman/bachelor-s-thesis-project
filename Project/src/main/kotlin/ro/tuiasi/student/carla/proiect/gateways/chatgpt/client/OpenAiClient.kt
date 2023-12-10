@@ -3,10 +3,8 @@ package ro.tuiasi.student.carla.proiect.gateways.chatgpt.client
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
-import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.ChatRequest
-import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.ChatResponse
-import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.Message
 import org.json.JSONObject
+import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.*
 
 @Service
 class OpenAiClient (
@@ -18,7 +16,7 @@ class OpenAiClient (
     @Value("\${integration.gateway.chatgpt.base-uri}")
     private val endpoint: String,
 ){
-    fun chatConversation(message: String): String? {
+    fun chatConversation(message: String): Itinerary? {
         val request = ChatRequest(
             model = model
         )
@@ -36,12 +34,29 @@ class OpenAiClient (
             )
 
             if (response?.choices == null || response.choices.isEmpty()) {
-                return "No response"
+                return null
             }
-            return response.choices[0].message.content
+
+            val itinerary = JSONObject(response.choices[0].message.content)
+            println(response.choices[0].message.content)
+            val pointsOfInterest = mutableListOf<ItineraryPoi>()
+            for (i in 0 until itinerary.getJSONArray("points_of_interest").length()) {
+                pointsOfInterest.add( ItineraryPoi(
+                    name = itinerary.getJSONArray("points_of_interest").getJSONObject(i).getString("name"),
+                    description = itinerary.getJSONArray("points_of_interest").getJSONObject(i).getString("description"),
+                    tags = itinerary.getJSONArray("points_of_interest").getJSONObject(i).getJSONArray("tags").map { it.toString() }
+                ))
+            }
+
+            return Itinerary(
+                tour_name = itinerary.getString("tour_name"),
+                highlights = itinerary.getJSONArray("tour_highlights").map { it.toString() },
+                points_of_interest = pointsOfInterest
+            )
 
         } catch (e: Exception) {
-            return "Exception"
+            println(e.message)
+            return null
         }
     }
 }
