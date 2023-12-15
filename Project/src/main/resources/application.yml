@@ -8,7 +8,7 @@ integration:
           connection-request-timeout: 120
       number-of-connections-pool: 20
       number-of-connections-pool-per-route: 20
-      model: gpt-3.5-turbo
+      model: gpt-3.5-turbo-1106
       base-uri: https://api.openai.com/v1/chat/completions
       api-key: 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
     maps:

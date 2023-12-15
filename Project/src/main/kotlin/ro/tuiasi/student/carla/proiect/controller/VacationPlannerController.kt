@@ -3,7 +3,6 @@ package ro.tuiasi.student.carla.proiect.controller
 import ro.tuiasi.student.carla.proiect.services.VacationPlannerService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
-import org.json.JSONObject
 import org.springframework.web.bind.annotation.*
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.Itinerary
 import ro.tuiasi.student.carla.proiect.gateways.places.PlacesApiGateway
