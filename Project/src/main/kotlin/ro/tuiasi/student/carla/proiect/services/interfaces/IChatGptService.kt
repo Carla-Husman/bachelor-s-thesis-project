@@ -6,5 +6,5 @@ import ro.tuiasi.student.carla.proiect.models.utils.Interests
 interface IChatGptService {
     fun generatePoi(city: String, transport: String?, interests: List<Interests>, otherInterests: String?): Itinerary?
 
-    fun extractCitiesFromText(text: String): List<String>
+    fun extractCitiesFromText(text: String, country: String): List<String>
 }

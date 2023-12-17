@@ -18,7 +18,7 @@ class ChatGptService(
         interests: List<Interests>,
         otherInterests: String?
     ): Itinerary? {
-        val prompt = "Generate at most 15 points of interests for a tour named $city $transport tour" +
+        val prompt = "Generate at most 5 points of interests for a tour named $city $transport tour" +
                 "for a person interesting in: ${
                     interests.joinToString(
                         " and "
@@ -48,9 +48,11 @@ class ChatGptService(
     }
 
     override fun extractCitiesFromText(
-        text: String
+        text: String,
+        country: String
     ): List<String> {
-        val prompt = "Extract just the cities from the following text:\n$text"
+        val prompt = "Extract just the cities from $country from the following text:\n$text \n" +
+                "Parameters of json: cities"
 
         val content = JSONObject(chatGptGateway.runPrompt(prompt))
 

@@ -34,11 +34,6 @@ class PlacesApiClient (
 
         val placeDetails = placeDetails(textSearch.getString("place_id"))
 
-        var website = ""
-        try{
-            website = placeDetails.getString("website")
-        } catch (_: Exception){}
-
         return PlaceDetails(
             placeId = textSearch.getString("place_id"),
             //photoReference = textSearch.getJSONArray("photos").getJSONObject(0).getString("photo_reference"),
@@ -46,10 +41,26 @@ class PlacesApiClient (
             placeAddress = textSearch.getString("formatted_address"),
             latitude = textSearch.getJSONObject("geometry").getJSONObject("location").getDouble("lat"),
             longitude = textSearch.getJSONObject("geometry").getJSONObject("location").getDouble("lng"),
-            rating = textSearch.getDouble("rating").toFloat(),
-            phone = placeDetails.getString("international_phone_number"),
-            website = website,
-            schedule = placeDetails.getJSONObject("current_opening_hours").getJSONArray("weekday_text").toMutableList()
+            rating = if (placeDetails.has("rating")){
+                placeDetails.getDouble("rating").toFloat()
+            } else{
+                0.0.toFloat()
+            },
+            phone = if (placeDetails.has("international_phone_number")){
+                placeDetails.getString("international_phone_number")
+            } else{
+                ""
+            },
+            website = if (placeDetails.has("website")){
+                placeDetails.getString("website")
+            } else{
+                ""
+            },
+            schedule = if (placeDetails.has("opening_hours")){
+                placeDetails.getJSONObject("opening_hours").getJSONArray("weekday_text").toMutableList()
+            } else{
+                mutableListOf()
+            }
         )
     }
 

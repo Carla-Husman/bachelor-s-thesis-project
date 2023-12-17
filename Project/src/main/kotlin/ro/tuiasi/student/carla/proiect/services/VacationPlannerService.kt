@@ -6,6 +6,7 @@ import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.ItineraryPoi
 import ro.tuiasi.student.carla.proiect.gateways.places.PlacesApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.search.SearchApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
+import ro.tuiasi.student.carla.proiect.gateways.webScraping.WebScrapingApiGateway
 import ro.tuiasi.student.carla.proiect.models.Poi
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
@@ -14,12 +15,12 @@ import ro.tuiasi.student.carla.proiect.services.interfaces.ICustomSearchService
 @Service
 class VacationPlannerService (
     private val chatGptService: ChatGptService,
-
+    private val customSearchService: CustomSearchService,
     private val placesApiGateway: PlacesApiGateway,
-    private val customSearchService: CustomSearchService
+    private val webScrapingApiGateway: WebScrapingApiGateway
 ) : IVacationPlannerService {
     override fun vacationPlanner(vacationPlannerInput: VacationPlannerInput): VacationPlannerOutput {
-        // Search on Google for the given destination
+        // search on Google for the given destination
         val searchPrompt = customSearchService.generatePromptCustomSearch(vacationPlannerInput)
         val searchResults : List<SearchDetails> = customSearchService.search(searchPrompt)
 
@@ -29,11 +30,32 @@ class VacationPlannerService (
         }
         // not empty list means that we have a continent or a country as destination
         else{
-            // for every result, get the content from the page
-            // for every content, call chatgpt ang get the cities
+            val cities = mutableMapOf<String, Int>()
+            // for 2 random results, call web scraping and get the content
+            val randomResults = searchResults.shuffled().take(2)
+            for (i in 0 until 2){
+                val content = webScrapingApiGateway.getWebScrapingResults(randomResults[i].link) ?: ""
+
+                // for every content, call chatgpt ang get the cities
+                if (content!=""){
+                    val citiesFromContent = chatGptService.extractCitiesFromText(content, vacationPlannerInput.destination)
+
+                    for (city in citiesFromContent) {
+                        cities[city] = cities.getOrDefault(city, 0) + 1
+                    }
+                }
+            }
+
+            if (cities.isEmpty()){
+                throw Exception("We can't create a trip for this destination.")
+            }
 
             // get the best city from the list of cities
-            "Iași, Romania"
+            // which means the city with the most frequency in the list
+            // if there are more cities with the same frequency, we will choose it randomly
+            val maxFrequency = cities.values.maxOrNull()
+            val mostFrequentCities = cities.filterValues { it == maxFrequency }.keys.toList()
+            mostFrequentCities.shuffled().first()
         }
 
         // generate pois with chatgpt
@@ -59,28 +81,6 @@ class VacationPlannerService (
             highlights = chatGptOutput.highlights,
             pois = listOfPois
         )
-    }
-
-    private fun generatePromptForGoogleSearch(vacationPlannerInput: VacationPlannerInput): String {
-
-        // if destination is null, we will search for the best trip in the world
-        if (vacationPlannerInput.destination == null) {
-            return "Best" + (vacationPlannerInput.budget?.let { " $it" } ?: "") + "trip destination in whole the world" +
-                    (vacationPlannerInput.attendant?.let { " for $it" } ?: "") +
-                    (vacationPlannerInput.season?.let { ", $it" } ?: "") +
-                    "intext:(${vacationPlannerInput.interests.joinToString(" OR ")})"
-        }
-        // if destination is a continent or a country
-        else if (vacationPlannerInput.destination.matches(Regex("^(Asia|Africa|North America|South America|Antarctica|Europe|Australia)\$")) ||
-            !vacationPlannerInput.destination.matches(Regex("^(([a-zA-Z\\u0080-\\u024F ]|(?:[-'’.`]))*, ([a-zA-Z\\u0080-\\u024F ]|(?:[-'’.`]))*)\$"))){
-            return "Best" + (vacationPlannerInput.budget?.let { " $it" } ?: "") + "trip destination in ${vacationPlannerInput.destination}" +
-                    (vacationPlannerInput.attendant?.let { " for $it" } ?: "") +
-                    (vacationPlannerInput.season?.let { ", $it" } ?: "") +
-                    "intext:(${vacationPlannerInput.interests.joinToString(" OR ")})"
-        }
-
-        // destination is a city
-        return ""
     }
 
     private fun buildListOfPois(pointsOfInterest: List<ItineraryPoi>): MutableList<Poi>{

@@ -101,7 +101,8 @@ class VacationPlannerController(
                     "Prahova Valley is not only a crowded during winter, when tourists enjoy skiing or practicing other types of winter sports in Sinaia, Busteni, Predeal or Poiana Brasov. This is also a great fall destination if you want to visit some of the most beautiful castles in Europe: Bran and Peles.\n" +
                     "Bran Castle is located near Brasov and it’s now practically an amusement park for Dracula’s fans. However, if you’re not into the whole vampire myth thing, you can still visit the rooms of the castle, admire the unique architectural style and various items dating back to centuries ago.\n" +
                     "You can visit both castles in just one day, by booking our If you’re not convinced yet that Romanian country is a great option for fall destinations, be it weekend getaways or longer trips, take a look at our other\n" +
-                    "-->"
+                    "-->",
+            "Romania"
         )
     }
 
