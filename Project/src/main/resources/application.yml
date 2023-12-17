@@ -23,6 +23,13 @@ integration:
       endpoint: https://www.googleapis.com/customsearch/v1?
       api-key: AIzaSyDI8i1fKP2Hztqtt8JOqY-Vmnz_Dw5cDLo
       cx: a022e7c8cfbdd4596
+    web-scraping:
+      endpoint: https://api.webscrapingapi.com/v1?
+      api-key: dMbVtXBoB4yaNBDv6dYBDmzVS7oWcHMw
+      render-js: 0
+      proxy-type: datacenter
+
+
 
 # Endpoint to access the cache
 # https://webcache.googleusercontent.com/search?q=cache:CACHEDID:LINK

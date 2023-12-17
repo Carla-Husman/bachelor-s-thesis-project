@@ -34,6 +34,11 @@ class PlacesApiClient (
 
         val placeDetails = placeDetails(textSearch.getString("place_id"))
 
+        var website = ""
+        try{
+            website = placeDetails.getString("website")
+        } catch (_: Exception){}
+
         return PlaceDetails(
             placeId = textSearch.getString("place_id"),
             //photoReference = textSearch.getJSONArray("photos").getJSONObject(0).getString("photo_reference"),
@@ -43,7 +48,7 @@ class PlacesApiClient (
             longitude = textSearch.getJSONObject("geometry").getJSONObject("location").getDouble("lng"),
             rating = textSearch.getDouble("rating").toFloat(),
             phone = placeDetails.getString("international_phone_number"),
-            website = placeDetails.getString("website"),
+            website = website,
             schedule = placeDetails.getJSONObject("current_opening_hours").getJSONArray("weekday_text").toMutableList()
         )
     }
