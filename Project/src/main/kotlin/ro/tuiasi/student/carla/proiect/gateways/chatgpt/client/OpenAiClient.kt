@@ -16,7 +16,7 @@ class OpenAiClient (
     @Value("\${integration.gateway.chatgpt.base-uri}")
     private val endpoint: String,
 ){
-    fun chatConversation(message: String): Itinerary? {
+    fun chatConversation(message: String): String? {
         val request = ChatRequest(
             model = model
         )
@@ -26,37 +26,16 @@ class OpenAiClient (
             content = message
         ))
 
-        try {
-            val response = restTemplate.postForObject(
-                endpoint,
-                request,
-                ChatResponse::class.java
-            )
+        val response = restTemplate.postForObject(
+            endpoint,
+            request,
+            ChatResponse::class.java
+        )
 
-            if (response?.choices == null || response.choices.isEmpty()) {
-                return null
-            }
-
-            val itinerary = JSONObject(response.choices[0].message.content)
-            println(response.choices[0].message.content)
-            val pointsOfInterest = mutableListOf<ItineraryPoi>()
-            for (i in 0 until itinerary.getJSONArray("points_of_interest").length()) {
-                pointsOfInterest.add( ItineraryPoi(
-                    name = itinerary.getJSONArray("points_of_interest").getJSONObject(i).getString("name"),
-                    description = itinerary.getJSONArray("points_of_interest").getJSONObject(i).getString("description"),
-                    tags = itinerary.getJSONArray("points_of_interest").getJSONObject(i).getJSONArray("tags").map { it.toString() }
-                ))
-            }
-
-            return Itinerary(
-                tour_name = itinerary.getString("tour_name"),
-                highlights = itinerary.getJSONArray("tour_highlights").map { it.toString() },
-                points_of_interest = pointsOfInterest
-            )
-
-        } catch (e: Exception) {
-            println(e.message)
-            return null
+        if (response?.choices == null || response.choices.isEmpty()) {
+            throw Exception("ChatGpt response is null or empty.")
         }
+
+        return response.choices[0].message.content
     }
 }

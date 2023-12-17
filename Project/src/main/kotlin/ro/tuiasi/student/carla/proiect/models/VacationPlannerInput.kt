@@ -3,7 +3,7 @@ package ro.tuiasi.student.carla.proiect.models
 import ro.tuiasi.student.carla.proiect.models.utils.*
 
 data class VacationPlannerInput(
-    val destination: String?,
+    val destination: String,
     val startingPoint: String,
     val age: Int?,
     val gender: Gender?,

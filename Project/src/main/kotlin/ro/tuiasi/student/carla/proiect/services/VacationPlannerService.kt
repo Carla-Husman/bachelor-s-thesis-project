@@ -9,32 +9,39 @@ import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.models.Poi
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
+import ro.tuiasi.student.carla.proiect.services.interfaces.ICustomSearchService
 
 @Service
 class VacationPlannerService (
     private val chatGptService: ChatGptService,
-    private val searchApiGateway: SearchApiGateway,
+
     private val placesApiGateway: PlacesApiGateway,
+    private val customSearchService: CustomSearchService
 ) : IVacationPlannerService {
     override fun vacationPlanner(vacationPlannerInput: VacationPlannerInput): VacationPlannerOutput {
-        // build the prompt for Google search
-        val searchPrompt = generatePromptForGoogleSearch(vacationPlannerInput)
+        // Search on Google for the given destination
+        val searchPrompt = customSearchService.generatePromptCustomSearch(vacationPlannerInput)
+        val searchResults : List<SearchDetails> = customSearchService.search(searchPrompt)
 
-        var inputForChatGpt = ""
+        // empty list means that we have a city as destination, and we will use it for chatgpt
+        val inputForChatGpt : String = if (searchResults.isEmpty()){
+            vacationPlannerInput.destination
+        }
+        // not empty list means that we have a continent or a country as destination
+        else{
+            // for every result, get the content from the page
+            // for every content, call chatgpt ang get the cities
 
-        if (searchPrompt != ""){
-            // search on Google
-            val searchResults : List<SearchDetails> = searchApiGateway.search(searchPrompt)
-
-            // get content from pages
-            inputForChatGpt = "Iași, Romania"
+            // get the best city from the list of cities
+            "Iași, Romania"
         }
 
         // generate pois with chatgpt
         val chatGptOutput = chatGptService.generatePoi(
             city = inputForChatGpt,
             transport = vacationPlannerInput.transport.toString().lowercase(),
-            interests = vacationPlannerInput.interests
+            interests = vacationPlannerInput.interests,
+            otherInterests = vacationPlannerInput.otherInterests
         ) ?: throw Exception("ChatGpt output is null.")
 
         // call places api for every poi

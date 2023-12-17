@@ -40,11 +40,21 @@ class SearchApiClient (
 
         if (totalResults > 0){
             val items = search.getJSONArray("items")
+
             for (i in 0 until items.length()) {
+                var cacheId = ""
+
+                try{
+                    cacheId = items.getJSONObject(i).getString("cacheId")
+                }
+                catch (e: Exception){
+                    println(e.message)
+                }
+
                 searchDetailsList.add(SearchDetails(
                     title = items.getJSONObject(i).getString("title"),
                     link = items.getJSONObject(i).getString("link"),
-                    cachedId = items.getJSONObject(i).getString("cacheId"))
+                    cachedId = cacheId)
                 )
             }
         }
