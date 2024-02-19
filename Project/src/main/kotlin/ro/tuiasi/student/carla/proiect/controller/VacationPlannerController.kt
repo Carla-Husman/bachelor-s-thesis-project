@@ -3,7 +3,12 @@ package ro.tuiasi.student.carla.proiect.controller
 import ro.tuiasi.student.carla.proiect.services.VacationPlannerService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.client.HttpClientErrorException
+import org.springframework.web.client.HttpClientErrorException.UnprocessableEntity
+import org.springframework.web.client.HttpServerErrorException.InternalServerError
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.Itinerary
 import ro.tuiasi.student.carla.proiect.gateways.places.PlacesApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.places.dto.PlaceDetails
@@ -15,6 +20,7 @@ import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
 import ro.tuiasi.student.carla.proiect.models.utils.Interests
 import ro.tuiasi.student.carla.proiect.models.utils.Transport
 import ro.tuiasi.student.carla.proiect.services.ChatGptService
+import java.lang.RuntimeException
 import java.util.*
 import javax.print.attribute.standard.Destination
 
@@ -59,9 +65,10 @@ class VacationPlannerController(
                 "The operation showcases the ability to generate content related to a specific point of interest."
     )
     @GetMapping("/chatgpt-poi")
-    fun chatGpt(): Itinerary? {
+    fun chatGpt(@RequestParam(required = true) city: String,
+                @RequestParam(required = true) country: String): Itinerary? {
         return chatGptService.generatePoi(
-            city = "Iasi, Romania",
+            city = "$city, $country",
             transport = Transport.WALKING.toString().lowercase(Locale.getDefault()),
             interests = listOf(Interests.ART, Interests.HISTORY, Interests.NATURE),
             otherInterests = null
@@ -137,5 +144,11 @@ class VacationPlannerController(
         // https://romaniatourstore.com/blog/best-romanian-fall-destinations/
         println("URL: $url")
         return webScrapingGateway.getWebScrapingResults(url)
+    }
+
+    @GetMapping("/resource/{id}")
+    fun getResource(@PathVariable id: Long): String {
+        // Simulate a resource not found exception
+        throw HttpClientErrorException(HttpStatus.NOT_FOUND, "Resource not found")
     }
 }
