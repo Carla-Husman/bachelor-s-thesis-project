@@ -2,7 +2,9 @@ package ro.tuiasi.student.carla.proiect.gateways.search.client
 
 import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
 import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
@@ -40,25 +42,21 @@ class SearchApiClient (
 
         if (totalResults > 0){
             val items = search.getJSONArray("items")
-
             for (i in 0 until items.length()) {
-                var cacheId = ""
-
-                try{
-                    cacheId = items.getJSONObject(i).getString("cacheId")
-                }
-                catch (e: Exception){
-                    println(e.message)
-                }
-
                 searchDetailsList.add(SearchDetails(
                     title = items.getJSONObject(i).getString("title"),
                     link = items.getJSONObject(i).getString("link"),
-                    cachedId = cacheId)
+                    cachedId = if (items.getJSONObject(i).has("cacheId")) {
+                        items.getJSONObject(i).getString("cacheId")
+                    }
+                    else {
+                        ""
+                    })
                 )
             }
+            return searchDetailsList
         }
 
-        return searchDetailsList
+        throw HttpClientErrorException(HttpStatus.NO_CONTENT, "No results found for the given query.")
     }
 }

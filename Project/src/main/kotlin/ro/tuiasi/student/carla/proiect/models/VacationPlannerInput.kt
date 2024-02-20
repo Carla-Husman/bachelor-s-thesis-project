@@ -7,7 +7,7 @@ data class VacationPlannerInput(
     val startingPoint: String,
     val age: Int?,
     val gender: Gender?,
-    val attendant: String?,
+    val attendant: Attendants?,
     val season: Season?,
     val transport: Transport?,
     val budget: Budget?,

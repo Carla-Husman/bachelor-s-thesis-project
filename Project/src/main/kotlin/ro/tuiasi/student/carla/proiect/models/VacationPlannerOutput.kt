@@ -1,5 +1,6 @@
 package ro.tuiasi.student.carla.proiect.models
 
+import ro.tuiasi.student.carla.proiect.models.utils.Attendants
 import ro.tuiasi.student.carla.proiect.models.utils.Season
 
 data class VacationPlannerOutput(
@@ -7,7 +8,7 @@ data class VacationPlannerOutput(
     val name: String,
     val destination: String,
     val season: Season?,
-    val attendant: String?,
+    val attendant: Attendants?,
     val distance: Double,
     val poisNumber: Int,
     val highlights: List<String>,

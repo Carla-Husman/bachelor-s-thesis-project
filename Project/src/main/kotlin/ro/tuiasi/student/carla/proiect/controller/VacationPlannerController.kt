@@ -17,8 +17,7 @@ import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.gateways.webScraping.WebScrapingApiGateway
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
-import ro.tuiasi.student.carla.proiect.models.utils.Interests
-import ro.tuiasi.student.carla.proiect.models.utils.Transport
+import ro.tuiasi.student.carla.proiect.models.utils.*
 import ro.tuiasi.student.carla.proiect.services.ChatGptService
 import java.lang.RuntimeException
 import java.util.*
@@ -65,13 +64,22 @@ class VacationPlannerController(
                 "The operation showcases the ability to generate content related to a specific point of interest."
     )
     @GetMapping("/chatgpt-poi")
-    fun chatGpt(@RequestParam(required = true) city: String,
-                @RequestParam(required = true) country: String): Itinerary? {
+    fun chatGpt(@RequestParam(required = true) destination: String,
+                @RequestParam(required = false) gender: Gender?,
+                @RequestParam(required = false) attendant: Attendants?,
+                @RequestParam(required = false) season: Season?,
+                @RequestParam(required = false) transport: Transport?,
+                @RequestParam(required = true) interests: List<Interests>,
+                @RequestParam(required = false) otherInterests: String?
+    ): Itinerary? {
         return chatGptService.generatePoi(
-            city = "$city, $country",
-            transport = Transport.WALKING.toString().lowercase(Locale.getDefault()),
-            interests = listOf(Interests.ART, Interests.HISTORY, Interests.NATURE),
-            otherInterests = null
+            city = destination,
+            gender = gender,
+            attendant = attendant,
+            season = season,
+            transport = transport,
+            interests = interests,
+            otherInterests = otherInterests
         )
     }
 
@@ -149,6 +157,6 @@ class VacationPlannerController(
     @GetMapping("/resource/{id}")
     fun getResource(@PathVariable id: Long): String {
         // Simulate a resource not found exception
-        throw HttpClientErrorException(HttpStatus.NOT_FOUND, "Resource not found")
+        throw HttpClientErrorException(HttpStatus.NO_CONTENT, "Resource not found")
     }
 }

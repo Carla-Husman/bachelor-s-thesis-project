@@ -41,24 +41,24 @@ class PlacesApiClient (
             placeAddress = textSearch.getString("formatted_address"),
             latitude = textSearch.getJSONObject("geometry").getJSONObject("location").getDouble("lat"),
             longitude = textSearch.getJSONObject("geometry").getJSONObject("location").getDouble("lng"),
-            rating = if (placeDetails.has("rating")){
+            rating = if (placeDetails.has("rating")) {
                 placeDetails.getDouble("rating").toFloat()
-            } else{
-                0.0.toFloat()
+            } else {
+                (-1.0).toFloat()
             },
-            phone = if (placeDetails.has("international_phone_number")){
+            phone = if (placeDetails.has("international_phone_number")) {
                 placeDetails.getString("international_phone_number")
-            } else{
+            } else {
                 ""
             },
-            website = if (placeDetails.has("website")){
+            website = if (placeDetails.has("website")) {
                 placeDetails.getString("website")
-            } else{
+            } else {
                 ""
             },
-            schedule = if (placeDetails.has("opening_hours")){
+            schedule = if (placeDetails.has("opening_hours")) {
                 placeDetails.getJSONObject("opening_hours").getJSONArray("weekday_text").toMutableList()
-            } else{
+            } else {
                 mutableListOf()
             }
         )

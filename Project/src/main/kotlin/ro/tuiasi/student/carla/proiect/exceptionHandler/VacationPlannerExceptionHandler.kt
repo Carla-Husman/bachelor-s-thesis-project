@@ -44,6 +44,19 @@ class VacationPlannerExceptionHandler : ResponseEntityExceptionHandler() {
         return ResponseEntity<ErrorMessage>(message, ex.statusCode)
     }
 
+    @ExceptionHandler(Exception::class)
+    fun handleException(
+        ex: Exception
+    ): ResponseEntity<ErrorMessage> {
+        val message = ErrorMessage(
+            HttpStatus.BAD_REQUEST.value(),
+            "Error: ${ex.localizedMessage}",
+            "",
+        )
+        log.error(message.message)
+        return ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST)
+    }
+
     override fun handleMethodArgumentNotValid(
         ex: MethodArgumentNotValidException,
         headers: HttpHeaders,

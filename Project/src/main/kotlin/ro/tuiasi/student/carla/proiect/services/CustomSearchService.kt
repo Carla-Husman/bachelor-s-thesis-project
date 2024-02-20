@@ -1,6 +1,8 @@
 package ro.tuiasi.student.carla.proiect.services
 
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.client.HttpClientErrorException
 import ro.tuiasi.student.carla.proiect.gateways.search.SearchApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
@@ -16,30 +18,32 @@ class CustomSearchService(
             return listOf()
         }
 
-        // otherwise, we search on Google because we have a continent or a country as destination
+        // otherwise, we search on Google because we have a continent, a country or nothing as destination
         return searchApiGateway.search(searchPrompt)
     }
 
     override fun generatePromptCustomSearch(vacationPlannerInput: VacationPlannerInput): String {
-
-        // if destination is null, we will search for the best trip in the world
-        if (vacationPlannerInput.destination == null) {
-            return "Best" + (vacationPlannerInput.budget?.let { " $it" } ?: "") + " trip destination in whole the world" +
-                    (vacationPlannerInput.attendant?.let { " for $it" } ?: "") +
-                    (vacationPlannerInput.season?.let { ", $it" } ?: "") +
-                    " intext:(${vacationPlannerInput.interests.joinToString(" OR ")})"
+        // if destination is empty, we will search for the best trip in the world
+        if (vacationPlannerInput.destination == "") {
+            return "Best " + (vacationPlannerInput.attendant?.let { "$it " } ?: "") +
+                    (vacationPlannerInput.budget?.let { "$it " } ?: "") + "trip destination in the world " +
+                    (vacationPlannerInput.season?.let { ", $it " } ?: "") +
+                    "intext:(${vacationPlannerInput.interests.joinToString(" OR ")})"
         }
-
         // if destination is a continent or a country
         else if (vacationPlannerInput.destination.matches(Regex("^(Asia|Africa|North America|South America|Antarctica|Europe|Australia)\$")) ||
-            !vacationPlannerInput.destination.matches(Regex("^(([a-zA-Z\\u0080-\\u024F ]|(?:[-'’.`]))*, ([a-zA-Z\\u0080-\\u024F ]|(?:[-'’.`]))*)\$"))){
-            return "Best" + (vacationPlannerInput.budget?.let { " $it" } ?: "") + " trip destination in ${vacationPlannerInput.destination}" +
-                    (vacationPlannerInput.attendant?.let { " for $it" } ?: "") +
-                    (vacationPlannerInput.season?.let { ", $it" } ?: "") +
-                    " intext:(${vacationPlannerInput.interests.joinToString(" OR ")})"
+            vacationPlannerInput.destination.matches(Regex("^[a-zA-Z\\s]+\$"))) {
+            return "Best " + (vacationPlannerInput.attendant?.let { "$it " } ?: "") +
+                    (vacationPlannerInput.budget?.let { "$it " } ?: "") +
+                    "trip destination in ${vacationPlannerInput.destination} " +
+                    (vacationPlannerInput.season?.let { ", $it " } ?: "") +
+                    "intext:(${vacationPlannerInput.interests.joinToString(" OR ")})"
+        }
+        // if destination is a city
+        else if (vacationPlannerInput.destination.matches(Regex("^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+,\\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+\$"))) {
+            return ""
         }
 
-        // destination is a city
-        return ""
+        throw HttpClientErrorException(HttpStatus.UNPROCESSABLE_ENTITY, "Format of the destination is not valid.")
     }
 }
