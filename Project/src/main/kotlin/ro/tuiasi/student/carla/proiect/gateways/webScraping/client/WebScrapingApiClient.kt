@@ -43,9 +43,12 @@ class WebScrapingApiClient (
             noJavaScript.replace(Regex("/\\*.*?\\*/|//.*?\n|<style.*?</style>", RegexOption.DOT_MATCHES_ALL), "")
 
         // Remove HTML code (tags)
-        val noHtml = noCss.replace(Regex("<[^>]+>", RegexOption.DOT_MATCHES_ALL), "")
+        val noHtml = noCss.replace(Regex("<[^>]*>", RegexOption.DOT_MATCHES_ALL), "")
 
         // Remove useless spaces, tabs, empty lines between paragraphs
-        return noHtml.replace(Regex("\\s*\n\\s*"), "\n").trim()
+        val noSpaces = noHtml.replace(Regex("\\s*\n\\s*"), "\n").trim()
+
+        // ?
+        return noSpaces.replace(Regex("[a-zA-Z0-9-]+?\\{.*?\\}.*"), " ").trim()
     }
 }

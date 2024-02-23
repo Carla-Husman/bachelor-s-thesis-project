@@ -6,6 +6,7 @@ import org.springframework.web.client.HttpClientErrorException
 import ro.tuiasi.student.carla.proiect.gateways.search.SearchApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
+import ro.tuiasi.student.carla.proiect.models.utils.Budget
 import ro.tuiasi.student.carla.proiect.services.interfaces.ICustomSearchService
 
 @Service
@@ -23,10 +24,15 @@ class CustomSearchService(
     }
 
     override fun generatePromptCustomSearch(vacationPlannerInput: VacationPlannerInput): String {
+        val budget = vacationPlannerInput.budget?.let {
+            when(it){
+                Budget.CHEAP, Budget.AFFORDABLE -> "trip, countries or cities close to ${vacationPlannerInput.startingPoint} "
+                else -> "$it trip destination in the world "
+            }
+        } ?: "destination in the whole world "
         // if destination is empty, we will search for the best trip in the world
         if (vacationPlannerInput.destination == "") {
-            return "Best " + (vacationPlannerInput.attendant?.let { "$it " } ?: "") +
-                    (vacationPlannerInput.budget?.let { "$it " } ?: "") + "trip destination in the world " +
+            return "Best " + (vacationPlannerInput.attendant?.let { "$it " } ?: "") + budget +
                     (vacationPlannerInput.season?.let { ", $it " } ?: "") +
                     "intext:(${vacationPlannerInput.interests.joinToString(" OR ")})"
         }

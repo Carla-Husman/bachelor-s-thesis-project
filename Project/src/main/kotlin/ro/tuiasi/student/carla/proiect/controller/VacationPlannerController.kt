@@ -150,7 +150,6 @@ class VacationPlannerController(
     @GetMapping("/web-scraping", params = ["url"])
     fun webScraping(@RequestParam(required = true) url: String): String? {
         // https://romaniatourstore.com/blog/best-romanian-fall-destinations/
-        println("URL: $url")
         return webScrapingGateway.getWebScrapingResults(url)
     }
 

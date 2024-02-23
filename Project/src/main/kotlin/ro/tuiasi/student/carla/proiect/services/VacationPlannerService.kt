@@ -36,9 +36,10 @@ class VacationPlannerService (
             // for 2 random results, call web scraping and get the content
             val randomResults = searchResults.shuffled().take(2)
             for (element in randomResults){
+                println("Link: ${element.link}")
                 val content = webScrapingApiGateway.getWebScrapingResults(element.link) ?: ""
 
-                // for every content, call chatgpt ang get the cities
+                // for every content, call chatgpt and get the cities
                 if (content!=""){
                     val citiesFromContent = chatGptService.extractCitiesFromText(content, vacationPlannerInput.destination)
                     println("Cities from content: $citiesFromContent")
@@ -52,9 +53,14 @@ class VacationPlannerService (
                 throw HttpClientErrorException(HttpStatus.NO_CONTENT, "No cities founded for the given destination.")
             }
 
+            // remove from the list that one that is the same with the starting point
+            // (just for the case when the destination is a continent or a country)
             // get the best city from the list of cities
             // which means the city with the most frequency in the list
             // if there are more cities with the same frequency, we will choose it randomly
+            if (vacationPlannerInput.startingPoint != vacationPlannerInput.destination){
+                cities.remove(vacationPlannerInput.startingPoint.split(",")[0])
+            }
             val maxFrequency = cities.values.max()
             val mostFrequentCities = cities.filterValues { it == maxFrequency }.keys.toList()
             mostFrequentCities.shuffled().first()
@@ -74,18 +80,23 @@ class VacationPlannerService (
         // call places api for every poi
         val listOfPois : MutableList<Poi> = buildListOfPois(chatGptOutput.points_of_interest)
 
+        val vacationPlannerOutput = VacationPlannerOutput(
+                                        photo = "photo",
+                                        name = chatGptOutput.tour_name,
+                                        destination = destination,
+                                        season = vacationPlannerInput.season,
+                                        attendant = vacationPlannerInput.attendant,
+                                        distance = 0.0,
+                                        poisNumber = listOfPois.size,
+                                        highlights = chatGptOutput.highlights,
+                                        pois = listOfPois
+                                    )
+        if (vacationPlannerOutput.pois.isEmpty() || vacationPlannerOutput.destination == "") {
+            throw HttpClientErrorException(HttpStatus.NO_CONTENT, "No tour founded for the given destination.")
+        }
+
         // return vacation planner output
-        return VacationPlannerOutput(
-            photo = "photo",
-            name = chatGptOutput.tour_name,
-            destination = destination,
-            season = vacationPlannerInput.season,
-            attendant = vacationPlannerInput.attendant,
-            distance = 0.0,
-            poisNumber = listOfPois.size,
-            highlights = chatGptOutput.highlights,
-            pois = listOfPois
-        )
+        return vacationPlannerOutput
     }
 
     private fun buildListOfPois(pointsOfInterest: List<ItineraryPoi>): MutableList<Poi>{

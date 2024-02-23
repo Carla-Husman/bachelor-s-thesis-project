@@ -2,6 +2,7 @@ package ro.tuiasi.student.carla.proiect.gateways.search.client
 
 import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.expression.common.ExpressionUtils.toInt
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.client.HttpClientErrorException
@@ -36,7 +37,11 @@ class SearchApiClient (
 
         val search = JSONObject(restTemplate.getForObject(uri, String::class.java))
 
-        val totalResults = search.getJSONObject("searchInformation").getInt("totalResults")
+        val totalResults = if (search.getJSONObject("searchInformation").get("totalResults") is Int){
+            search.getJSONObject("searchInformation").getInt("totalResults").toLong()
+        } else{
+            search.getJSONObject("searchInformation").getString("totalResults").toLong()
+        }
 
         val searchDetailsList = mutableListOf<SearchDetails>()
 

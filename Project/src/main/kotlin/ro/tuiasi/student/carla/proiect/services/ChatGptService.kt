@@ -43,7 +43,7 @@ class ChatGptService(
                 tags = content.getJSONArray("points_of_interest").getJSONObject(i).getJSONArray("tags").map { it.toString() }
             ))
         }
-        println("ChatGptService: $content")
+
         return Itinerary(
             tour_name = content.getString("tour_name"),
             highlights = if (content.has("tour_highlights")) {
@@ -51,7 +51,7 @@ class ChatGptService(
                 if (tourHighlights is JSONArray) {
                     tourHighlights.map { it.toString() }
                 } else {
-                    listOf()
+                    listOf(tourHighlights.toString())
                 }
             } else {
                 listOf()
@@ -64,7 +64,9 @@ class ChatGptService(
         text: String,
         destination: String
     ): List<String> {
-        val prompt = "Extract just the cities from $destination from the following text:\n$text \n" +
+        var textForDestination = ""
+        if (destination != "") { textForDestination = " for $destination" }
+        val prompt = "Extract just the cities $textForDestination from the following text:\n$text \n" +
                 "Parameters of json: cities"
 
         val content = JSONObject(chatGptGateway.runPrompt(prompt))
