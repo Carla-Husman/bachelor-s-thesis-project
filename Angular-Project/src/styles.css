@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --dark-blue: #115e6a;
+  --light-green: #418d7e;
+  --very-light-green: rgb(174, 195, 183);
+  --light-brown: #80693c;
+  --dark-brown: #5a4410;
+}
+
+body { font-family: Monaco, "Monaco", monospace }
