@@ -82,9 +82,14 @@ button.mat-mdc-outlined-button.mat-primary {
   --mat-outlined-button-ripple-color: rgba(65, 141, 126, 0.4);
 }
 
+a {
+  font-weight: bold;
+}
+
 a:hover {
   color: var(--dark-brown);
   cursor: pointer;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 650px) {

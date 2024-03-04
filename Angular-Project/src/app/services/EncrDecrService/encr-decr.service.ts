@@ -26,7 +26,6 @@ export class EncrDecrService {
   }
 
   decrypt(value: string | CryptoJS.lib.CipherParams){
-    console.log(value)
     const key = CryptoJS.enc.Utf8.parse(this.keys);
     const iv = CryptoJS.enc.Utf8.parse(this.keys);
     const decrypted = CryptoJS.AES.decrypt(value, key, {
