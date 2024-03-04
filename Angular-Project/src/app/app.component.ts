@@ -4,6 +4,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {DBConfig, NgxIndexedDBModule} from 'ngx-indexed-db';
+import {EncrDecrService} from "./services/EncrDecrService/encr-decr.service";
 
 const dbConfig: DBConfig = {
   name: 'RelationTripDataBase',
@@ -31,6 +32,7 @@ const dbConfig: DBConfig = {
     MatInputModule,
     MatSelectModule,
   ],
+  providers: [EncrDecrService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

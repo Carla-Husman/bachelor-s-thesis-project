@@ -16,7 +16,7 @@ export class AppDB extends Dexie {
   constructor() {
     super('RelationTripDataBase');
     this.version(3).stores({
-      users: '++id',
+      users: '++id, username, email',
     });
   }
 }
