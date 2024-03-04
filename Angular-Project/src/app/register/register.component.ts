@@ -12,6 +12,7 @@ import {MatButtonToggle} from "@angular/material/button-toggle";
 import {MatButton} from "@angular/material/button";
 import {Moment} from 'moment';
 import {provideMomentDateAdapter} from "@angular/material-moment-adapter";
+import {db} from "../db";
 
 export const MY_FORMATS = {
   parse: {
@@ -68,9 +69,20 @@ export class RegisterComponent {
   password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")]);
   gender = new FormControl('');
 
-  add(){
-    //this.indexedDbService.add("username", "value")
+  async submitForm(){
+    if (this.username.valid && this.gender.valid && this.password.valid &&
+        this.location.valid && this.yearOfBirth.valid && this.email.valid) {
+      await db.users.add({
+        username: this.username.value != null ? this.username.value : '',
+        location: this.location.value != null ? this.location.value : '',
+        gender: this.gender.value != "" && this.gender.value != null ? this.gender.value : null,
+        yearOfBirth: this.yearOfBirth.value != '' && this.yearOfBirth.value != null ? parseInt(this.yearOfBirth.value) : null,
+        email: this.email.value != null ? this.email.value : '',
+        password: this.password.value != null ? this.password.value : '',
+      })
+    }
   }
+
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';

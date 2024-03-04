@@ -3,7 +3,7 @@ body {
 }
 
 #register-content {
-  background-image: url("../assets/images/register-image-1.jpg");
+  background-image: url("../../assets/images/register-image-1.jpg");
   margin: 0;
   height: 100vh;
   display: flex;

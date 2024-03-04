@@ -1,5 +1,5 @@
 <div id="left-logo">
-  <img src="assets/images/logo-3.png" alt="Logo image."/>
+  <img src="../../assets/images/logo-3.png" alt="Logo image."/>
 </div>
 <div id="register-content" style="z-index: -1">
   <div id="right-content">
@@ -13,7 +13,7 @@
           }
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Location</mat-label>
           <input matInput placeholder="Iasi, Romania" [formControl]="location" required>
           @if (location.invalid) {
@@ -21,7 +21,7 @@
           }
         </mat-form-field>
 
-        <mat-form-field color="primary">
+        <mat-form-field color="primary" appearance="fill">
           <mat-label>Year of birth</mat-label>
           <input matInput [matDatepicker]="dp" placeholder="2001" [formControl]="yearOfBirth" readonly>
           <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
@@ -32,7 +32,7 @@
           </mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Gender</mat-label>
           <mat-select [formControl]="gender">
             <mat-option value="one">Male</mat-option>
@@ -41,7 +41,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input matInput placeholder="RelationTrip@example.com" [formControl]="email">
           @if (email.invalid) {
@@ -49,15 +49,15 @@
           }
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
           <input matInput placeholder="*******" [formControl]="password"  type="password" required>
-          @if (email.invalid) {
+          @if (password.invalid) {
             <mat-error>{{getPasswordErrorMessage()}}</mat-error>
           }
         </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="add()">Submit</button>
+        <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
       </form>
     <p>Already have an account? <a>Log in</a></p>
   </div>

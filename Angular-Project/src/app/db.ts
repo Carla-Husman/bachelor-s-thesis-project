@@ -1,0 +1,24 @@
+import Dexie, { Table } from 'dexie';
+
+export interface Users {
+  id?: number;
+  username: string;
+  location: string;
+  yearOfBirth: number | null;
+  gender: string | null;
+  email: string;
+  password: string;
+}
+
+export class AppDB extends Dexie {
+  users!: Table<Users, number>;
+
+  constructor() {
+    super('RelationTripDataBase');
+    this.version(3).stores({
+      users: '++id',
+    });
+  }
+}
+
+export const db = new AppDB();
