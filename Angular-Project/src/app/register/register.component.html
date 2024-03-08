@@ -6,7 +6,7 @@
     @if(registerState) {
       <mat-card-title>Create an account</mat-card-title>
     } @else {
-      <mat-card-title style="text-shadow: 0 0 5px #aec3b7">Log in</mat-card-title>
+      <mat-card-title style="text-shadow: 0 0 5px #aec3b7">Sing in</mat-card-title>
     }
       <form id="register-form">
         <mat-form-field appearance="fill">
@@ -65,11 +65,11 @@
       </form>
     @if(registerState) {
       <p>Already have an account?
-        <a matListItemTitle (click)="changeState()">Log in</a>
+        <a matListItemTitle (click)="changeState()">Sign in</a>
       </p>
     } @else {
       <p>Doesn't have an account?
-        <a matListItemTitle (click)="changeState()">Sign in</a>
+        <a matListItemTitle (click)="changeState()">Sign up</a>
       </p>
     }
 

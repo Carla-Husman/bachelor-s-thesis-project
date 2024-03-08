@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $Angular-Project-primary: mat.define-palette(mat.$cyan-palette, 900);
-$Angular-Project-accent: mat.define-palette(mat.$green-palette);
+$Angular-Project-accent: mat.define-palette(mat.$green-palette, 200, A100);
 $Angular-Project-secondary: mat.define-palette(mat.$brown-palette);
 // The warn palette is optional (defaults to red).
 $Angular-Project-warn: mat.define-palette(mat.$red-palette, 900);

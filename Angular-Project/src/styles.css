@@ -6,4 +6,8 @@
   --dark-brown: #5a4410;
 }
 
-body { font-family: Monaco, "Monaco", monospace }
+body {
+  font-family: Monaco, "Monaco", monospace;
+  margin: 0;
+  padding: 0;
+}
