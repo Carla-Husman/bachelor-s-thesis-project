@@ -8,6 +8,7 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+  background-color: var(--dark-blue);
 }
 
 .content {
@@ -23,6 +24,15 @@ a {
   display: flex;
   cursor: pointer;
   text-decoration: none;
+  color: var(--very-light-green);
+  padding: 10px 5px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+a:hover {
+  background-color: var(--very-light-green);
+  color: var(--dark-blue);
 }
 
 #suggest-button {
