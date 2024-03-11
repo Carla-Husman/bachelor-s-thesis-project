@@ -1,81 +1,89 @@
 <div id="home-content">
-  <div id="user-information">
-    <mat-card id="profile-information">
+  <mat-card id="profile-information">
+    @if(user) {
+      <div id="header">
         <mat-card-header id="profile-header">
           <button mat-card-avatar id="avatar"></button>
-          <mat-card-title> {{ user ? user.username : "" }} </mat-card-title>
-          <mat-card-subtitle id="description"><mat-icon> terrain</mat-icon>Travel mode on</mat-card-subtitle>
+          <mat-card-title id="username"> {{ user.username }} </mat-card-title>
+          <mat-card-subtitle id="description"><mat-icon>terrain</mat-icon>&nbsp;{{ numberOfItineraries }} itineraries saved</mat-card-subtitle>
         </mat-card-header>
+        <button mat-icon-button id="logout" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+
       <mat-card-content id="profile-card">
-        @if(user) {
-          <div id="content">
-            <div id="up-content">
-              <span class="label">Email:</span>
-              <div class="info">
-                 {{ user.email }}
-              </div>
-              <span class="label">Location:</span>
-              <div class="info">
-                 {{ user.location }}
-              </div>
+        <div id="content">
+          <div class="up-down-content">
+            <span class="label">Email:</span>
+            <div class="info">
+              {{ user.email }}
             </div>
-            <div id="down-content">
-              <span class="label">Year of Birth:</span>
-              <div class="info">
-                 {{ user.yearOfBirth }}
-              </div>
-              <span class="label">Gender:</span>
-              <div class="info">
-                 {{ user.gender }}
-              </div>
+            <span class="label">Location:</span>
+            <div class="info">
+              {{ user.location }}
             </div>
           </div>
-          <div style="align-self: center">
-            <img mat-card-image ngSrc="assets/images/profile-image.png" width="400"  height="300" alt="" priority/>
+          <div class="up-down-content">
+            <span class="label">Year of Birth:</span>
+            <div class="info">
+              {{ user.yearOfBirth }}
+            </div>
+            <span class="label">Gender:</span>
+            <div class="info">
+              {{ user.gender }}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+    }
+  </mat-card>
+  <mat-card style="margin-bottom: 20px">
+    @if(option == 1) {
+      <mat-action-list class="action-buttons-card">
+        <button class="action-buttons"
+                style="margin-right: 20px; font-weight: bold; border-bottom: 2px solid var(--dark-blue);"
+                (click)="changeOption(1)">My vacations</button>
+        <button class="action-buttons"
+                style="color: grey"
+                (click)="changeOption(2)">User's guide</button>
+      </mat-action-list>
+
+      <mat-divider style="border-top-color: rgba(0,0,0,0.24)"></mat-divider>
+
+      <mat-card-content class="trip-guide-content" id="not-empty-vacation-list">
+        @for (item of vacationsList; track item.id) {
+          <mat-card-header (click)="viewItinerary(item.id)" style="cursor: pointer">
+            <div mat-card-avatar>
+              <img [ngSrc]="item.src" style="background-size: cover; border-radius: 50px" width="50" height="50" alt="A picture of an itinerary." priority/>
+            </div>
+            <mat-card-title style="margin-left: 8px"> {{ item.title }} </mat-card-title>
+            <mat-card-subtitle style="margin-top: 5px;">&nbsp;{{ item.poisNumber }} points of interest to visit in {{ item.destination }}</mat-card-subtitle>
+          </mat-card-header>
+        } @empty {
+          <div id="empty-vacation-list">
+            You have nothing saved yet.
+            <mat-icon>sentiment_dissatisfied</mat-icon>
+            <a href="/home" id="create-new-trip"><em>Let's explore!</em></a>
           </div>
         }
       </mat-card-content>
-    </mat-card>
-    <mat-card id="vacations-list">
-      <mat-card-header>
-        <mat-card-title>{{vacationsList[index].title}}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image id="vacation-image" [ngSrc]="vacationsList[index].src" width="670" height="500" alt="" priority>
-      <mat-action-list>
-        <button mat-button (click)="onPrev()">Previous</button>
-        <button mat-button (click)="onNext()">>Next</button>
+    } @else {
+      <mat-action-list class="action-buttons-card">
+        <button class="action-buttons"
+                style="margin-right: 20px;color: grey"
+                (click)="changeOption(1)">My vacations</button>
+        <button class="action-buttons"
+                style="margin-right: 20px; font-weight: bold; border-bottom: 2px solid var(--dark-blue);"
+                (click)="changeOption(2)">User's guide</button>
       </mat-action-list>
-    </mat-card>
-  </div>
 
-  <mat-card id="guide-information">
-    <mat-card-header style="justify-content: center">
-      <mat-card-title style="text-align: center"> User's guide </mat-card-title>
-      <mat-card-subtitle>This will help you to understand how to use this application</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-        he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-        he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-        he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-        he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-        he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.he Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content>
+      <mat-divider style="border-top-color: rgba(0,0,0,0.24)"></mat-divider>
+
+      <mat-card-content class="trip-guide-content">
+        Aici o sa fie ghidul
+      </mat-card-content>
+    }
   </mat-card>
 </div>

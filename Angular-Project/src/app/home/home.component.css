@@ -3,58 +3,70 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
-  margin: 10px;
-}
-
-#user-information {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  justify-content: space-around;
-  align-items: center;
-  block-size: fit-content;
   width: 100%;
+  background-color: rgba(174, 195, 183, 0.65);
 }
 
 #profile-information {
-}
-
-#vacations-list {
-  height: 580px;
+  width: 100%;
+  margin-top: 5px;
+  background-color: rgba(174, 195, 183, 0.65);
+  margin-bottom: 20px;
 }
 
 #profile-header {
-  font-size: 18px;
+  align-items: center
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #avatar {
   background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');
   background-size: cover;
   cursor: pointer;
-  width: 70px;
-  height: 70px;
+  width: 110px;
+  height: 110px;
 }
 
 #content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-#up-content, #down-content {
+.up-down-content {
   display: flex;
   flex-direction: column;
   align-self: center;
   align-items: flex-start;
 }
 
+.action-buttons-card {
+  background-color: rgba(174, 195, 183, 0.65);
+  padding: 5px;
+}
+
+.action-buttons {
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+.action-buttons:hover {
+  border-radius: 5px;
+  background-color: rgba(65, 141, 126, 0.18);
+}
+
 #profile-card {
   display: flex;
   flex-direction: column;
-  align-items: stretch
+  align-items: stretch;
+  margin-bottom: 10px;
 }
 
 .info {
@@ -62,17 +74,16 @@
   text-align: center;
   width: 250px;
   height: auto;
-  border: 1px solid #ccc;
-  margin: 5px;
+  border-bottom: 2px outset var(--dark-blue);
+  border-bottom-left-radius: 5px;
   padding: 10px;
-  box-sizing: border-box;
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  margin-bottom: 10px;
 }
 
 .label {
-  font-weight: bold;
   margin-left: 5px;
+  color: grey;
 }
 
 #description {
@@ -81,14 +92,90 @@
   margin-top: 7px;
 }
 
+#username {
+  font-size: 25px;
+  margin-top: -10px;
+  font-weight: bold;
+}
+
+.trip-guide-content {
+  width: 825px;
+  height: 400px;
+  background-color: rgba(174, 195, 183, 0.65);
+  padding: 0;
+  margin: 0;
+}
+
+#empty-vacation-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 825px;
+  height: 400px;
+}
+
+#empty-vacation-list mat-icon {
+  color: var(--dark-blue);
+  margin-top: 20px;
+  transform: scale(2);
+  margin-bottom: 20px;
+}
+
+#not-empty-vacation-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+div.mat-mdc-card-content {
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--very-light-green);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: var(--dark-blue);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--light-green);
+}
+
+#create-new-trip {
+  text-decoration: none;
+  color: rgba(13, 44, 49, 0.78);
+}
+
+#create-new-trip:hover, #logout {
+  color: var(--dark-blue);
+}
+
+@media screen and (max-width: 870px){
+  .trip-guide-content {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 670px){
+  .trip-guide-content {
+    width: 100vw;
+    padding: 0;
+  }
+}
+
 @media screen and (max-width: 650px) {
   #user-information {
     flex-direction: column;
     margin: 0;
-  }
-
-  #home-content {
-    margin: 10px;
   }
 
   .info {
@@ -100,19 +187,11 @@
     margin: 0;
   }
 
-  #vacation-image {
+  #profile-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 10px;
+    padding: 0;
     width: 100%;
-    height: 250px;
-  }
-
-  #profile-information, #vacations-list, #guide-information {
-    width: 100%;
-    margin-left: 0;
-    height: auto;
-  }
-
-  #vacations-list {
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 }

@@ -10,7 +10,7 @@ import {
   MatCardSubtitle,
   MatCardTitle
 } from "@angular/material/card";
-import {db, Users} from "../db";
+import {db, Users} from "../../../../../Angular-Project/src/app/db";
 import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
@@ -18,6 +18,8 @@ import {MatInput} from "@angular/material/input";
 import {SlickCarouselModule} from "ngx-slick-carousel";
 import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatActionList} from "@angular/material/list";
+import {MatDivider} from "@angular/material/divider";
+import {VacationsList} from "../models/VacationsList/vacations-list.model";
 
 @Component({
   selector: 'app-home',
@@ -45,19 +47,18 @@ import {MatActionList} from "@angular/material/list";
     MatActionList,
     MatButton,
     MatCardImage,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatDivider
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
   user: Users | undefined | void
-  vacationsList = [
-    { title: 'Călătorie 1', src: 'assets/images/imagine-1.jpeg', description: ""},
-    { title: 'Călătorie 2', src: 'assets/images/imagine-2.jpg', description: "" },
-    { title: 'Călătorie 3', src: 'assets/images/imagine-3.jpg', description: "" }
-  ];
-  index = 0;
+  vacationsList : VacationsList[] = []
+  numberOfItineraries = 0
+  option = 1
+
   constructor(private _router: Router) {}
 
   async ngOnInit() {
@@ -72,20 +73,26 @@ export class HomeComponent implements OnInit{
         await this._router.navigate(["/account"]);
         return;
       }
+
+      for (let i=0; i<10; ++i){
+        this.vacationsList.push(new VacationsList(1, "Calatorie1", "Destinatie", 5, "assets/images/imagine-1.jpeg", 23))
+      }
+
     } else {
       await this._router.navigate(["/account"]);
     }
   }
 
-  onPrev(){
-    if (this.index > 0) {
-      this.index--;
-    }
+  async logout() {
+    localStorage.removeItem('username')
+    await this._router.navigate(['/account'])
   }
 
-  onNext(){
-    if(this.index < this.vacationsList.length - 1) {
-      this.index++;
-    }
+  changeOption(newOption : number) {
+    this.option = newOption;
+  }
+
+  async viewItinerary(id: number) {
+    await this._router.navigate(['/home'])
   }
 }
