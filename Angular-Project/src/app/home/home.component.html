@@ -51,24 +51,64 @@
       </mat-action-list>
 
       <mat-divider style="border-top-color: rgba(0,0,0,0.24)"></mat-divider>
-
-      <mat-card-content class="trip-guide-content" id="not-empty-vacation-list">
-        @for (item of vacationsList; track item.id) {
-          <mat-card-header (click)="viewItinerary(item.id)" style="cursor: pointer">
-            <div mat-card-avatar>
-              <img [ngSrc]="item.src" style="background-size: cover; border-radius: 50px" width="50" height="50" alt="A picture of an itinerary." priority/>
+      @if(vacationsList.length != 0) {
+        <mat-card-content class="trip-guide-content" id="ticket">
+          <div id="ticket-content">
+            <div id="additional-information">
+              <div id="first-class">FIRST CLASS</div>
+              <img id="barcode" ngSrc="assets/images/barcode.png" alt="Barcode image" width="70" height="300" priority/>
             </div>
-            <mat-card-title style="margin-left: 8px"> {{ item.title }} </mat-card-title>
-            <mat-card-subtitle style="margin-top: 5px;">&nbsp;{{ item.poisNumber }} points of interest to visit in {{ item.destination }}</mat-card-subtitle>
-          </mat-card-header>
-        } @empty {
+
+            <div id="ticket-informations">
+              <h1 style="">Boarding pass</h1>
+              <mat-divider style="border: 1px solid #000"></mat-divider>
+              <br/>
+              <div>Name of itinerary</div>
+              <div><strong>{{ displayed?.title }}</strong></div>
+              <br/>
+              <div id="destination">
+                <div class="destination-text">
+                  <div>FROM</div>
+                  <div><strong>{{ displayed?.location }}</strong></div>
+                  <br/>
+                  <div>FLIGHT DATE</div>
+                  <div><strong>{{ displayed?.season == "" ? "Unknown" : displayed?.season }}</strong></div>
+                </div>
+                <div class="destination-text">
+                  <div>TO</div>
+                  <div><strong>{{ displayed?.destination }}</strong></div>
+                  <br/>
+                  <div>NO. POIS</div>
+                  <div><strong>#{{ displayed?.poisNumber }}</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <mat-divider id="vertical-line" [vertical]="true"></mat-divider>
+          <img id="ticket-image" [ngSrc]="displayed != undefined ? displayed.src : 'assets/images/no-image-available.jpg'" width="300" height="300" alt="An image with your itinerary" priority>
+        </mat-card-content>
+
+        <mat-action-list style="background-color: rgba(174, 195, 183, 0.65); display: flex; justify-content: space-between; align-items: center;">
+          <button mat-icon-button (click)="back(displayed?.id)">
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+          <button mat-icon-button (click)="view(displayed?.id)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button (click)="forward(displayed?.id)">
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </mat-action-list>
+      } @else {
+        <mat-card-content class="trip-guide-content">
           <div id="empty-vacation-list">
             You have nothing saved yet.
             <mat-icon>sentiment_dissatisfied</mat-icon>
             <a href="/home" id="create-new-trip"><em>Let's explore!</em></a>
           </div>
-        }
-      </mat-card-content>
+        </mat-card-content>
+      }
     } @else {
       <mat-action-list class="action-buttons-card">
         <button class="action-buttons"

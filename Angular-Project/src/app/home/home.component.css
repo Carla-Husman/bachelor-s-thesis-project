@@ -113,7 +113,6 @@
   align-items: center;
   padding: 0;
   margin: 0;
-  width: 825px;
   height: 400px;
 }
 
@@ -124,30 +123,8 @@
   margin-bottom: 20px;
 }
 
-#not-empty-vacation-list {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
 div.mat-mdc-card-content {
   padding: 0;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--very-light-green);
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 15px;
-  background: var(--dark-blue);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--light-green);
 }
 
 #create-new-trip {
@@ -159,9 +136,107 @@ div.mat-mdc-card-content {
   color: var(--dark-blue);
 }
 
+#selected-vacation {
+  cursor: pointer;
+  transition: background 0.3s;;
+}
+
+#selected-vacation:active {
+  background-color: rgba(65, 141, 126, 0.32);
+  border-radius: 10px;
+}
+
+#ticket, #destination {
+  display: flex;
+  flex-direction: row;
+}
+
+#ticket {
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: url("/assets/images/airplane-wing.png");
+  background-repeat: no-repeat;
+}
+
+.destination-text, #ticket-informations {
+  display: flex;
+  flex-direction: column;
+}
+
+#destination {
+  gap: 10px;
+}
+
+#ticket-information {
+  align-items: stretch;
+}
+
+#first-class {
+  font-size: 20px;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  align-self: center;
+}
+
+#barcode, #ticket-image {
+  align-self: center;
+}
+
+#ticket-image {
+  border-radius: 5px;
+}
+
+#vertical-line {
+  height: 300px;
+}
+
+#additional-information {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#ticket-content {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 @media screen and (max-width: 870px){
   .trip-guide-content {
     width: 600px;
+  }
+
+  #vertical-line {
+    display: none;
+  }
+
+  #additional-information {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-bottom: -30px;
+    justify-content: center
+  }
+
+  #first-class {
+    writing-mode: horizontal-tb;
+  }
+
+  #barcode {
+    transform: rotate(90deg);
+    height: 80px;
+    width: 40px;
+  }
+
+  #ticket-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #ticket-image {
+    height: 260px;
+    width: 260px;
   }
 }
 
@@ -169,6 +244,11 @@ div.mat-mdc-card-content {
   .trip-guide-content {
     width: 100vw;
     padding: 0;
+  }
+
+  .destination-text {
+    width: auto;
+    margin-bottom: 20px;
   }
 }
 
@@ -193,5 +273,17 @@ div.mat-mdc-card-content {
     margin: 0 0 10px;
     padding: 0;
     width: 100%;
+  }
+
+  #ticket {
+    flex-direction: column;
+  }
+
+  #ticket-image {
+    width: 97%;
+  }
+
+  .trip-guide-content {
+    height: auto;
   }
 }

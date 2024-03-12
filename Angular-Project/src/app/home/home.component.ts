@@ -20,6 +20,7 @@ import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatActionList} from "@angular/material/list";
 import {MatDivider} from "@angular/material/divider";
 import {VacationsList} from "../models/VacationsList/vacations-list.model";
+import {MatRipple} from "@angular/material/core";
 
 @Component({
   selector: 'app-home',
@@ -48,17 +49,22 @@ import {VacationsList} from "../models/VacationsList/vacations-list.model";
     MatButton,
     MatCardImage,
     NgOptimizedImage,
-    MatDivider
+    MatDivider,
+    MatRipple
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
   user: Users | undefined | void
-  vacationsList : VacationsList[] = []
   numberOfItineraries = 0
   option = 1
-
+  vacationsList = [
+    new VacationsList(0, "Iasi Walking Tour", "Iasi, Romania", "Bucharest, Romania",3, "assets/images/imagine-1.jpeg", "August"),
+    new VacationsList(1, "France Tour", "Paris, France", "Iasi, Romania",7, "assets/images/imagine-2.jpg", ""),
+    new VacationsList(2, "Madrid Family Tour", "Madrid, Spain", "Cluj-Napoca, Romania",10, "assets/images/imagine-3.jpg", ""),
+  ]
+  displayed! : VacationsList | undefined;
   constructor(private _router: Router) {}
 
   async ngOnInit() {
@@ -74,10 +80,7 @@ export class HomeComponent implements OnInit{
         return;
       }
 
-      for (let i=0; i<10; ++i){
-        this.vacationsList.push(new VacationsList(1, "Calatorie1", "Destinatie", 5, "assets/images/imagine-1.jpeg", 23))
-      }
-
+      this.displayed = this.vacationsList.length != 0 ? this.vacationsList[0] : undefined
     } else {
       await this._router.navigate(["/account"]);
     }
@@ -92,7 +95,19 @@ export class HomeComponent implements OnInit{
     this.option = newOption;
   }
 
-  async viewItinerary(id: number) {
-    await this._router.navigate(['/home'])
+  async back(id: number | undefined){
+    if (id != undefined && id != 0) {
+      this.displayed = this.vacationsList[id - 1];
+    }
+  }
+
+  async forward(id: number | undefined) {
+    if (id != undefined && id != this.vacationsList.length - 1) {
+      this.displayed = this.vacationsList[id + 1];
+    }
+  }
+
+  async view(id: number | undefined) {
+
   }
 }
