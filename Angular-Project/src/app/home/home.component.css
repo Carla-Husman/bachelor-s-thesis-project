@@ -52,6 +52,10 @@
   padding: 5px;
 }
 
+.mdc-list {
+  padding: 0;
+}
+
 .action-buttons {
   cursor: pointer;
   padding: 10px 5px;
@@ -100,7 +104,7 @@
 
 .trip-guide-content {
   width: 825px;
-  height: 400px;
+  height: 320px;
   background-color: rgba(174, 195, 183, 0.65);
   padding: 0;
   margin: 0;
@@ -202,6 +206,21 @@ div.mat-mdc-card-content {
   gap: 10px;
 }
 
+mat-expansion-panel-header {
+  background-color: rgba(12, 93, 105, 0.09);
+  text-align: left;
+}
+
+mat-expansion-panel {
+  background-color: rgba(65, 141, 126, 0.39);
+  margin-bottom: 3px;
+  text-align: justify;
+}
+
+p {
+  text-indent: 2em;
+}
+
 @media screen and (max-width: 870px){
   .trip-guide-content {
     width: 600px;
@@ -285,5 +304,13 @@ div.mat-mdc-card-content {
 
   .trip-guide-content {
     height: auto;
+  }
+
+  mat-panel-description {
+    font-size: 13px;
+  }
+
+  mat-panel-title {
+    font-size: 14px;
   }
 }

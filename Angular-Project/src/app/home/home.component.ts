@@ -21,6 +21,12 @@ import {MatActionList} from "@angular/material/list";
 import {MatDivider} from "@angular/material/divider";
 import {VacationsList} from "../models/VacationsList/vacations-list.model";
 import {MatRipple} from "@angular/material/core";
+import {
+  MatAccordion, MatExpansionModule,
+  MatExpansionPanel,
+  MatExpansionPanelDescription,
+  MatExpansionPanelTitle
+} from "@angular/material/expansion";
 
 @Component({
   selector: 'app-home',
@@ -50,7 +56,12 @@ import {MatRipple} from "@angular/material/core";
     MatCardImage,
     NgOptimizedImage,
     MatDivider,
-    MatRipple
+    MatRipple,
+    MatExpansionPanel,
+    MatExpansionPanelTitle,
+    MatAccordion,
+    MatExpansionPanelDescription,
+    MatExpansionModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -65,6 +76,7 @@ export class HomeComponent implements OnInit{
     new VacationsList(2, "Madrid Family Tour", "Madrid, Spain", "Cluj-Napoca, Romania",10, "assets/images/imagine-3.jpg", ""),
   ]
   displayed! : VacationsList | undefined;
+
   constructor(private _router: Router) {}
 
   async ngOnInit() {

@@ -44,7 +44,7 @@
       <mat-action-list class="action-buttons-card">
         <button class="action-buttons"
                 style="margin-right: 20px; font-weight: bold; border-bottom: 2px solid var(--dark-blue);"
-                (click)="changeOption(1)">My vacations</button>
+                (click)="changeOption(1)">My Itineraries</button>
         <button class="action-buttons"
                 style="color: grey"
                 (click)="changeOption(2)">User's guide</button>
@@ -121,8 +121,92 @@
 
       <mat-divider style="border-top-color: rgba(0,0,0,0.24)"></mat-divider>
 
-      <mat-card-content class="trip-guide-content">
-        Aici o sa fie ghidul
+      <mat-card-content class="trip-guide-content" style="height: auto; padding: 5px;">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Data Persistence
+              </mat-panel-title>
+              <mat-panel-description>
+                Ensures user data persistence within the application
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>To ensure the security and confidentiality of your information, all saved data and created itineraries will only be valid within the browser and device used at the time.
+            If you access the RelationTrip application from a different browser or change devices, all saved data and itineraries will be lost.</p>
+            <p>We recommend accessing the application using the same browser and device to maintain consistency and continuity of your travel data.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Feedback and Support
+              </mat-panel-title>
+              <mat-panel-description>
+                Provides support and encourages user feedback for application improvement
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>If you encounter any issues or have suggestions for improving the application, please don't hesitate to contact us.
+            Your feedback is valuable to us and helps us continuously improve the user experience.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                User Safety
+              </mat-panel-title>
+              <mat-panel-description>
+                Prioritizes user safety in selecting tourist destinations
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>If certain cities or countries are not available for selection as tourist destinations, this is due to our considerations regarding user safety.
+            We ensure that the proposed locations are safe and can provide an enjoyable travel experience.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Data Confidentiality
+              </mat-panel-title>
+              <mat-panel-description>
+                Ensures the confidentiality of users' personal data
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>The data entered during registration is only used for the purpose of creating itineraries and is not distributed to third parties without your consent.
+              We respect the confidentiality and security of your personal data.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Itinerary Suggestions
+              </mat-panel-title>
+              <mat-panel-description>
+                Offers personalized itinerary suggestions based on user preferences
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>To receive personalized travel suggestions, visit the "Suggest new Itinerary" page.</p>
+            <p>Complete the required details, with the departure point and your hobbies being mandatory.
+              The departure point is necessary to avoid generating an itinerary in your city if you haven't chosen to do so.</p>
+            <p>These details are used to generate a personalized itinerary for you.</p>
+            <p>Itineraries can be customized based on your preferences and previously provided information.</p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Generate Itinerary Results
+              </mat-panel-title>
+              <mat-panel-description>
+                Understanding Itinerary Variability
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Each time an itinerary is generated, the results may vary.
+              At times, there may be no results at all.
+              This is because our algorithm may not find a location that meets all of your requirements.</p>
+            <p>Thank you for your understanding and patience.</p>
+          </mat-expansion-panel>
+        </mat-accordion>
       </mat-card-content>
     }
   </mat-card>
