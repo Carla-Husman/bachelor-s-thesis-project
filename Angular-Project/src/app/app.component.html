@@ -1,6 +1,6 @@
 @if (navBarActive) {
   <mat-toolbar class="fixed-toolbar">
-    <span><img src="assets/images/logo-1.png" alt="Logo imagine."/></span>
+    <span><img src="assets/images/logo-1.png" alt="Logo imagine." style="filter: drop-shadow(0 0 0.75rem rgba(65,141,126,0.74));"/></span>
 
     <span class="example-fill-remaining-space"></span>
 
@@ -14,8 +14,11 @@
   </div>
 
   <footer>
-    &#169; Copyright 2024, RelationTrip
+      <p style="margin-bottom: 5px;">&#169; 2024, RelationTrip. All rights reserved.</p>
+      <p style="margin-bottom: 5px;">Contact: contact&#64;relationtrip.com</p>
+      <p style="font-size: 0.8em;">Gheorghe Asachi Technical University, Iasi, Romania</p>
   </footer>
+
 } @else {
   <router-outlet />
 }
