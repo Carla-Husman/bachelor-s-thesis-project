@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import CryptoJS from 'crypto-js';
 import {ConsoleLogger} from "@angular/compiler-cli";
 
@@ -11,7 +11,7 @@ export class EncrDecrService {
   constructor() {
   }
 
-  encrypt(value: { toString: () => string; }){
+  encrypt(value: { toString: () => string; }) {
     const key = CryptoJS.enc.Utf8.parse(this.keys);
     const iv = CryptoJS.enc.Utf8.parse(this.keys);
     const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(value.toString()), key,
@@ -25,7 +25,7 @@ export class EncrDecrService {
     return encrypted.toString();
   }
 
-  decrypt(value: string | CryptoJS.lib.CipherParams){
+  decrypt(value: string | CryptoJS.lib.CipherParams) {
     const key = CryptoJS.enc.Utf8.parse(this.keys);
     const iv = CryptoJS.enc.Utf8.parse(this.keys);
     const decrypted = CryptoJS.AES.decrypt(value, key, {

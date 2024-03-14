@@ -83,13 +83,14 @@ export class RegisterComponent {
   gender = new FormControl('');
 
   registerState = true
+
   constructor(private _snackBar: MatSnackBar, private _encrDecrService: EncrDecrService, private _router: Router) {
-    if (localStorage.getItem("username") != null || localStorage.getItem("username") != undefined) {
+    if (window.localStorage.getItem("username") != null || window.localStorage.getItem("username") != undefined) {
       this._router.navigate(['/home']);
     }
   }
 
-  async submitForm(){
+  async submitForm() {
     if (this.registerState) {
       let userFound = await db.transaction('r', [db.users], async () => {
         return db.users.get({username: this.username.value});
@@ -128,12 +129,12 @@ export class RegisterComponent {
           yearOfBirth: this.yearOfBirth.value != '' && this.yearOfBirth.value != null ? parseInt(this.yearOfBirth.value) : null,
           email: this.email.value != null ? this.email.value : '',
           password: newPassword,
+          src: "assets/images/no-avatar.png"
         })
 
         this._snackBar.open("Your account has been created. Welcome!", "Ok", {duration: 5000})
       }
-    }
-    else {
+    } else {
       let usernameFound = await db.transaction('r', [db.users], async () => {
         return db.users.get({username: this.username.value});
       }).catch(error => {
@@ -145,7 +146,7 @@ export class RegisterComponent {
         return;
       }
 
-      localStorage.setItem("username", this.username.value != null ? this.username.value : "")
+      window.localStorage.setItem("username", this.username.value != null ? this.username.value : "")
       await this._router.navigate(['/home']);
 
       this.registerState = true
@@ -201,8 +202,8 @@ export class RegisterComponent {
   }
 
   setYear(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
-      this.yearOfBirth.setValue(normalizedYear.year().toString());
-      datepicker.close();
+    this.yearOfBirth.setValue(normalizedYear.year().toString());
+    datepicker.close();
   }
 
   changeState() {

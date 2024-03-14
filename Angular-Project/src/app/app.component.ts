@@ -3,11 +3,11 @@ import {Router, RouterOutlet} from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {DBConfig, NgxIndexedDBModule} from 'ngx-indexed-db';
 import {EncrDecrService} from "./services/EncrDecrService/encr-decr.service";
 import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 import {MatIcon} from "@angular/material/icon";
 import {MatTabLink} from "@angular/material/tabs";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -20,20 +20,23 @@ import {MatTabLink} from "@angular/material/tabs";
     MatToolbar,
     MatToolbarModule,
     MatIcon,
-    MatTabLink
+    MatTabLink,
+    NgOptimizedImage
   ],
   providers: [EncrDecrService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'RelationTrip';
-  navBarActive = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.navBarActive = localStorage.getItem('username') != undefined || localStorage.getItem('username') != null;
+  }
+
+  isLoggedIn(): boolean {
+    return !!window.localStorage.getItem('username');
   }
 }

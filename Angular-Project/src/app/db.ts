@@ -8,6 +8,7 @@ export interface Users {
   gender: string | null;
   email: string;
   password: string;
+  src: string;
 }
 
 export class AppDB extends Dexie {

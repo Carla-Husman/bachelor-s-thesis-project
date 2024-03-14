@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: rgba(174, 195, 183, 0.65);
+  background-color: rgba(174, 195, 183, 0.8);
 }
 
 #profile-information {
@@ -26,7 +26,6 @@
 }
 
 #avatar {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba2.jpg');
   background-size: cover;
   cursor: pointer;
   width: 110px;
@@ -87,7 +86,7 @@
 
 .label {
   margin-left: 5px;
-  color: grey;
+  color: #6e6d6d;
 }
 
 #description {
@@ -222,7 +221,7 @@ p {
   text-indent: 2em;
 }
 
-@media screen and (max-width: 870px){
+@media screen and (max-width: 870px) {
   .trip-guide-content {
     width: 600px;
   }
@@ -260,7 +259,7 @@ p {
   }
 }
 
-@media screen and (max-width: 670px){
+@media screen and (max-width: 670px) {
   .trip-guide-content {
     width: auto;
     padding: 0;

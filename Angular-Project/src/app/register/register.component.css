@@ -44,7 +44,7 @@ body {
   flex-direction: column;
 }
 
-mat-form-field{
+mat-form-field {
   align-self: center;
   width: 160%;
   font-size: 13px;

@@ -1,11 +1,13 @@
 <div id="home-content">
   <mat-card id="profile-information">
-    @if(user) {
+    @if (user) {
       <div id="header">
         <mat-card-header id="profile-header">
-          <button mat-card-avatar id="avatar"></button>
-          <mat-card-title id="username"> {{ user.username }} </mat-card-title>
-          <mat-card-subtitle id="description"><mat-icon>terrain</mat-icon>&nbsp;{{ numberOfItineraries }} itineraries saved</mat-card-subtitle>
+          <button #avatar mat-card-avatar (click)="openImagePicker()" id="avatar"></button>
+          <mat-card-title id="username"> {{ user.username }}</mat-card-title>
+          <mat-card-subtitle id="description">
+            <mat-icon>terrain</mat-icon>&nbsp;{{ numberOfItineraries }} itineraries saved
+          </mat-card-subtitle>
         </mat-card-header>
         <button mat-icon-button id="logout" (click)="logout()">
           <mat-icon>logout</mat-icon>
@@ -25,13 +27,13 @@
             </div>
           </div>
           <div class="up-down-content">
-            <span class="label">Year of Birth:</span>
+            <span class="label">Age:</span>
             <div class="info">
-              {{ user.yearOfBirth }}
+              {{ user.yearOfBirth == null ? "Unknown" : (thisYear - user.yearOfBirth) }}
             </div>
             <span class="label">Gender:</span>
             <div class="info">
-              {{ user.gender }}
+              {{ user.gender == null ? "Unknown" : user.gender }}
             </div>
           </div>
         </div>
@@ -39,19 +41,21 @@
       <mat-divider></mat-divider>
     }
   </mat-card>
-  <mat-card style="margin-bottom: 20px">
-    @if(option == 1) {
+  <mat-card style="margin-bottom: 20px;">
+    @if (option == 1) {
       <mat-action-list class="action-buttons-card">
         <button class="action-buttons"
                 style="margin-right: 20px; font-weight: bold; border-bottom: 2px solid var(--dark-blue);"
-                (click)="changeOption(1)">My Itineraries</button>
+                (click)="changeOption(1)">My Itineraries
+        </button>
         <button class="action-buttons"
                 style="color: grey"
-                (click)="changeOption(2)">User's guide</button>
+                (click)="changeOption(2)">User's guide
+        </button>
       </mat-action-list>
 
       <mat-divider style="border-top-color: rgba(0,0,0,0.24)"></mat-divider>
-      @if(vacationsList.length != 0) {
+      @if (vacationsList.length != 0) {
         <mat-card-content class="trip-guide-content" id="ticket">
           <div id="ticket-content">
             <div id="additional-information">
@@ -86,10 +90,13 @@
           </div>
 
           <mat-divider id="vertical-line" [vertical]="true"></mat-divider>
-          <img id="ticket-image" [ngSrc]="displayed != undefined ? displayed.src : 'assets/images/no-image-available.jpg'" width="300" height="300" alt="An image with your itinerary" priority>
+          <img id="ticket-image"
+               [ngSrc]="displayed != undefined ? displayed.src : 'assets/images/no-image-available.jpg'" width="300"
+               height="300" alt="An image with your itinerary" priority>
         </mat-card-content>
 
-        <mat-action-list style="background-color: rgba(174, 195, 183, 0.65); display: flex; justify-content: space-between; align-items: center;">
+        <mat-action-list
+          style="background-color: rgba(174, 195, 183, 0.65); display: flex; justify-content: space-between; align-items: center;">
           <button mat-icon-button (click)="back(displayed?.id)">
             <mat-icon>arrow_back_ios</mat-icon>
           </button>
@@ -113,10 +120,12 @@
       <mat-action-list class="action-buttons-card">
         <button class="action-buttons"
                 style="margin-right: 20px;color: grey"
-                (click)="changeOption(1)">My vacations</button>
+                (click)="changeOption(1)">My vacations
+        </button>
         <button class="action-buttons"
                 style="margin-right: 20px; font-weight: bold; border-bottom: 2px solid var(--dark-blue);"
-                (click)="changeOption(2)">User's guide</button>
+                (click)="changeOption(2)">User's guide
+        </button>
       </mat-action-list>
 
       <mat-divider style="border-top-color: rgba(0,0,0,0.24)"></mat-divider>
@@ -132,9 +141,12 @@
                 Ensures user data persistence within the application
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>To ensure the security and confidentiality of your information, all saved data and created itineraries will only be valid within the browser and device used at the time.
-            If you access the RelationTrip application from a different browser or change devices, all saved data and itineraries will be lost.</p>
-            <p>We recommend accessing the application using the same browser and device to maintain consistency and continuity of your travel data.</p>
+            <p>To ensure the security and confidentiality of your information, all saved data and created itineraries
+              will only be valid within the browser and device used at the time.
+              If you access the RelationTrip application from a different browser or change devices, all saved data and
+              itineraries will be lost.</p>
+            <p>We recommend accessing the application using the same browser and device to maintain consistency and
+              continuity of your travel data.</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
@@ -146,8 +158,9 @@
                 Provides support and encourages user feedback for application improvement
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>If you encounter any issues or have suggestions for improving the application, please don't hesitate to contact us.
-            Your feedback is valuable to us and helps us continuously improve the user experience.</p>
+            <p>If you encounter any issues or have suggestions for improving the application, please don't hesitate to
+              contact us.
+              Your feedback is valuable to us and helps us continuously improve the user experience.</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
@@ -159,8 +172,9 @@
                 Prioritizes user safety in selecting tourist destinations
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>If certain cities or countries are not available for selection as tourist destinations, this is due to our considerations regarding user safety.
-            We ensure that the proposed locations are safe and can provide an enjoyable travel experience.</p>
+            <p>If certain cities or countries are not available for selection as tourist destinations, this is due to
+              our considerations regarding user safety.
+              We ensure that the proposed locations are safe and can provide an enjoyable travel experience.</p>
           </mat-expansion-panel>
 
           <mat-expansion-panel>
@@ -172,7 +186,8 @@
                 Ensures the confidentiality of users' personal data
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>The data entered during registration is only used for the purpose of creating itineraries and is not distributed to third parties without your consent.
+            <p>The data entered during registration is only used for the purpose of creating itineraries and is not
+              distributed to third parties without your consent.
               We respect the confidentiality and security of your personal data.</p>
           </mat-expansion-panel>
 
@@ -187,7 +202,8 @@
             </mat-expansion-panel-header>
             <p>To receive personalized travel suggestions, visit the "Suggest new Itinerary" page.</p>
             <p>Complete the required details, with the departure point and your hobbies being mandatory.
-              The departure point is necessary to avoid generating an itinerary in your city if you haven't chosen to do so.</p>
+              The departure point is necessary to avoid generating an itinerary in your city if you haven't chosen to do
+              so.</p>
             <p>These details are used to generate a personalized itinerary for you.</p>
             <p>Itineraries can be customized based on your preferences and previously provided information.</p>
           </mat-expansion-panel>

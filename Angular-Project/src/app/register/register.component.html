@@ -3,67 +3,67 @@
 </div>
 <div id="register-content" style="z-index: -1">
   <div id="right-content">
-    @if(registerState) {
+    @if (registerState) {
       <mat-card-title>Create an account</mat-card-title>
     } @else {
       <mat-card-title style="text-shadow: 0 0 5px #aec3b7">Sing in</mat-card-title>
     }
-      <form id="register-form">
-        <mat-form-field appearance="fill">
-          <mat-label>Username</mat-label>
-          <input matInput placeholder="trip.24" [formControl]="username" required>
-          @if (username.invalid) {
-            <mat-error>{{getUsernameErrorMessage()}}</mat-error>
-          }
-        </mat-form-field>
-        @if(registerState) {
-          <mat-form-field appearance="fill">
-            <mat-label>Location</mat-label>
-            <input matInput placeholder="Iasi, Romania" [formControl]="location" required>
-            @if (location.invalid) {
-              <mat-error>{{getLocationErrorMessage()}}</mat-error>
-            }
-          </mat-form-field>
-
-          <mat-form-field color="primary" appearance="fill">
-            <mat-label>Year of birth</mat-label>
-            <input matInput [matDatepicker]="dp" placeholder="2001" [formControl]="yearOfBirth" readonly>
-            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-            <mat-datepicker #dp
-                            startView="multi-year"
-                            (yearSelected)="setYear($event, dp)"
-                            panelClass="">
-            </mat-datepicker>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Gender</mat-label>
-            <mat-select [formControl]="gender">
-              <mat-option value="male">Male</mat-option>
-              <mat-option value="female">Female</mat-option>
-              <mat-option value="other">Other</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="RelationTrip@example.com" [formControl]="email">
-            @if (email.invalid) {
-              <mat-error>{{getEmailErrorMessage()}}</mat-error>
-            }
-          </mat-form-field>
+    <form id="register-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="trip.24" [formControl]="username" required>
+        @if (username.invalid) {
+          <mat-error>{{ getUsernameErrorMessage() }}</mat-error>
         }
+      </mat-form-field>
+      @if (registerState) {
         <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput placeholder="*******" [formControl]="password"  type="password" required>
-          @if (password.invalid) {
-            <mat-error>{{getPasswordErrorMessage()}}</mat-error>
+          <mat-label>Location</mat-label>
+          <input matInput placeholder="Iasi, Romania" [formControl]="location" required>
+          @if (location.invalid) {
+            <mat-error>{{ getLocationErrorMessage() }}</mat-error>
           }
         </mat-form-field>
 
-        <button mat-stroked-button color="primary" (click)="submitForm()">Submit</button>
-      </form>
-    @if(registerState) {
+        <mat-form-field color="primary" appearance="fill">
+          <mat-label>Year of birth</mat-label>
+          <input matInput [matDatepicker]="dp" placeholder="2001" [formControl]="yearOfBirth" readonly>
+          <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp
+                          startView="multi-year"
+                          (yearSelected)="setYear($event, dp)"
+                          panelClass="">
+          </mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Gender</mat-label>
+          <mat-select [formControl]="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="other">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="RelationTrip@example.com" [formControl]="email">
+          @if (email.invalid) {
+            <mat-error>{{ getEmailErrorMessage() }}</mat-error>
+          }
+        </mat-form-field>
+      }
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="*******" [formControl]="password" type="password" required>
+        @if (password.invalid) {
+          <mat-error>{{ getPasswordErrorMessage() }}</mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-stroked-button color="primary" (click)="submitForm()">Submit</button>
+    </form>
+    @if (registerState) {
       <p>Already have an account?
         <a matListItemTitle (click)="changeState()">Sign in</a>
       </p>
@@ -72,6 +72,5 @@
         <a matListItemTitle (click)="changeState()">Sign up</a>
       </p>
     }
-
   </div>
 </div>
