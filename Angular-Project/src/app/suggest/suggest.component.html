@@ -1,1 +1,148 @@
-<p>suggest works!</p>
+<mat-stepper
+  class="example-stepper"
+  [orientation]="(stepperOrientation | async)!">
+  <mat-step [stepControl]="firstFormGroup"
+            [editable]="isEditable"
+            state="person"
+            label="Fill out your informations">
+    <form [formGroup]="firstFormGroup">
+      <mat-form-field>
+        <mat-label>Starting Point</mat-label>
+        <input matInput placeholder="Iasi, Romania" formControlName="startingPoint" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput placeholder="23" formControlName="age" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" >
+          @for (g of gender; track g) {
+            <mat-option [value]="g">{{g}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup"
+            [optional]="isOptional"
+            [editable]="isEditable"
+            state="info"
+            label="Fill out trip's additional informations">
+    <form [formGroup]="secondFormGroup">
+      <mat-form-field>
+        <mat-label>Attendant</mat-label>
+        <mat-select formControlName="attendant" >
+          @for (a of attendant; track a) {
+            <mat-option [value]="a">{{a}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Season</mat-label>
+        <mat-select formControlName="season" >
+          @for (s of season; track s) {
+            <mat-option [value]="s">{{s}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Transport</mat-label>
+        <mat-select formControlName="transport" >
+          @for (t of transport; track t) {
+            <mat-option [value]="t">{{t}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Budget</mat-label>
+        <input matInput formControlName="budget" placeholder="">
+        <mat-select formControlName="budget" >
+          @for (b of budget; track b) {
+            <mat-option [value]="b">{{b}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup"
+            [optional]="isOptional"
+            [editable]="isEditable"
+            state="map"
+            label="Fill out your destination">
+    <form [formGroup]="thirdFormGroup">
+      <mat-form-field>
+        <mat-label>Destination</mat-label>
+        <input type="text"
+               matInput
+               placeholder="Pick one"
+               aria-label="Number"
+               formControlName="destination"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (option of filteredDestination | async; track option) {
+            <mat-option [value]="option">{{option}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup"
+            [editable]="isEditable"
+            state="favorite_border"
+            label="Fill out your hobbies">
+    <form [formGroup]="fourthFormGroup">
+      <mat-form-field>
+        <mat-label>What do you want to do/see?</mat-label>
+        <mat-select formControlName="tags" >
+          @for (a of interests; track a) {
+            <mat-option [value]="a">{{a}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Option</mat-label>
+        <input matInput formControlName="option" placeholder="">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step state="done_all">
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button>Submit</button>
+    </div>
+  </mat-step>
+
+  <ng-template matStepperIcon="person">
+    <mat-icon>person</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="map">
+    <mat-icon>map</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="favorite_border">
+    <mat-icon>favorite_border</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="info">
+    <mat-icon>info</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="done_all">
+    <mat-icon>done_all</mat-icon>
+  </ng-template>
+</mat-stepper>
