@@ -1,148 +1,194 @@
-<mat-stepper
-  class="example-stepper"
-  [orientation]="(stepperOrientation | async)!">
-  <mat-step [stepControl]="firstFormGroup"
-            [editable]="isEditable"
-            state="person"
-            label="Fill out your informations">
-    <form [formGroup]="firstFormGroup">
-      <mat-form-field>
-        <mat-label>Starting Point</mat-label>
-        <input matInput placeholder="Iasi, Romania" formControlName="startingPoint" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Age</mat-label>
-        <input matInput placeholder="23" formControlName="age" type="number">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Gender</mat-label>
-        <mat-select formControlName="gender" >
-          @for (g of gender; track g) {
-            <mat-option [value]="g">{{g}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup"
-            [optional]="isOptional"
-            [editable]="isEditable"
-            state="info"
-            label="Fill out trip's additional informations">
-    <form [formGroup]="secondFormGroup">
-      <mat-form-field>
-        <mat-label>Attendant</mat-label>
-        <mat-select formControlName="attendant" >
-          @for (a of attendant; track a) {
-            <mat-option [value]="a">{{a}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Season</mat-label>
-        <mat-select formControlName="season" >
-          @for (s of season; track s) {
-            <mat-option [value]="s">{{s}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Transport</mat-label>
-        <mat-select formControlName="transport" >
-          @for (t of transport; track t) {
-            <mat-option [value]="t">{{t}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Budget</mat-label>
-        <input matInput formControlName="budget" placeholder="">
-        <mat-select formControlName="budget" >
-          @for (b of budget; track b) {
-            <mat-option [value]="b">{{b}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="thirdFormGroup"
-            [optional]="isOptional"
-            [editable]="isEditable"
-            state="map"
-            label="Fill out your destination">
-    <form [formGroup]="thirdFormGroup">
-      <mat-form-field>
-        <mat-label>Destination</mat-label>
-        <input type="text"
-               matInput
-               placeholder="Pick one"
-               aria-label="Number"
-               formControlName="destination"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          @for (option of filteredDestination | async; track option) {
-            <mat-option [value]="option">{{option}}</mat-option>
-          }
-        </mat-autocomplete>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="fourthFormGroup"
-            [editable]="isEditable"
-            state="favorite_border"
-            label="Fill out your hobbies">
-    <form [formGroup]="fourthFormGroup">
-      <mat-form-field>
-        <mat-label>What do you want to do/see?</mat-label>
-        <mat-select formControlName="tags" >
-          @for (a of interests; track a) {
-            <mat-option [value]="a">{{a}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Option</mat-label>
-        <input matInput formControlName="option" placeholder="">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step state="done_all">
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button>Submit</button>
-    </div>
-  </mat-step>
+<mat-card>
+  <mat-stepper #stepper
+               class="example-stepper"
+               [linear]="true"
+               [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup"
+              [editable]="isEditable"
+              state="person"
+              label="Fill out your informations">
+      <form [formGroup]="firstFormGroup">
+        <div id="firstFormGroup">
+          <mat-form-field>
+            <mat-label>Starting Point</mat-label>
+            <input matInput placeholder="Iasi, Romania" formControlName="startingPoint">
+            <mat-hint class="mat-error" *ngIf="startingPointHasError != ''">{{ startingPointHasError }}</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput placeholder="Between 18-100" formControlName="age" type="number">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+              @for (g of gender; track g) {
+                <mat-option [value]="g">{{ g }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="display: flex; justify-content: flex-end">
+          <button mat-button (click)="onNextOne()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup"
+              [editable]="isEditable"
+              state="info"
+              label="Fill out trip's additional informations">
+      <form [formGroup]="secondFormGroup">
+        <div id="secondFormGroup">
+          <div class="secondFormGroupRow">
+            <mat-form-field>
+              <mat-label>Attendant</mat-label>
+              <mat-select formControlName="attendant">
+                @for (a of attendant; track a) {
+                  <mat-option [value]="a">{{ a }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Season</mat-label>
+              <mat-select formControlName="season">
+                @for (s of season; track s) {
+                  <mat-option [value]="s">{{ s }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="secondFormGroupRow">
+            <mat-form-field>
+              <mat-label>Transport</mat-label>
+              <mat-select formControlName="transport">
+                @for (t of transport; track t) {
+                  <mat-option [value]="t">{{ t }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Budget</mat-label>
+              <mat-select formControlName="budget">
+                @for (b of budget; track b) {
+                  <mat-option [value]="b">{{ b }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="buttons">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
 
-  <ng-template matStepperIcon="person">
-    <mat-icon>person</mat-icon>
-  </ng-template>
-  <ng-template matStepperIcon="map">
-    <mat-icon>map</mat-icon>
-  </ng-template>
-  <ng-template matStepperIcon="favorite_border">
-    <mat-icon>favorite_border</mat-icon>
-  </ng-template>
-  <ng-template matStepperIcon="info">
-    <mat-icon>info</mat-icon>
-  </ng-template>
-  <ng-template matStepperIcon="done_all">
-    <mat-icon>done_all</mat-icon>
-  </ng-template>
-</mat-stepper>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup"
+              [editable]="isEditable"
+              state="map"
+              label="Fill out your destination">
+      <form [formGroup]="thirdFormGroup">
+        <div id="thirdFormGroup">
+          <div class="description">
+            Select the destination you'd like to explore. Enter the continent, country, or city, or leave the field
+            blank and we'll choose something suitable for you.
+          </div>
+          <mat-form-field>
+            <mat-label>Destination</mat-label>
+            <input type="text"
+                   matInput
+                   placeholder="Pick one"
+                   aria-label="Number"
+                   formControlName="destination"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              @for (option of filteredDestination | async; track option) {
+                <mat-option [value]="option">{{ option }}</mat-option>
+              }
+            </mat-autocomplete>
+            <mat-hint class="mat-error" *ngIf="destinationHasError != ''">{{ destinationHasError }}</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="buttons">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="onNextThree()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup"
+              [editable]="isEditable"
+              state="favorite_border"
+              label="Fill out your hobbies">
+      <form [formGroup]="fourthFormGroup">
+        <div id="fourthFormGroup">
+          <div class="description">
+            Select at least one interest. You can also specify additional preferences in the "Option" box.
+          </div>
+
+          <mat-chip-listbox multiple style="margin-top: 10px">
+            <mat-chip-option (selectionChange)="onSelectionChange($event)"
+                             *ngFor="let interest of interests" [value]="interest">{{ interest }}
+            </mat-chip-option>
+          </mat-chip-listbox>
+
+          <mat-hint class="mat-error" *ngIf="tagsHasError != ''">{{ tagsHasError }}</mat-hint>
+
+          <mat-form-field class="chip-list">
+            <mat-label>Other</mat-label>
+            <mat-chip-grid #chipGrid>
+              @for (optionalTag of optionalTags; track optionalTag) {
+                <mat-chip-row
+                  (removed)="remove(optionalTag)"
+                  [editable]="true"
+                  (edited)="edit(optionalTag, $event)"
+                  [aria-description]="'press enter to edit ' + optionalTag">
+                  {{ optionalTag }}
+                  <button style="background-color: rgba(255,0,0,0)" matChipRemove
+                          [attr.aria-label]="'remove ' + optionalTag">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              }
+              <input [matChipInputFor]="chipGrid"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)"/>
+            </mat-chip-grid>
+          </mat-form-field>
+        </div>
+
+        <div class="buttons">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="onNextFourth()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step state="done_all">
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="description" style="margin-bottom: 20px">
+        Your journey begins here. Let your imagination steer the ship! Allow us to turn your curiosity into an
+        adventure, and
+        your desires into discovery.
+      </div>
+      <div class="buttons">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Submit</button>
+      </div>
+    </mat-step>
+
+    <ng-template matStepperIcon="person">
+      <mat-icon>person</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="map">
+      <mat-icon>map</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="favorite_border">
+      <mat-icon>favorite_border</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="info">
+      <mat-icon>info</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="done_all">
+      <mat-icon>done_all</mat-icon>
+    </ng-template>
+  </mat-stepper>
+</mat-card>

@@ -11,3 +11,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
+html {
+  --mat-toolbar-mobile-height: 64px;
+}

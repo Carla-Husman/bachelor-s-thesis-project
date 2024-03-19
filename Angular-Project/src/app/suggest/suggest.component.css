@@ -1,0 +1,103 @@
+mat-card {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+  background-image: url("../../assets/images/suggest.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+mat-stepper {
+  margin-top: 30px;
+  background-color: rgba(174, 195, 183, 0.9);
+  border-radius: 10px;
+}
+
+#firstFormGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#secondFormGroup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.secondFormGroupRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+#thirdFormGroup, #fourthFormGroup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+  width: 400px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+button {
+  background-color: rgba(12, 93, 105, 0.57);
+}
+
+.mat-error {
+  color: darkred;
+  white-space: nowrap;
+}
+
+.chip-list {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.description {
+  text-align: justify;
+  text-indent: 2em;
+  color: #595e5a;
+  width: 400px;
+}
+
+@media screen and (max-width: 870px) {
+  #firstFormGroup, #thirdFormGroup, #fourthFormGroup {
+    flex-direction: column;
+  }
+
+  .secondFormGroupRow {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 755px) {
+  .description, #thirdFormGroup {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  mat-stepper {
+    width: 100%;
+  }
+
+  mat-card {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  #fourthFormGroup {
+    width: auto
+  }
+}
