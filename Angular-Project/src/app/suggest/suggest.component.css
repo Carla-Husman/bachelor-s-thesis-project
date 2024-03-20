@@ -71,6 +71,10 @@ button {
   width: 400px;
 }
 
+#map {
+  width: 400px;
+}
+
 @media screen and (max-width: 870px) {
   #firstFormGroup, #thirdFormGroup, #fourthFormGroup {
     flex-direction: column;
@@ -99,5 +103,9 @@ button {
 
   #fourthFormGroup {
     width: auto
+  }
+
+  #map {
+    width: 100%;
   }
 }

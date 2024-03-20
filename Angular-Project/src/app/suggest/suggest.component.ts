@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, ViewChild} from '@angular/core';
+import {Component, inject, Input, OnInit, ViewChild} from '@angular/core';
 import {MatStepper, MatStepperModule, StepperOrientation} from "@angular/material/stepper";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -23,6 +23,7 @@ import {
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatExpansionPanelDescription} from "@angular/material/expansion";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-suggest',
@@ -54,7 +55,7 @@ import {MatExpansionPanelDescription} from "@angular/material/expansion";
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {displayDefaultIndicatorType: false},
     },
-  ],
+  ]
 })
 export class SuggestComponent implements OnInit {
   firstFormGroup = this._formBuilder.group({
@@ -154,9 +155,9 @@ export class SuggestComponent implements OnInit {
     const startingPointPattern = /^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+,\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+$/;
     console.log(startingPointValue)
     if (!this.firstFormGroup.valid) {
-      if (this.firstFormGroup.get('startingPoint')?.value == "")
+      if (this.firstFormGroup.get('startingPoint')?.value == "") {
         this.startingPointHasError = "Enter your location";
-      else if (!startingPointPattern.test(<string>startingPointValue)) {
+      } else if (!startingPointPattern.test(<string>startingPointValue)) {
         this.startingPointHasError = "Format is City, Country"
       }
     } else {

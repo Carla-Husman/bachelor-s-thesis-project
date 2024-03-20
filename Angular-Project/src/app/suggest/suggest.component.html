@@ -8,7 +8,7 @@
               state="person"
               label="Fill out your informations">
       <form [formGroup]="firstFormGroup">
-        <div id="firstFormGroup">
+        <div id="firstFormGroup" class="firstFormGroup">
           <mat-form-field>
             <mat-label>Starting Point</mat-label>
             <input matInput placeholder="Iasi, Romania" formControlName="startingPoint">
@@ -32,6 +32,7 @@
         </div>
       </form>
     </mat-step>
+
     <mat-step [stepControl]="secondFormGroup"
               [editable]="isEditable"
               state="info"
@@ -80,8 +81,8 @@
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
-
     </mat-step>
+
     <mat-step [stepControl]="thirdFormGroup"
               [editable]="isEditable"
               state="map"
@@ -91,6 +92,9 @@
           <div class="description">
             Select the destination you'd like to explore. Enter the continent, country, or city, or leave the field
             blank and we'll choose something suitable for you.
+          </div>
+          <div class="description">
+            Allowed format is: &lt;Country/ Continent Name&gt; or &lt;City Name, Country Name&gt;
           </div>
           <mat-form-field>
             <mat-label>Destination</mat-label>
@@ -114,6 +118,7 @@
         </div>
       </form>
     </mat-step>
+
     <mat-step [stepControl]="fourthFormGroup"
               [editable]="isEditable"
               state="favorite_border"
@@ -162,13 +167,14 @@
         </div>
       </form>
     </mat-step>
+
     <mat-step state="done_all">
       <ng-template matStepLabel>Done</ng-template>
       <div class="description" style="margin-bottom: 20px">
-        Your journey begins here. Let your imagination steer the ship! Allow us to turn your curiosity into an
-        adventure, and
+        Your journey begins here. Let your imagination steer you! Allow us to turn your curiosity into an adventure, and
         your desires into discovery.
       </div>
+      <img id='map' src="assets/images/map.png" alt="Map image">
       <div class="buttons">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="onSubmit()">Submit</button>
