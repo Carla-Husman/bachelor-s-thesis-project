@@ -21,13 +21,14 @@
           <mat-form-field>
             <mat-label>Gender</mat-label>
             <mat-select formControlName="gender">
+              <mat-option [value]=" "></mat-option>
               @for (g of gender; track g) {
                 <mat-option [value]="g">{{ g }}</mat-option>
               }
             </mat-select>
           </mat-form-field>
         </div>
-        <div style="display: flex; justify-content: flex-end">
+        <div class="buttons" style="display: flex; justify-content: flex-end">
           <button mat-button (click)="onNextOne()">Next</button>
         </div>
       </form>
@@ -43,6 +44,7 @@
             <mat-form-field>
               <mat-label>Attendant</mat-label>
               <mat-select formControlName="attendant">
+                <mat-option [value]=" "></mat-option>
                 @for (a of attendant; track a) {
                   <mat-option [value]="a">{{ a }}</mat-option>
                 }
@@ -51,6 +53,7 @@
             <mat-form-field>
               <mat-label>Season</mat-label>
               <mat-select formControlName="season">
+                <mat-option [value]=" "></mat-option>
                 @for (s of season; track s) {
                   <mat-option [value]="s">{{ s }}</mat-option>
                 }
@@ -61,6 +64,7 @@
             <mat-form-field>
               <mat-label>Transport</mat-label>
               <mat-select formControlName="transport">
+                <mat-option [value]=" "></mat-option>
                 @for (t of transport; track t) {
                   <mat-option [value]="t">{{ t }}</mat-option>
                 }
@@ -69,6 +73,7 @@
             <mat-form-field>
               <mat-label>Budget</mat-label>
               <mat-select formControlName="budget">
+                <mat-option [value]=" "></mat-option>
                 @for (b of budget; track b) {
                   <mat-option [value]="b">{{ b }}</mat-option>
                 }
@@ -147,7 +152,7 @@
                   (edited)="edit(optionalTag, $event)"
                   [aria-description]="'press enter to edit ' + optionalTag">
                   {{ optionalTag }}
-                  <button style="background-color: rgba(255,0,0,0)" matChipRemove
+                  <button matChipRemove
                           [attr.aria-label]="'remove ' + optionalTag">
                     <mat-icon>cancel</mat-icon>
                   </button>

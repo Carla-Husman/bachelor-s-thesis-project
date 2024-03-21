@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, inject, ViewEncapsulation, OnInit, ViewChild} from '@angular/core';
 import {MatStepper, MatStepperModule, StepperOrientation} from "@angular/material/stepper";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -23,7 +23,7 @@ import {
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatExpansionPanelDescription} from "@angular/material/expansion";
-import {animate, state, style, transition, trigger} from "@angular/animations";
+
 
 @Component({
   selector: 'app-suggest',
@@ -55,7 +55,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {displayDefaultIndicatorType: false},
     },
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class SuggestComponent implements OnInit {
   firstFormGroup = this._formBuilder.group({
@@ -120,10 +121,11 @@ export class SuggestComponent implements OnInit {
     }
 
     if (this.user != undefined) {
+      console.log(this.user.gender)
       this.firstFormGroup.setValue({
         startingPoint: this.user.location,
         age: this.user.yearOfBirth != null ? (this.thisYear - this.user.yearOfBirth).toString() : '',
-        gender: this.user.gender != null ? this.user.gender : ''
+        gender: this.user.gender != null ? this.user.gender.charAt(0).toUpperCase() + this.user.gender.slice(1) : ''
       });
     }
   }

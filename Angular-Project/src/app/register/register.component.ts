@@ -125,7 +125,7 @@ export class RegisterComponent {
         await db.users.add({
           username: this.username.value != null ? this.username.value : '',
           location: this.location.value != null ? this.location.value : '',
-          gender: this.gender.value != "" && this.gender.value != null ? this.gender.value : null,
+          gender: this.gender.value != "" && this.gender.value != null && this.gender.value != " " ? this.gender.value : null,
           yearOfBirth: this.yearOfBirth.value != '' && this.yearOfBirth.value != null ? parseInt(this.yearOfBirth.value) : null,
           email: this.email.value != null ? this.email.value : '',
           password: newPassword,

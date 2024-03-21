@@ -10,7 +10,7 @@ mat-card {
 
 mat-stepper {
   margin-top: 30px;
-  background-color: rgba(174, 195, 183, 0.9);
+  background-color: rgba(174, 195, 183, 0.9) !important;
   border-radius: 10px;
 }
 
@@ -47,10 +47,10 @@ mat-stepper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
 
-button {
-  background-color: rgba(12, 93, 105, 0.57);
+  button {
+    background-color: rgba(12, 93, 105, 0.57) !important;
+  }
 }
 
 .mat-error {
@@ -75,6 +75,20 @@ button {
   width: 400px;
 }
 
+div.mat-mdc-select-panel, div.mat-mdc-autocomplete-panel {
+  background-color: #cbdad5 !important;
+  overflow-y: auto !important;
+}
+
+div.mat-mdc-select-panel::-webkit-scrollbar, div.mat-mdc-autocomplete-panel::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+div.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: rgba(205, 218, 215, 0.78);
+  box-shadow: -0px 0 3px var(--dark-blue);
+}
+
 @media screen and (max-width: 870px) {
   #firstFormGroup, #thirdFormGroup, #fourthFormGroup {
     flex-direction: column;
@@ -87,7 +101,7 @@ button {
 
 @media screen and (max-width: 755px) {
   .description, #thirdFormGroup {
-    width: auto;
+    width: 100%;
   }
 }
 

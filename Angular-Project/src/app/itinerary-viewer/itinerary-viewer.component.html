@@ -1,0 +1,15 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+  <mat-drawer #drawer mode="over">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div>
+
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-drawer-content>
+</mat-drawer-container>
