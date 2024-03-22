@@ -1,7 +1,7 @@
-<mat-drawer-container class="example-container" [hasBackdrop]="isOpened">
-  <mat-drawer #drawer mode="over" [opened]="isOpened">
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+  <mat-drawer #drawer mode="over" [opened]="true">
     @if (itineraries != undefined) {
-      <button class="opened" mat-icon-button (click)="drawer.toggle()">
+      <button class="opened" color="primary" mat-mini-fab (click)="drawer.toggle()">
         <mat-icon>arrow_back</mat-icon>
       </button>
 
@@ -66,7 +66,7 @@
         <div id="poi">
           <div id="poi-photo">
             <img [src]="poi.photo" alt="Photo of poi"/>
-            <div id="name">{{ poi.name }}</div>
+            <div id="name" (click)="goToMyMarker(poi)" style="cursor: pointer"> #{{ $index + 1 }} {{ poi.name }}</div>
             <div id="tags">
               @for (tag of poi.tags; track tag) {
                 <span>#{{ tag }}</span>
@@ -175,7 +175,20 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <button mat-icon-button (click)="drawer.toggle()">
+    <google-map #myGoogleMap
+                height="100vh"
+                width="100vw"
+                [options]="mapOptions">
+      <map-marker
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [label]="marker.label"
+        [title]="marker.title"
+        [options]="marker.options">
+      </map-marker>
+    </google-map>
+
+    <button class="opened" color="primary" mat-mini-fab (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
   </mat-drawer-content>
