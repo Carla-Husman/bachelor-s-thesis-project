@@ -1,10 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
+import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {db} from "../db";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {MatListModule} from "@angular/material/list";
+import {OverlayModule} from "@angular/cdk/overlay";
 
 @Component({
   selector: 'app-itinerary-viewer',
@@ -14,13 +17,27 @@ import {db} from "../db";
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    MatIcon
+    MatIcon,
+    NgOptimizedImage,
+    MatListModule,
+    MatIconModule,
+    NgForOf,
+    NgIf,
+    OverlayModule
   ],
   templateUrl: './itinerary-viewer.component.html',
   styleUrl: './itinerary-viewer.component.css'
 })
 
-export class ItineraryViewerComponent {
+export class ItineraryViewerComponent implements OnInit {
+  itineraries: any
+  stars: number[] = [];
+  isOpened = false;
+  isOpenSchedule: boolean[] = [];
+  isOpenPhone: boolean[] = []
+  isOpenWebsite: boolean[] = []
+  isOpenAddress: boolean[] = []
+
   async add() {
     await db.itineraries.add({
       id: 0,
@@ -129,5 +146,28 @@ export class ItineraryViewerComponent {
         }
       ]
     })
+  }
+
+  async ngOnInit() {
+    this.stars = Array(5).fill(0).map((_, i) => i + 1);
+    // here will be from backend when we press submit button from suggest
+
+    // this will be from database when we press view itinerary from profile
+    this.itineraries = await db.transaction('r', [db.itineraries], async () => {
+      return db.itineraries.get({id: 0});
+    }).catch(error => {
+      console.error(error);
+    });
+
+    this.isOpenSchedule = this.itineraries.pois.map(() => false);
+    this.isOpenPhone = this.itineraries.pois.map(() => false);
+    this.isOpenSchedule = this.itineraries.pois.map(() => false);
+    this.isOpenAddress = this.itineraries.pois.map(() => false);
+
+    console.log(this.itineraries)
+  }
+
+  saveItinerary() {
+    // save in database
   }
 }

@@ -1,12 +1,179 @@
-<mat-drawer-container class="example-container" [hasBackdrop]="false">
-  <mat-drawer #drawer mode="over">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <div>
+<mat-drawer-container class="example-container" [hasBackdrop]="isOpened">
+  <mat-drawer #drawer mode="over" [opened]="isOpened">
+    @if (itineraries != undefined) {
+      <button class="opened" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
 
-    </div>
+      <div class="image-container">
+        <img [src]="itineraries.photo" alt="Photo of itinerary"/>
+        <div class="overlay-text">{{ itineraries.name }}</div>
+      </div>
+
+      <div id="itinerary-information">
+        <div class="card">
+          <div class="label">Destination</div>
+          <div class="information">{{ itineraries.destination }}</div>
+        </div>
+        <div class="card">
+          <div class="label">Season</div>
+          <div
+            class="information">{{ itineraries.season != null ? itineraries.season : "Unknown" }}
+          </div>
+        </div>
+        <div class="card">
+          <div class="label">Attendant</div>
+          <div
+            class="information">{{ itineraries.attendant != null ? itineraries.attendant : "Unknown" }}
+          </div>
+        </div>
+        <div class="card">
+          <div class="label">Transport</div>
+          <div class="information">{{ itineraries.transport != null ? itineraries.transport : "Unknown" }}</div>
+        </div>
+        <div class="card">
+          <div class="label">Budget</div>
+          <div class="information">{{ itineraries.budget != null ? itineraries.budget : "Unknown" }}</div>
+        </div>
+        <div class="card">
+          <div class="label">Pois</div>
+          <div class="information">{{ itineraries.poisNumber }}</div>
+        </div>
+        <div class="card">
+          <div class="label">Distance</div>
+          <div class="information">{{ itineraries.distance }} m</div>
+        </div>
+        <button mat-mini-fab color="primary" (click)="saveItinerary()">
+          <mat-icon>favorite</mat-icon>
+          <!--<mat-icon>delete</mat-icon> Will be add-->
+        </button>
+      </div>
+
+      <mat-list>
+        <div mat-subheader>HIGHLIGHTS</div>
+        @for (h of itineraries.highlights; track h) {
+          <mat-list-item>
+            <mat-icon color="primary" matListItemIcon>star</mat-icon>
+            <div matListItemTitle>{{ h }}</div>
+          </mat-list-item>
+        }
+      </mat-list>
+
+      <mat-divider></mat-divider>
+
+      <div mat-subheader>POINTS OF INTERESTS</div>
+      @for (poi of itineraries.pois; track poi) {
+        <div id="poi">
+          <div id="poi-photo">
+            <img [src]="poi.photo" alt="Photo of poi"/>
+            <div id="name">{{ poi.name }}</div>
+            <div id="tags">
+              @for (tag of poi.tags; track tag) {
+                <span>#{{ tag }}</span>
+              }
+            </div>
+          </div>
+
+          <div id="information">
+            <div class="card" style="padding-top: 12px;">
+              <span *ngFor="let star of stars; let i = index">
+                <ng-container *ngIf="i < poi.stars; else emptyStar">
+                  <mat-icon style="color: gold;">star</mat-icon>
+                </ng-container>
+                <ng-template #emptyStar>
+                  <mat-icon>star_border</mat-icon>
+                </ng-template>
+              </span>
+            </div>
+
+            <div class="card">
+              <div (mouseover)="isOpenAddress[$index] = true" (mouseleave)="isOpenAddress[$index] = false"
+                   cdkOverlayOrigin
+                   #trigger="cdkOverlayOrigin">
+                Address
+              </div>
+              <ng-template cdkConnectedOverlay
+                           [cdkConnectedOverlayOrigin]="trigger"
+                           [cdkConnectedOverlayOpen]="isOpenAddress[$index]">
+                <ul class="overlay-info" *ngIf="isOpenAddress[$index]">
+                  @if (poi.address.length == 0) {
+                    <p>No address is available</p>
+                  } @else {
+                    <p>{{ poi.address }}</p>
+                  }
+                </ul>
+              </ng-template>
+            </div>
+
+            <div class="card">
+              <div (mouseover)="isOpenPhone[$index] = true" (mouseleave)="isOpenPhone[$index] = false"
+                   cdkOverlayOrigin
+                   #trigger="cdkOverlayOrigin">
+                Phone
+              </div>
+              <ng-template cdkConnectedOverlay
+                           [cdkConnectedOverlayOrigin]="trigger"
+                           [cdkConnectedOverlayOpen]="isOpenPhone[$index]">
+                <ul class="overlay-info" *ngIf="isOpenPhone[$index]">
+                  @if (poi.phone.length == 0) {
+                    <p>No phone number is available</p>
+                  } @else {
+                    <p>{{ poi.phone }}</p>
+                  }
+                </ul>
+              </ng-template>
+            </div>
+
+            <div class="card">
+              <div (mouseover)="isOpenWebsite[$index] = true" (mouseleave)="isOpenWebsite[$index] = false"
+                   cdkOverlayOrigin
+                   #trigger="cdkOverlayOrigin">
+                Website
+              </div>
+              <ng-template cdkConnectedOverlay
+                           [cdkConnectedOverlayOrigin]="trigger"
+                           [cdkConnectedOverlayOpen]="isOpenWebsite[$index]">
+                <ul class="overlay-info" *ngIf="isOpenWebsite[$index]">
+                  @if (poi.website.length == 0) {
+                    <p>No website is available</p>
+                  } @else {
+                    <p>{{ poi.website }}</p>
+                  }
+                </ul>
+              </ng-template>
+            </div>
+
+            <div class="card" id="schedule">
+              <div (mouseover)="isOpenSchedule[$index] = true" (mouseleave)="isOpenSchedule[$index] = false"
+                   cdkOverlayOrigin
+                   #trigger="cdkOverlayOrigin">
+                Schedule
+              </div>
+
+              <ng-template cdkConnectedOverlay
+                           [cdkConnectedOverlayOrigin]="trigger"
+                           [cdkConnectedOverlayOpen]="isOpenSchedule[$index]">
+                <ul class="overlay-info" *ngIf="isOpenSchedule[$index]">
+                  @if (poi.schedule.length == 0) {
+                    <p>No schedule is available</p>
+                  } @else {
+                    @for (s of poi.schedule; track s) {
+                      <li>{{ s }}</li>
+                    }
+                  }
+                </ul>
+              </ng-template>
+            </div>
+          </div>
+
+          <div id="description">
+            {{ poi.description }}
+          </div>
+        </div>
+      }
+    }
   </mat-drawer>
+
   <mat-drawer-content>
     <button mat-icon-button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>

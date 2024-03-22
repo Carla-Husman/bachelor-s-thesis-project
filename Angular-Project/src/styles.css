@@ -15,3 +15,8 @@ body {
 html {
   --mat-toolbar-mobile-height: 64px;
 }
+
+.mat-drawer-inner-container {
+  overflow-y: scroll !important;
+  scrollbar-width: none !important;
+}
