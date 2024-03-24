@@ -1,0 +1,123 @@
+img {
+  height: 100px;
+  width: 100px;
+}
+
+#loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 500px;
+  background-color: #aec3b7;
+}
+
+.slider {
+  height: 20px;
+  text-align: center;
+  position: relative;
+  animation: 10s forwards infinite;
+}
+
+.caption {
+  line-height: 99px;
+  color: #fff;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 200px;
+}
+
+.text-box {
+  display: inline-block;
+  position: relative;
+}
+
+.text-box div {
+  display: inline-block;
+  position: absolute;
+  top: -200px;
+  transform: rotateX(-90deg);
+  opacity: 0;
+  text-shadow: 0px 5px 5px rgba(0, 0, 0, .25);
+  animation-timing-function: ease;
+}
+
+.text-box div:nth-child(1) {
+  animation: rollDown 10s forwards infinite;
+}
+
+.text-box div:nth-child(2) {
+  animation: rollDown2 10s forwards infinite;
+}
+
+.text-box div:nth-child(3) {
+  animation: rollDown3 10s forwards infinite;
+}
+
+@keyframes rollDown {
+  0% {
+    top: -100px;
+    transform: rotateX(-90deg);
+  }
+  11% {
+    top: -74px;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  22% {
+    top: -74px;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  33% {
+    top: 50px;
+    transform: rotateX(30deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rollDown2 {
+  33% {
+    top: -100px;
+    transform: rotateX(-90deg);
+  }
+  44% {
+    top: -74px;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  55% {
+    top: -74px;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  66% {
+    top: 50px;
+    transform: rotateX(30deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rollDown3 {
+  66% {
+    top: -100px;
+    transform: rotateX(-90deg);
+  }
+  77% {
+    top: -74px;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  88% {
+    top: -74px;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  99% {
+    top: 50px;
+    transform: rotateX(30deg);
+    opacity: 0;
+  }
+}

@@ -1,4 +1,4 @@
-import {Component, inject, ViewEncapsulation, OnInit, ViewChild} from '@angular/core';
+import {Component, inject, ViewEncapsulation, OnInit, ViewChild, Inject} from '@angular/core';
 import {MatStepper, MatStepperModule, StepperOrientation} from "@angular/material/stepper";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -23,7 +23,11 @@ import {
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatExpansionPanelDescription} from "@angular/material/expansion";
-
+import {PlannerService} from "../services/Planner/planner.service";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {DialogComponent} from "../dialog/dialog.component";
+import {LoadingComponent} from "../loading/loading.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-suggest',
@@ -95,8 +99,8 @@ export class SuggestComponent implements OnInit {
   user: Users | undefined | void
   thisYear = new Date().getFullYear()
 
-  constructor(private _formBuilder: FormBuilder, private _http: HttpClient, breakpointObserver: BreakpointObserver) {
-    this.stepperOrientation = breakpointObserver
+  constructor(private _formBuilder: FormBuilder, private _http: HttpClient, private _breakpointObserver: BreakpointObserver, private _plannerService: PlannerService, private _dialog: MatDialog, private _router: Router) {
+    this.stepperOrientation = _breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'vertical' : 'vertical')));
   }
@@ -121,7 +125,6 @@ export class SuggestComponent implements OnInit {
     }
 
     if (this.user != undefined) {
-      console.log(this.user.gender)
       this.firstFormGroup.setValue({
         startingPoint: this.user.location,
         age: this.user.yearOfBirth != null ? (this.thisYear - this.user.yearOfBirth).toString() : '',
@@ -136,17 +139,54 @@ export class SuggestComponent implements OnInit {
     return this.destination.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  onSubmit() {
-    console.log(this.firstFormGroup.get('startingPoint')?.value)
-    console.log(this.firstFormGroup.get('age')?.value)
-    console.log(this.firstFormGroup.get('gender')?.value)
-    console.log(this.secondFormGroup.get('attendant')?.value)
-    console.log(this.secondFormGroup.get('transport')?.value)
-    console.log(this.secondFormGroup.get('season')?.value)
-    console.log(this.secondFormGroup.get('budget')?.value)
-    console.log(this.thirdFormGroup.get('destination')?.value)
-    console.log(this.fourthFormGroup.get('tags')?.value)
-    console.log(this.optionalTags)
+  async onSubmit() {
+    const otherInterests = this.optionalTags.join(', ')
+
+    const tags = this.fourthFormGroup.get('tags')?.value as string[];
+    let interestss = []
+    if (Array.isArray(tags)) {
+      const otherVariable = tags;
+      for (let i = 0; i < tags?.length; ++i) {
+        interestss.push(tags[i].toUpperCase());
+      }
+    }
+
+    let planner_input = {
+      destination: this.thirdFormGroup.get('destination')?.value,
+      startingPoint: this.firstFormGroup.get('startingPoint')?.value,
+      age: this.firstFormGroup.get('age')?.value == "" ? null : this.firstFormGroup.get('age')?.value,
+      gender: this.firstFormGroup.get('gender')?.value == undefined ? null : this.firstFormGroup.get('gender')?.value?.toUpperCase(),
+      attendant: this.secondFormGroup.get('attendant')?.value == "" ? null : this.secondFormGroup.get('attendant')?.value?.toUpperCase(),
+      season: this.secondFormGroup.get('season')?.value == "" ? null : this.secondFormGroup.get('season')?.value?.toUpperCase(),
+      transport: this.secondFormGroup.get('transport')?.value == "" ? null : this.secondFormGroup.get('transport')?.value?.toUpperCase(),
+      budget: this.secondFormGroup.get('budget')?.value == "" ? null : this.secondFormGroup.get('budget')?.value?.toUpperCase(),
+      interests: interestss,
+      otherInterests: this.optionalTags.length == 0 ? null : otherInterests,
+    }
+
+    const dialogRef = this._dialog.open(LoadingComponent, {
+      disableClose: true,
+      data: {
+        startingPoint: this.firstFormGroup.get('startingPoint')?.value
+      }
+    });
+
+    this._plannerService.vacationPlanner(planner_input).then(async response => {
+      dialogRef.close();
+
+      if (response != null) {
+        this._router.navigate(['/itinerary-viewer'])
+      } else {
+        this._dialog.open(DialogComponent, {
+          data: {
+            title: 'Itinerary Generation Error',
+            text: 'Sorry, but we encountered an issue generating your itinerary. ' +
+              'Please try again later or contact our support team for assistance. ' +
+              'Thank you for your understanding, and we apologize for any inconvenience caused.',
+          },
+        });
+      }
+    });
   }
 
   @ViewChild('stepper') stepper!: MatStepper;
@@ -155,7 +195,7 @@ export class SuggestComponent implements OnInit {
   onNextOne() {
     const startingPointValue = this.firstFormGroup.get('startingPoint')?.value;
     const startingPointPattern = /^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+,\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+$/;
-    console.log(startingPointValue)
+
     if (!this.firstFormGroup.valid) {
       if (this.firstFormGroup.get('startingPoint')?.value == "") {
         this.startingPointHasError = "Enter your location";
@@ -247,4 +287,3 @@ export class SuggestComponent implements OnInit {
     }
   }
 }
-

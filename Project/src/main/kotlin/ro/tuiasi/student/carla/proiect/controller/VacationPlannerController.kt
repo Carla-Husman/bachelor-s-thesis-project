@@ -3,31 +3,27 @@ package ro.tuiasi.student.carla.proiect.controller
 import ro.tuiasi.student.carla.proiect.services.VacationPlannerService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
-import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.client.HttpClientErrorException
-import org.springframework.web.client.HttpClientErrorException.UnprocessableEntity
-import org.springframework.web.client.HttpServerErrorException.InternalServerError
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.Itinerary
 import ro.tuiasi.student.carla.proiect.gateways.places.PlacesApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.places.dto.PlaceDetails
 import ro.tuiasi.student.carla.proiect.gateways.search.SearchApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.gateways.webScraping.WebScrapingApiGateway
+import ro.tuiasi.student.carla.proiect.models.Poi
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
 import ro.tuiasi.student.carla.proiect.models.utils.*
 import ro.tuiasi.student.carla.proiect.services.ChatGptService
-import java.lang.RuntimeException
-import java.util.*
-import javax.print.attribute.standard.Destination
 
 @RestController
 @RequestMapping("/api/v1/test")
 @Tag(
     name = "Vacation Planner Controller", description = "This provides all operations for managing vacation planner"
 )
+@CrossOrigin(origins = ["http://localhost:4200"])
 class VacationPlannerController(
     private val vacationPlannerService: VacationPlannerService,
     private val chatGptService: ChatGptService,
@@ -157,5 +153,117 @@ class VacationPlannerController(
     fun getResource(@PathVariable id: Long): String {
         // Simulate a resource not found exception
         throw HttpClientErrorException(HttpStatus.NO_CONTENT, "Resource not found")
+    }
+
+    @PostMapping("/temp")
+    fun get(@RequestBody vacationPlannerInput: VacationPlannerInput): VacationPlannerOutput {
+        Thread.sleep(6000)
+
+        return VacationPlannerOutput(
+            photo = "photo",
+            name = "California Tour",
+            destination = "California",
+            season = null,
+            attendant = null,
+            distance = 0.0,
+            poisNumber = 5,
+            highlights = listOf(
+                "Explore the vibrant art scene in California",
+                "Immerse yourself in the breathtaking natural landscapes",
+                "Embark on exhilarating hiking adventures"
+            ),
+            pois = listOf(
+                Poi(
+                    name = "Yosemite National Park",
+                    photo = "",
+                    description = "Yosemite National Park is renowned for its granite cliffs, waterfalls, clear streams, and giant sequoias. It offers a perfect blend of nature and hiking opportunities.",
+                    longitude = -119.5383294,
+                    latitude = 37.8651011,
+                    tags = listOf("nature", "hiking"),
+                    stars = (4.8).toFloat(),
+                    address = "California, United States",
+                    phone = "+1 209-372-0200",
+                    website = "https://www.nps.gov/yose/index.htm",
+                    schedule = listOf(
+                        "Monday: Open 24 hours",
+                        "Tuesday: Open 24 hours",
+                        "Wednesday: Open 24 hours",
+                        "Thursday: Open 24 hours",
+                        "Friday: Open 24 hours",
+                        "Saturday: Open 24 hours",
+                        "Sunday: Open 24 hours"
+                    )
+                ),
+                Poi(
+                    name = "The Getty",
+                    photo = "",
+                    description = "The Getty Center is a renowned art museum and architectural masterpiece, featuring an impressive collection of European paintings, sculptures, and decorative arts.",
+                    longitude = -118.4740954,
+                    latitude = 34.07803579999999,
+                    tags = listOf("art", "nature"),
+                    stars = (4.8).toFloat(),
+                    address = "1200 Getty Center Dr, Los Angeles, CA 90049, United States",
+                    phone = "+1 310-440-7300",
+                    website = "https://www.getty.edu/visit/center/",
+                    schedule = listOf(
+                        "Monday: Closed",
+                        "Tuesday: 10:00\u202fAM – 5:30\u202fPM",
+                        "Wednesday: 10:00\u202fAM – 5:30\u202fPM",
+                        "Thursday: 10:00\u202fAM – 5:30\u202fPM",
+                        "Friday: 10:00\u202fAM – 5:30\u202fPM",
+                        "Saturday: 10:00\u202fAM – 8:00\u202fPM",
+                        "Sunday: 10:00\u202fAM – 5:30\u202fPM"
+                    )
+                ),
+                // Adaugă celelalte obiecte Poi
+                Poi(
+                    name = "Big Sur",
+                    photo = "",
+                    description = "Big Sur is a rugged stretch of California's central coast, known for its dramatic cliffs, stunning ocean views, and numerous hiking trails that lead to hidden coves and waterfalls.",
+                    longitude = -121.8080556,
+                    latitude = 36.2704233,
+                    tags = listOf("nature", "hiking"),
+                    stars = (-1.0).toFloat(),
+                    address = "Big Sur, CA, USA",
+                    phone = "",
+                    website = "",
+                    schedule = List(0) { "" }
+                ),
+                Poi(
+                    name = "The Broad",
+                    photo = "",
+                    description = "The Broad is a contemporary art museum in downtown Los Angeles, showcasing an extensive collection of modern and contemporary art, including works by renowned artists.",
+                    longitude = -118.2501802,
+                    latitude = 34.0545021,
+                    tags = listOf("art"),
+                    stars = (4.7).toFloat(),
+                    address = "221 S Grand Ave, Los Angeles, CA 90012, United States",
+                    phone = "+1 213-232-6200",
+                    website = "https://www.thebroad.org/",
+                    schedule = listOf(
+                        "Monday: Closed",
+                        "Tuesday: 11:00\u202fAM – 5:00\u202fPM",
+                        "Wednesday: 11:00\u202fAM – 5:00\u202fPM",
+                        "Thursday: 11:00\u202fAM – 8:00\u202fPM",
+                        "Friday: 11:00\u202fAM – 5:00\u202fPM",
+                        "Saturday: 10:00\u202fAM – 6:00\u202fPM",
+                        "Sunday: 10:00\u202fAM – 6:00\u202fPM"
+                    )
+                ),
+                Poi(
+                    name = "Lake Tahoe",
+                    photo = "",
+                    description = "Lake Tahoe is a picturesque alpine lake surrounded by snow-capped peaks, offering a paradise for nature lovers and hikers with its crystal-clear waters and scenic trails.",
+                    longitude = -120.0323507,
+                    latitude = 39.0968493,
+                    tags = listOf("nature", "hiking"),
+                    stars = (4.8).toFloat(),
+                    address = "Lake Tahoe, United States",
+                    phone = "",
+                    website = "",
+                    schedule = List(0) { "" }
+                )
+            )
+        )
     }
 }
