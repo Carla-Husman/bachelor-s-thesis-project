@@ -6,7 +6,7 @@ import {ConsoleLogger} from "@angular/compiler-cli";
   providedIn: 'root'
 })
 export class EncrDecrService {
-  keys = "998NP7xc5xZGitlOJJ1pNBt6xZiX"
+  keys = "998NP7xc5xZGitlOJJ1pNBt6xZiX";
 
   constructor() {
   }

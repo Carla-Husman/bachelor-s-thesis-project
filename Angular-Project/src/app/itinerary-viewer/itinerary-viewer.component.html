@@ -6,7 +6,8 @@
       </button>
 
       <div class="image-container">
-        <img [src]="itineraries.photo" alt="Photo of itinerary"/>
+        <img [src]="itineraries.photo == 'photo' ? 'assets/images/no-image-available.jpg' : itineraries.photo"
+             alt="Photo of itinerary"/>
         <div class="overlay-text">{{ itineraries.name }}</div>
       </div>
 
@@ -43,10 +44,15 @@
           <div class="label">Distance</div>
           <div class="information">{{ itineraries.distance }} m</div>
         </div>
-        <button mat-mini-fab color="primary" (click)="saveItinerary()">
-          <mat-icon>favorite</mat-icon>
-          <!--<mat-icon>delete</mat-icon> Will be add-->
-        </button>
+        @if (state == 0) {
+          <button mat-mini-fab color="primary" (click)="deleteItinerary()">
+            <mat-icon id="delete">delete</mat-icon>
+          </button>
+        } @else if (state == 1) {
+          <button mat-mini-fab color="primary" (click)="saveItinerary()">
+            <mat-icon id="favorite">favorite</mat-icon>
+          </button>
+        }
       </div>
 
       <mat-list>
@@ -65,7 +71,7 @@
       @for (poi of itineraries.pois; track poi) {
         <div id="poi">
           <div id="poi-photo">
-            <img [src]="poi.photo" alt="Photo of poi"/>
+            <img [src]="poi.photo == '' ? 'assets/images/no-image-available.jpg' : poi.photo" alt="Photo of poi"/>
             <div id="name" (click)="goToMyMarker(poi)" style="cursor: pointer"> #{{ $index + 1 }} {{ poi.name }}</div>
             <div id="tags">
               @for (tag of poi.tags; track tag) {

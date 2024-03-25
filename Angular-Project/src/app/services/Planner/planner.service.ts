@@ -18,7 +18,7 @@ export class PlannerService {
     transport: null | string | undefined;
     interests: any[];
     age: string | null | undefined;
-    budget: null | string | undefined
+    budget: null | string | undefined;
   }) {
     try {
       const response = await fetch('http://localhost:8080/api/v1/test/temp', {
@@ -28,10 +28,10 @@ export class PlannerService {
         },
         body: JSON.stringify(planner_input),
       });
-      return await response.json()
+      return await response.json();
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
-      return null
+      return null;
     }
   }
 }

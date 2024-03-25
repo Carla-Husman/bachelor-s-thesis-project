@@ -44,8 +44,12 @@ mat-drawer {
   margin-top: 10px;
   gap: 5px;
 
-  mat-icon {
+  mat-icon#favorite {
     color: #e3bfc2;
+  }
+
+  mat-icon#delete {
+    color: white;
   }
 
   .label {

@@ -77,12 +77,12 @@ export const MY_FORMATS = {
 export class RegisterComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z][A-Za-z0-9_.]{8,29}$")]);
-  location = new FormControl('', [Validators.required])
+  location = new FormControl('', [Validators.required]);
   yearOfBirth = new FormControl('');
   password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")]);
   gender = new FormControl('');
 
-  registerState = true
+  registerState = true;
 
   constructor(private _snackBar: MatSnackBar, private _encrDecrService: EncrDecrService, private _router: Router) {
     if (window.localStorage.getItem("username") != null || window.localStorage.getItem("username") != undefined) {
@@ -117,9 +117,9 @@ export class RegisterComponent {
       if (this.username.valid && this.gender.valid && this.password.valid &&
         this.location.valid && this.yearOfBirth.valid && this.email.valid) {
 
-        let newPassword = ""
+        let newPassword = "";
         if (this.password.value != null) {
-          newPassword = this._encrDecrService.encrypt(this.password.value)
+          newPassword = this._encrDecrService.encrypt(this.password.value);
         }
 
         await db.users.add({
@@ -130,9 +130,9 @@ export class RegisterComponent {
           email: this.email.value != null ? this.email.value : '',
           password: newPassword,
           src: "assets/images/no-avatar.png"
-        })
+        });
 
-        this._snackBar.open("Your account has been created. Welcome!", "Ok", {duration: 5000})
+        this._snackBar.open("Your account has been created. Welcome!", "Ok", {duration: 5000});
       }
     } else {
       let usernameFound = await db.transaction('r', [db.users], async () => {
@@ -146,10 +146,10 @@ export class RegisterComponent {
         return;
       }
 
-      window.localStorage.setItem("username", this.username.value != null ? this.username.value : "")
+      window.localStorage.setItem("username", this.username.value != null ? this.username.value : "");
       await this._router.navigate(['/home']);
 
-      this.registerState = true
+      this.registerState = true;
     }
   }
 
@@ -171,10 +171,10 @@ export class RegisterComponent {
     }
 
     if (this.password.hasError('maxlength')) {
-      return "Must contain at most 29 characters"
+      return "Must contain at most 29 characters";
     }
 
-    return this.password.hasError("pattern") ? "Must contain number, uppercase and lowercase letter" : ''
+    return this.password.hasError("pattern") ? "Must contain number, uppercase and lowercase letter" : '';
   }
 
   getUsernameErrorMessage() {
@@ -183,11 +183,11 @@ export class RegisterComponent {
     }
 
     if (this.username.hasError('minlength')) {
-      return "Must contain at least 8 characters"
+      return "Must contain at least 8 characters";
     }
 
     if (this.username.hasError('maxlength')) {
-      return "Must contain at most 29 characters"
+      return "Must contain at most 29 characters";
     }
 
     return "Invalid username format";

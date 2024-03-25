@@ -55,7 +55,7 @@
       </mat-action-list>
 
       <mat-divider style="border-top-color: rgba(0,0,0,0.24)"></mat-divider>
-      @if (vacationsList.length != 0) {
+      @if (vacationsList?.length != 0 && displayed != undefined) {
         <mat-card-content class="trip-guide-content" id="ticket">
           <div id="ticket-content">
             <div id="additional-information">
@@ -68,15 +68,15 @@
               <mat-divider style="border: 1px solid #000"></mat-divider>
               <br/>
               <div>Name of itinerary</div>
-              <div><strong>{{ displayed?.title }}</strong></div>
+              <div><strong>{{ displayed?.name }}</strong></div>
               <br/>
               <div id="destination">
                 <div class="destination-text">
                   <div>FROM</div>
-                  <div><strong>{{ displayed?.location }}</strong></div>
+                  <div><strong>{{ displayed?.destination }}</strong></div>
                   <br/>
                   <div>FLIGHT DATE</div>
-                  <div><strong>{{ displayed?.season == "" ? "Unknown" : displayed?.season }}</strong></div>
+                  <div><strong>{{ displayed?.season == null ? "Unknown" : displayed?.season }}</strong></div>
                 </div>
                 <div class="destination-text">
                   <div>TO</div>
@@ -91,19 +91,20 @@
 
           <mat-divider id="vertical-line" [vertical]="true"></mat-divider>
           <img id="ticket-image"
-               [ngSrc]="displayed != undefined ? displayed.src : 'assets/images/no-image-available.jpg'" width="300"
+               [ngSrc]="displayed.photo != undefined ? displayed.photo : 'assets/images/no-image-available.jpg'"
+               width="300"
                height="300" alt="An image with your itinerary" priority>
         </mat-card-content>
 
         <mat-action-list
           style="background-color: rgba(174, 195, 183, 0.65); display: flex; justify-content: space-between; align-items: center;">
-          <button mat-icon-button (click)="back(displayed?.id)">
+          <button mat-icon-button (click)="back()">
             <mat-icon>arrow_back_ios</mat-icon>
           </button>
-          <button mat-icon-button (click)="view(displayed?.id)">
+          <button mat-icon-button (click)="view(displayed.id != undefined ? displayed.id : -1)">
             <mat-icon>visibility</mat-icon>
           </button>
-          <button mat-icon-button (click)="forward(displayed?.id)">
+          <button mat-icon-button (click)="forward()">
             <mat-icon>arrow_forward_ios</mat-icon>
           </button>
         </mat-action-list>

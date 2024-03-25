@@ -1,4 +1,4 @@
-import {Component, inject, ViewEncapsulation, OnInit, ViewChild, Inject} from '@angular/core';
+import {Component, inject, ViewEncapsulation, OnInit, ViewChild} from '@angular/core';
 import {MatStepper, MatStepperModule, StepperOrientation} from "@angular/material/stepper";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -24,10 +24,11 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatExpansionPanelDescription} from "@angular/material/expansion";
 import {PlannerService} from "../services/Planner/planner.service";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../dialog/dialog.component";
 import {LoadingComponent} from "../loading/loading.component";
 import {Router} from "@angular/router";
+import {ItineraryService} from "../services/SendItinerary/itinerary.service";
 
 @Component({
   selector: 'app-suggest',
@@ -94,13 +95,14 @@ export class SuggestComponent implements OnInit {
     'Skiing', 'Theatre', 'Wildlife', 'Zoo'
   ];
   season = ['Spring', 'Summer', 'Autumn', 'Winter'];
-  destination: string [] = []
+  destination: string [] = [];
   filteredDestination: Observable<string[]> | undefined;
-  user: Users | undefined | void
-  thisYear = new Date().getFullYear()
+  user: Users | undefined | void;
+  thisYear = new Date().getFullYear();
 
-  constructor(private _formBuilder: FormBuilder, private _http: HttpClient, private _breakpointObserver: BreakpointObserver, private _plannerService: PlannerService, private _dialog: MatDialog, private _router: Router) {
-    this.stepperOrientation = _breakpointObserver
+  constructor(private _formBuilder: FormBuilder, private _http: HttpClient, private _breakpointObserver: BreakpointObserver,
+              private _plannerService: PlannerService, private _dialog: MatDialog, private _router: Router, private _itinerary: ItineraryService) {
+    this.stepperOrientation = this._breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'vertical' : 'vertical')));
   }
@@ -135,17 +137,15 @@ export class SuggestComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.destination.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   async onSubmit() {
-    const otherInterests = this.optionalTags.join(', ')
+    const otherInterests = this.optionalTags.join(', ');
 
     const tags = this.fourthFormGroup.get('tags')?.value as string[];
-    let interestss = []
+    let interestss = [];
     if (Array.isArray(tags)) {
-      const otherVariable = tags;
       for (let i = 0; i < tags?.length; ++i) {
         interestss.push(tags[i].toUpperCase());
       }
@@ -162,7 +162,7 @@ export class SuggestComponent implements OnInit {
       budget: this.secondFormGroup.get('budget')?.value == "" ? null : this.secondFormGroup.get('budget')?.value?.toUpperCase(),
       interests: interestss,
       otherInterests: this.optionalTags.length == 0 ? null : otherInterests,
-    }
+    };
 
     const dialogRef = this._dialog.open(LoadingComponent, {
       disableClose: true,
@@ -175,7 +175,8 @@ export class SuggestComponent implements OnInit {
       dialogRef.close();
 
       if (response != null) {
-        this._router.navigate(['/itinerary-viewer'])
+        this._itinerary.setResult(response);
+        await this._router.navigate(['/itinerary-viewer']);
       } else {
         this._dialog.open(DialogComponent, {
           data: {
@@ -200,7 +201,7 @@ export class SuggestComponent implements OnInit {
       if (this.firstFormGroup.get('startingPoint')?.value == "") {
         this.startingPointHasError = "Enter your location";
       } else if (!startingPointPattern.test(<string>startingPointValue)) {
-        this.startingPointHasError = "Format is City, Country"
+        this.startingPointHasError = "Format is City, Country";
       }
     } else {
       this.stepper.next();
@@ -212,14 +213,14 @@ export class SuggestComponent implements OnInit {
 
   onNextThree() {
     if (!this.destination.includes(<string>this.thirdFormGroup.get("destination")?.value)) {
-      this.destinationHasError = "Destination must be from list"
+      this.destinationHasError = "Destination must be from list";
     } else {
-      this.destinationHasError = ""
-      this.stepper.next()
+      this.destinationHasError = "";
+      this.stepper.next();
     }
   }
 
-  tagsHasError = ""
+  tagsHasError = "";
 
   onNextFourth() {
     const tagsArray = this.fourthFormGroup.get('tags') as FormArray;
@@ -249,22 +250,22 @@ export class SuggestComponent implements OnInit {
     event.chipInput!.clear();
   }
 
-  remove(optionalTag: string): void {
+  async remove(optionalTag: string) {
     const index = this.optionalTags.indexOf(optionalTag);
 
     if (index >= 0) {
       this.optionalTags.splice(index, 1);
 
-      this.announcer.announce(`Removed ${optionalTag}`);
+      await this.announcer.announce(`Removed ${optionalTag}`);
     }
   }
 
-  edit(optionalTag: string, event: MatChipEditedEvent) {
+  async edit(optionalTag: string, event: MatChipEditedEvent) {
     const value = event.value.trim();
 
     // Remove tag if it no longer has a name
     if (!value) {
-      this.remove(optionalTag);
+      await this.remove(optionalTag);
       return;
     }
 

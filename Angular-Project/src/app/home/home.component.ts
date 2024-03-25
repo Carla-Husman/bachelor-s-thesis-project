@@ -10,7 +10,7 @@ import {
   MatCardSubtitle,
   MatCardTitle
 } from "@angular/material/card";
-import {db, Users} from "../db";
+import {db, Itineraries, Users} from "../db";
 import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
@@ -19,7 +19,6 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatActionList} from "@angular/material/list";
 import {MatDivider} from "@angular/material/divider";
-import {VacationsList} from "../models/VacationsList/vacations-list.model";
 import {MatRipple} from "@angular/material/core";
 import {
   MatAccordion, MatExpansionModule,
@@ -27,6 +26,7 @@ import {
   MatExpansionPanelDescription,
   MatExpansionPanelTitle
 } from "@angular/material/expansion";
+import {ItineraryService} from "../services/SendItinerary/itinerary.service";
 
 @Component({
   selector: 'app-home',
@@ -68,19 +68,17 @@ import {
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  user: Users | undefined | void
-  numberOfItineraries = 0
-  option = 1
-  vacationsList = [
-    new VacationsList(0, "Iasi Walking Tour", "Iasi, Romania", "Bucharest, Romania", 3, "assets/images/imagine-1.jpeg", "August"),
-    new VacationsList(1, "France Tour", "Paris, France", "Iasi, Romania", 7, "assets/images/imagine-2.jpg", ""),
-    new VacationsList(2, "Madrid Family Tour", "Madrid, Spain", "Cluj-Napoca, Romania", 10, "assets/images/imagine-3.jpg", ""),
-  ]
-  displayed!: VacationsList | undefined;
-  thisYear = new Date().getFullYear()
+  user: Users | undefined | void;
+  numberOfItineraries = 0;
+  option = 1;
+  index = 0;
+  vacationsList: any = [];
+  displayed!: Itineraries | undefined;
+  thisYear = new Date().getFullYear();
   @ViewChild('avatar') myAvatar!: ElementRef;
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _itinerary: ItineraryService) {
+  }
 
   async ngOnInit() {
     if (window.localStorage.getItem('username') != undefined || window.localStorage.getItem('username') != null) {
@@ -90,13 +88,19 @@ export class HomeComponent implements OnInit {
         console.error("Error occurred while fetching user:", error);
       });
 
-      if (this.user == undefined) {
+      this.vacationsList = await db.transaction('r', [db.itineraries], async () => {
+        return db.itineraries.toArray();
+      }).catch(error => {
+        console.error("Error occurred while fetching itineraries:", error);
+      });
+
+      if (this.vacationsList == undefined || this.user == undefined) {
         await this._router.navigate(["/account"]);
         return;
       }
 
-      this.displayed = this.vacationsList.length != 0 ? this.vacationsList[0] : undefined
-      this.numberOfItineraries = this.vacationsList.length
+      this.displayed = this.vacationsList.length != 0 ? this.vacationsList[0] : undefined;
+      this.numberOfItineraries = this.vacationsList.length;
 
       const image = new Image();
       image.onload = () => {
@@ -133,28 +137,31 @@ export class HomeComponent implements OnInit {
   }
 
   async logout() {
-    window.localStorage.removeItem('username')
-    await this._router.navigate(['/account'])
+    window.localStorage.removeItem('username');
+    await this._router.navigate(['/account']);
   }
 
   changeOption(newOption: number) {
     this.option = newOption;
   }
 
-  async back(id: number | undefined) {
-    if (id != undefined && id != 0) {
-      this.displayed = this.vacationsList[id - 1];
+  async back() {
+    if (this.index != undefined && this.index != 0 && this.vacationsList) {
+      this.displayed = this.vacationsList[this.index - 1];
+      this.index = this.index - 1;
     }
   }
 
-  async forward(id: number | undefined) {
-    if (id != undefined && id != this.vacationsList.length - 1) {
-      this.displayed = this.vacationsList[id + 1];
+  async forward() {
+    if (this.index != undefined && this.index != this.vacationsList.length - 1 && this.vacationsList) {
+      this.displayed = this.vacationsList[this.index + 1];
+      this.index = this.index + 1;
     }
   }
 
-  async view(id: number | undefined) {
-
+  async view(id: number) {
+    this._itinerary.setId(id);
+    await this._router.navigate(['/itinerary-viewer']);
   }
 
   openImagePicker() {

@@ -9,6 +9,10 @@ import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatListModule} from "@angular/material/list";
 import {OverlayModule} from "@angular/cdk/overlay";
 import {GoogleMap, GoogleMapsModule} from "@angular/google-maps";
+import {ItineraryService} from "../services/SendItinerary/itinerary.service";
+import {DialogComponent} from "../dialog/dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-itinerary-viewer',
@@ -32,12 +36,12 @@ import {GoogleMap, GoogleMapsModule} from "@angular/google-maps";
 })
 
 export class ItineraryViewerComponent implements OnInit {
-  itineraries: any
+  itineraries: any;
   stars: number[] = [];
   isOpenSchedule: boolean[] = [];
-  isOpenPhone: boolean[] = []
-  isOpenWebsite: boolean[] = []
-  isOpenAddress: boolean[] = []
+  isOpenPhone: boolean[] = [];
+  isOpenWebsite: boolean[] = [];
+  isOpenAddress: boolean[] = [];
 
   @ViewChild('myGoogleMap', {static: true}) map!: GoogleMap;
   mapOptions: google.maps.MapOptions = {};
@@ -45,48 +49,67 @@ export class ItineraryViewerComponent implements OnInit {
     options: { animation: google.maps.Animation };
     position: { lat: number; lng: number };
     label: { color: string; text: string };
-    title: string
+    title: string;
   } | {
     options: { animation: null };
     position: { lat: number; lng: number };
     label: { color: string; text: string };
-    title: string
+    title: string;
   })[] = [];
 
+  state = 1; // 0 = from home, 1 = from suggest
+
+  constructor(private _itinerary: ItineraryService, private _dialog: MatDialog, private _router: Router) {
+  }
+
   async ngOnInit() {
-    this.stars = Array(5).fill(0).map((_, i) => i + 1);
-    // here will be from backend when we press submit button from suggest
+    try {
+      this.stars = Array(5).fill(0).map((_, i) => i + 1);
 
-    // this will be from database when we press view itinerary from profile
-    this.itineraries = await db.transaction('r', [db.itineraries], async () => {
-      return db.itineraries.get({id: 0});
-    }).catch(error => {
-      console.error(error);
-    });
+      if (this._itinerary.getResult() != null) {
+        this.itineraries = this._itinerary.getResult();
+        this.state = 1;
+      } else if (this._itinerary.getId() != -1) {
+        this.itineraries = await db.transaction('r', [db.itineraries], async () => {
+          this.state = 0;
+          return db.itineraries.get({id: this._itinerary.getId()});
+        }).catch(error => {
+          console.error(error);
+        });
+      }
 
-    this.isOpenSchedule = this.itineraries.pois.map(() => false);
-    this.isOpenPhone = this.itineraries.pois.map(() => false);
-    this.isOpenSchedule = this.itineraries.pois.map(() => false);
-    this.isOpenAddress = this.itineraries.pois.map(() => false);
+      this.isOpenSchedule = this.itineraries.pois.map(() => false);
+      this.isOpenPhone = this.itineraries.pois.map(() => false);
+      this.isOpenSchedule = this.itineraries.pois.map(() => false);
+      this.isOpenAddress = this.itineraries.pois.map(() => false);
 
-    for (let poi of this.itineraries.pois) {
-      this.markers.push({
-        position: {
-          lat: poi.latitude,
-          lng: poi.longitude
+      for (let poi of this.itineraries.pois) {
+        this.markers.push({
+          position: {
+            lat: poi.latitude,
+            lng: poi.longitude
+          },
+          title: poi.name,
+          label: {
+            color: 'black',
+            text: (this.markers.length + 1).toString(),
+          },
+          options: {
+            animation: google.maps.Animation.DROP
+          }
+        });
+      }
+
+      this.calculateMapCenterAndZoom();
+    } catch (error) {
+      this._dialog.open(DialogComponent, {
+        data: {
+          title: 'Visualization Error',
+          text: "Sorry, but you don't have an itinerary to view. " +
+            "Please visit the suggestions page and generate one",
         },
-        title: poi.name,
-        label: {
-          color: 'black',
-          text: (this.markers.length + 1).toString(),
-        },
-        options: {
-          animation: google.maps.Animation.DROP
-        }
-      })
+      });
     }
-
-    this.calculateMapCenterAndZoom()
   }
 
   calculateMapCenterAndZoom() {
@@ -172,6 +195,11 @@ export class ItineraryViewerComponent implements OnInit {
       poisNumber: this.itineraries.poisNumber,
       highlights: this.itineraries.highlights,
       pois: this.itineraries.pois
-    })
+    });
+  }
+
+  async deleteItinerary() {
+    await db.itineraries.delete(this._itinerary.getId());
+    await this._router.navigate(['/home']);
   }
 }
