@@ -8,7 +8,7 @@ import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.ItineraryPoi
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.interfaces.IChatGptGateway
 
 @Service
-class ChatGptGateway (
+class ChatGptGateway(
     val openAiClient: OpenAiClient
 ) : IChatGptGateway {
 

@@ -6,9 +6,9 @@ import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.gateways.search.interfaces.ISearchApiGateway
 
 @Service
-class SearchApiGateway (
+class SearchApiGateway(
     private val searchClient: SearchApiClient
-): ISearchApiGateway {
+) : ISearchApiGateway {
     override fun search(query: String): List<SearchDetails> {
         return searchClient.search(query)
     }

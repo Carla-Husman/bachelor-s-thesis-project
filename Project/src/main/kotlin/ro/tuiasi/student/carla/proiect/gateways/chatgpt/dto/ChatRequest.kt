@@ -1,6 +1,6 @@
 package ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto
 
-class ChatRequest (
+class ChatRequest(
     val model: String,
     val messages: MutableList<Message>,
     val temperature: Double,

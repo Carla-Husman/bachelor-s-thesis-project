@@ -25,7 +25,7 @@ class CustomSearchService(
 
     override fun generatePromptCustomSearch(vacationPlannerInput: VacationPlannerInput): String {
         val budget = vacationPlannerInput.budget?.let {
-            when(it){
+            when (it) {
                 Budget.CHEAP, Budget.AFFORDABLE -> "trip, countries or cities close to ${vacationPlannerInput.startingPoint} "
                 else -> "$it trip destination in the world "
             }
@@ -38,7 +38,8 @@ class CustomSearchService(
         }
         // if destination is a continent or a country
         else if (vacationPlannerInput.destination.matches(Regex("^(Asia|Africa|North America|South America|Antarctica|Europe|Australia)\$")) ||
-            vacationPlannerInput.destination.matches(Regex("^[a-zA-Z\\s]+\$"))) {
+            vacationPlannerInput.destination.matches(Regex("^[a-zA-Z\\s]+\$"))
+        ) {
             return "Best " + (vacationPlannerInput.attendant?.let { "$it " } ?: "") +
                     (vacationPlannerInput.budget?.let { "$it " } ?: "") +
                     "trip destination in ${vacationPlannerInput.destination} " +

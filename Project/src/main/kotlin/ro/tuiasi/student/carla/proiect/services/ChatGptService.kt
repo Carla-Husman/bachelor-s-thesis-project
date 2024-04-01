@@ -22,7 +22,8 @@ class ChatGptService(
         interests: List<Interests>,
         otherInterests: String?
     ): Itinerary? {
-        val prompt = "Generate at most 5 points of interests for a tour named $city " + (transport?.let { "$it " } ?: "") + (attendant?.let { "$it " } ?: "")+ "tour" +
+        val prompt = "Generate at most 5 points of interests for a tour named $city " + (transport?.let { "$it " }
+            ?: "") + (attendant?.let { "$it " } ?: "") + "tour" +
                 "for a person interesting in: ${
                     interests.joinToString(
                         " and "
@@ -37,10 +38,11 @@ class ChatGptService(
 
         val pointsOfInterest = mutableListOf<ItineraryPoi>()
         for (i in 0 until content.getJSONArray("points_of_interest").length()) {
-            pointsOfInterest.add( ItineraryPoi(
+            pointsOfInterest.add(ItineraryPoi(
                 name = content.getJSONArray("points_of_interest").getJSONObject(i).getString("name"),
                 description = content.getJSONArray("points_of_interest").getJSONObject(i).getString("description"),
-                tags = content.getJSONArray("points_of_interest").getJSONObject(i).getJSONArray("tags").map { it.toString() }
+                tags = content.getJSONArray("points_of_interest").getJSONObject(i).getJSONArray("tags")
+                    .map { it.toString() }
             ))
         }
 
@@ -65,7 +67,9 @@ class ChatGptService(
         destination: String
     ): List<String> {
         var textForDestination = ""
-        if (destination != "") { textForDestination = " for $destination" }
+        if (destination != "") {
+            textForDestination = " for $destination"
+        }
         val prompt = "Extract just the cities $textForDestination from the following text:\n$text \n" +
                 "Parameters of json: cities"
 

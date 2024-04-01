@@ -12,7 +12,8 @@ class FilterCitiesService : IFilterCitiesService {
     }
 
     override fun filterCities(text: String): List<String> {
-        return cities.filter { it.removeDiacritics().contains(text.removeDiacritics(), ignoreCase = true) }.shuffled().take(10)
+        return cities.filter { it.removeDiacritics().contains(text.removeDiacritics(), ignoreCase = true) }.shuffled()
+            .take(10)
     }
 
     fun uploadCities() {

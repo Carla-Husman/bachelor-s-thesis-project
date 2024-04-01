@@ -11,14 +11,14 @@ import org.springframework.http.client.ClientHttpRequestInterceptor
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.web.client.RestTemplate
 
-class GatewayConfiguration (
+class GatewayConfiguration(
     private val apiKey: String,
     private val numberOfConnectionsPool: Int,
     private val numberOfConnectionsPoolPerRoute: Int,
     private val socketTimeout: Int,
     private val connectionTimeout: Int,
     private val connectionRequestTimeout: Int,
-){
+) {
     fun restTemplate(): RestTemplate {
         val connectionManager = PoolingHttpClientConnectionManagerBuilder.create()
             .setMaxConnTotal(numberOfConnectionsPool)

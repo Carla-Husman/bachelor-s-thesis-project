@@ -5,7 +5,7 @@ import ro.tuiasi.student.carla.proiect.gateways.webScraping.client.WebScrapingAp
 import ro.tuiasi.student.carla.proiect.gateways.webScraping.interfaces.IWebScrapingApiGateway
 
 @Service
-class WebScrapingApiGateway (
+class WebScrapingApiGateway(
     private val webScrapingClient: WebScrapingApiClient
 ) : IWebScrapingApiGateway {
     override fun getWebScrapingResults(url: String): String? {

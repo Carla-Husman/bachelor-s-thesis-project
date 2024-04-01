@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
 
 @Service
-class WebScrapingApiClient (
+class WebScrapingApiClient(
     var restTemplate: RestTemplate,
 
     @Value("\${integration.gateway.web-scraping.endpoint}")

@@ -21,7 +21,7 @@ class VacationPlannerExceptionHandler : ResponseEntityExceptionHandler() {
     @ExceptionHandler(HttpClientErrorException::class)
     fun handleHttpClientErrorException(
         ex: HttpClientErrorException
-    ): ResponseEntity<ErrorMessage>  {
+    ): ResponseEntity<ErrorMessage> {
         val message = ErrorMessage(
             ex.statusCode.value(),
             "Http error: ${ex.message}",

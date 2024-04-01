@@ -7,7 +7,7 @@ import org.json.JSONObject
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.*
 
 @Service
-class OpenAiClient (
+class OpenAiClient(
     private val restTemplate: RestTemplate,
 
     @Value("\${integration.gateway.chatgpt.model}")
@@ -15,16 +15,18 @@ class OpenAiClient (
 
     @Value("\${integration.gateway.chatgpt.base-uri}")
     private val endpoint: String,
-){
+) {
     fun chatConversation(message: String): String? {
         val request = ChatRequest(
             model = model
         )
 
-        request.messages.add(Message(
-            role = "user",
-            content = message
-        ))
+        request.messages.add(
+            Message(
+                role = "user",
+                content = message
+            )
+        )
 
         val response = restTemplate.postForObject(
             endpoint,

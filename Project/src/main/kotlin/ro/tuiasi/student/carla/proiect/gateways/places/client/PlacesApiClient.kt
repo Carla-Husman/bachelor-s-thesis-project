@@ -8,7 +8,7 @@ import org.springframework.web.util.UriComponentsBuilder
 import ro.tuiasi.student.carla.proiect.gateways.places.dto.PlaceDetails
 
 @Service
-class PlacesApiClient (
+class PlacesApiClient(
     var restTemplate: RestTemplate,
 
     @Value("\${integration.gateway.maps.places.api-key}")
@@ -19,7 +19,7 @@ class PlacesApiClient (
 
     @Value("\${integration.gateway.maps.places.endpoint-details}")
     val detailsEndpoint: String
-){
+) {
     fun textSearch(placeName: String): PlaceDetails {
         restTemplate = RestTemplate()
 
@@ -30,7 +30,8 @@ class PlacesApiClient (
             .build()
             .toUri()
 
-        val textSearch = JSONObject(restTemplate.getForObject(uri, String::class.java)).getJSONArray("results").getJSONObject(0)
+        val textSearch =
+            JSONObject(restTemplate.getForObject(uri, String::class.java)).getJSONArray("results").getJSONObject(0)
 
         val placeDetails = placeDetails(textSearch.getString("place_id"))
 
@@ -64,7 +65,7 @@ class PlacesApiClient (
         )
     }
 
-    private fun placeDetails (placeId: String) : JSONObject {
+    private fun placeDetails(placeId: String): JSONObject {
         restTemplate = RestTemplate()
 
         val uri = UriComponentsBuilder

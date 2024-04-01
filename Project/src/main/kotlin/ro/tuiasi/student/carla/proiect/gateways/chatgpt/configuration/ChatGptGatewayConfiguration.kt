@@ -26,7 +26,7 @@ class ChatGptGatewayConfiguration(
 
     @Value("\${integration.gateway.chatgpt.api-key}")
     private val openAiKey: String,
-){
+) {
     @Bean
     @Qualifier("chatGptRestTemplate")
     fun chatGptRestTemplate(): RestTemplate {
