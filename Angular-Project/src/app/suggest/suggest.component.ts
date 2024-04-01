@@ -4,7 +4,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Observable} from "rxjs";
+import {Observable, switchMap} from "rxjs";
 import {map, startWith} from 'rxjs/operators';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {AsyncPipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
@@ -29,6 +29,8 @@ import {DialogComponent} from "../dialog/dialog.component";
 import {LoadingComponent} from "../loading/loading.component";
 import {Router} from "@angular/router";
 import {ItineraryService} from "../services/SendItinerary/itinerary.service";
+import {CitiesFilterService} from "../services/CitiesFilter/cities-filter.service";
+import {scheduleReadableStreamLike} from "rxjs/internal/scheduled/scheduleReadableStreamLike";
 
 @Component({
   selector: 'app-suggest',
@@ -95,28 +97,23 @@ export class SuggestComponent implements OnInit {
     'Skiing', 'Theatre', 'Wildlife', 'Zoo'
   ];
   season = ['Spring', 'Summer', 'Autumn', 'Winter'];
-  destination: string [] = [];
   filteredDestination: Observable<string[]> | undefined;
   user: Users | undefined | void;
   thisYear = new Date().getFullYear();
 
   constructor(private _formBuilder: FormBuilder, private _http: HttpClient, private _breakpointObserver: BreakpointObserver,
-              private _plannerService: PlannerService, private _dialog: MatDialog, private _router: Router, private _itinerary: ItineraryService) {
+              private _plannerService: PlannerService, private _dialog: MatDialog, private _router: Router, private _itinerary: ItineraryService,
+              private _citiesFilter: CitiesFilterService) {
     this.stepperOrientation = this._breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'vertical' : 'vertical')));
   }
 
   async ngOnInit() {
-    let data = await this._http.get('assets/files/city_country_test.txt', {responseType: 'text'}).toPromise();
-    if (data != undefined) {
-      const linii = data.split('\n');
-      this.destination = linii.map(linie => linie.trim());
-      this.filteredDestination = this.thirdFormGroup.get('destination')?.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value || '')),
-      );
-    }
+    this.filteredDestination = this.thirdFormGroup.get('destination')?.valueChanges.pipe(
+      startWith(''),
+      switchMap(value => this._filter(value || '')),
+    );
 
     if (window.localStorage.getItem('username') != undefined || window.localStorage.getItem('username') != null) {
       this.user = await db.transaction('r', [db.users], async () => {
@@ -135,9 +132,12 @@ export class SuggestComponent implements OnInit {
     }
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.destination.filter(option => option.toLowerCase().includes(filterValue));
+  private async _filter(value: string) {
+    let listOfCities: string[] = [];
+    await this._citiesFilter.filter(value).then(response => {
+      listOfCities = response;
+    });
+    return listOfCities;
   }
 
   async onSubmit() {
@@ -211,13 +211,15 @@ export class SuggestComponent implements OnInit {
 
   destinationHasError = "";
 
-  onNextThree() {
-    if (!this.destination.includes(<string>this.thirdFormGroup.get("destination")?.value)) {
-      this.destinationHasError = "Destination must be from list";
-    } else {
-      this.destinationHasError = "";
-      this.stepper.next();
-    }
+  async onNextThree() {
+    await this._citiesFilter.inList(<string>this.thirdFormGroup.get("destination")?.value).then(response => {
+      if (response) {
+        this.destinationHasError = "";
+        this.stepper.next();
+      } else {
+        this.destinationHasError = "Your choice isn't in our database or  doesn't respect the format.";
+      }
+    });
   }
 
   tagsHasError = "";
