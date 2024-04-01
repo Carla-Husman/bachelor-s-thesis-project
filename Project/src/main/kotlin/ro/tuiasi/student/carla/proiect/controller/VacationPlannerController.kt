@@ -17,6 +17,7 @@ import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
 import ro.tuiasi.student.carla.proiect.models.utils.*
 import ro.tuiasi.student.carla.proiect.services.ChatGptService
+import ro.tuiasi.student.carla.proiect.services.FilterCitiesService
 
 @RestController
 @RequestMapping("/api/v1/test")
@@ -29,8 +30,9 @@ class VacationPlannerController(
     private val chatGptService: ChatGptService,
     private val placesApiGateway: PlacesApiGateway,
     private val searchGateway: SearchApiGateway,
-    private val webScrapingGateway: WebScrapingApiGateway
-){
+    private val webScrapingGateway: WebScrapingApiGateway,
+    private val citiesService: FilterCitiesService
+) {
     @Operation(
         summary = "Vacation Planner",
         description = "This operation returns a personalized vacation plan based on the provided input parameters. "
@@ -60,13 +62,14 @@ class VacationPlannerController(
                 "The operation showcases the ability to generate content related to a specific point of interest."
     )
     @GetMapping("/chatgpt-poi")
-    fun chatGpt(@RequestParam(required = true) destination: String,
-                @RequestParam(required = false) gender: Gender?,
-                @RequestParam(required = false) attendant: Attendants?,
-                @RequestParam(required = false) season: Season?,
-                @RequestParam(required = false) transport: Transport?,
-                @RequestParam(required = true) interests: List<Interests>,
-                @RequestParam(required = false) otherInterests: String?
+    fun chatGpt(
+        @RequestParam(required = true) destination: String,
+        @RequestParam(required = false) gender: Gender?,
+        @RequestParam(required = false) attendant: Attendants?,
+        @RequestParam(required = false) season: Season?,
+        @RequestParam(required = false) transport: Transport?,
+        @RequestParam(required = true) interests: List<Interests>,
+        @RequestParam(required = false) otherInterests: String?
     ): Itinerary? {
         return chatGptService.generatePoi(
             city = destination,
@@ -129,10 +132,11 @@ class VacationPlannerController(
     }
 
     @Operation(
-        summary = "Custom Search", description = "Performs a custom search for tourist destinations based on the provided prompt. " +
+        summary = "Custom Search",
+        description = "Performs a custom search for tourist destinations based on the provided prompt. " +
                 "The prompt is a search query that may include keywords related to travel destinations and user interests"
     )
-    @GetMapping("/custom-search" , params = ["prompt"])
+    @GetMapping("/custom-search", params = ["prompt"])
     fun customSearch(@RequestParam(required = true) prompt: String): List<SearchDetails> {
         // "Best Cheap Romania travel destinations Autumn intext:(art OR museum OR history)"
         return searchGateway.search(prompt)
@@ -265,5 +269,10 @@ class VacationPlannerController(
                 )
             )
         )
+    }
+
+    @GetMapping("/filter-cities/{text}")
+    fun filterCities(@PathVariable text: String): List<String> {
+        return citiesService.filterCities(text)
     }
 }
