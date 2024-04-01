@@ -275,4 +275,9 @@ class VacationPlannerController(
     fun filterCities(@PathVariable text: String): List<String> {
         return citiesService.filterCities(text)
     }
+
+    @GetMapping("/city-exists/{city}")
+    fun cityExists(@PathVariable city: String): Boolean {
+        return citiesService.existsCity(city)
+    }
 }
