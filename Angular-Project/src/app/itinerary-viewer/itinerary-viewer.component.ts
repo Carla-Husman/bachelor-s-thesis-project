@@ -10,9 +10,7 @@ import {MatListModule} from "@angular/material/list";
 import {OverlayModule} from "@angular/cdk/overlay";
 import {GoogleMap, GoogleMapsModule} from "@angular/google-maps";
 import {ItineraryService} from "../services/SendItinerary/itinerary.service";
-import {DialogComponent} from "../dialog/dialog.component";
-import {MatDialog} from "@angular/material/dialog";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-itinerary-viewer',
@@ -59,20 +57,25 @@ export class ItineraryViewerComponent implements OnInit {
 
   state = 1; // 0 = from home, 1 = from suggest
 
-  constructor(private _itinerary: ItineraryService, private _dialog: MatDialog, private _router: Router) {
+  constructor(private _itinerary: ItineraryService, private _router: Router, private _route: ActivatedRoute) {
   }
 
   async ngOnInit() {
     try {
       this.stars = Array(5).fill(0).map((_, i) => i + 1);
 
-      if (this._itinerary.getResult() != null) {
+      if (Number(this._route.snapshot.params['id']) == -1) {
+        window.addEventListener("beforeunload", function (e) {
+          var confirmationMessage = "\o/";
+          e.returnValue = confirmationMessage;
+          return confirmationMessage;
+        });
         this.itineraries = this._itinerary.getResult();
         this.state = 1;
-      } else if (this._itinerary.getId() != -1) {
+      } else {
         this.itineraries = await db.transaction('r', [db.itineraries], async () => {
           this.state = 0;
-          return db.itineraries.get({id: this._itinerary.getId()});
+          return db.itineraries.get({id: Number(this._route.snapshot.params['id'])});
         }).catch(error => {
           console.error(error);
         });
@@ -102,13 +105,7 @@ export class ItineraryViewerComponent implements OnInit {
 
       this.calculateMapCenterAndZoom();
     } catch (error) {
-      this._dialog.open(DialogComponent, {
-        data: {
-          title: 'Visualization Error',
-          text: "Sorry, but you don't have an itinerary to view. " +
-            "Please visit the suggestions page and generate one",
-        },
-      });
+      await this._router.navigate(["/home"])
     }
   }
 
@@ -199,7 +196,7 @@ export class ItineraryViewerComponent implements OnInit {
   }
 
   async deleteItinerary() {
-    await db.itineraries.delete(this._itinerary.getId());
+    await db.itineraries.delete(Number(this._route.snapshot.params['id']));
     await this._router.navigate(['/home']);
   }
 }

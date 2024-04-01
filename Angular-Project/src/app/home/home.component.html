@@ -68,22 +68,22 @@
               <mat-divider style="border: 1px solid #000"></mat-divider>
               <br/>
               <div>Name of itinerary</div>
-              <div><strong>{{ displayed?.name }}</strong></div>
+              <div><strong>{{ displayed.name }}</strong></div>
               <br/>
               <div id="destination">
                 <div class="destination-text">
                   <div>FROM</div>
-                  <div><strong>{{ displayed?.destination }}</strong></div>
+                  <div><strong>{{ displayed.destination }}</strong></div>
                   <br/>
                   <div>FLIGHT DATE</div>
-                  <div><strong>{{ displayed?.season == null ? "Unknown" : displayed?.season }}</strong></div>
+                  <div><strong>{{ displayed.season == null ? "Unknown" : displayed.season }}</strong></div>
                 </div>
                 <div class="destination-text">
                   <div>TO</div>
-                  <div><strong>{{ displayed?.destination }}</strong></div>
+                  <div><strong>{{ displayed.destination }}</strong></div>
                   <br/>
                   <div>NO. POIS</div>
-                  <div><strong>#{{ displayed?.poisNumber }}</strong></div>
+                  <div><strong>#{{ displayed.poisNumber }}</strong></div>
                 </div>
               </div>
             </div>

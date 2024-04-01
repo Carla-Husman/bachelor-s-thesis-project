@@ -176,7 +176,7 @@ export class SuggestComponent implements OnInit {
 
       if (response != null) {
         this._itinerary.setResult(response);
-        await this._router.navigate(['/itinerary-viewer']);
+        await this._router.navigate(['/itinerary-viewer/-1']);
       } else {
         this._dialog.open(DialogComponent, {
           data: {

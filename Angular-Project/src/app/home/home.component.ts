@@ -26,7 +26,6 @@ import {
   MatExpansionPanelDescription,
   MatExpansionPanelTitle
 } from "@angular/material/expansion";
-import {ItineraryService} from "../services/SendItinerary/itinerary.service";
 
 @Component({
   selector: 'app-home',
@@ -77,7 +76,7 @@ export class HomeComponent implements OnInit {
   thisYear = new Date().getFullYear();
   @ViewChild('avatar') myAvatar!: ElementRef;
 
-  constructor(private _router: Router, private _itinerary: ItineraryService) {
+  constructor(private _router: Router) {
   }
 
   async ngOnInit() {
@@ -160,8 +159,7 @@ export class HomeComponent implements OnInit {
   }
 
   async view(id: number) {
-    this._itinerary.setId(id);
-    await this._router.navigate(['/itinerary-viewer']);
+    await this._router.navigate([`/itinerary-viewer/${id}`]);
   }
 
   openImagePicker() {

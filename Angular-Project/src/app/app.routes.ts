@@ -9,6 +9,6 @@ export const routes: Routes = [
   {path: 'account', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
   {path: 'suggest-itinerary', component: SuggestComponent},
-  {path: 'itinerary-viewer', component: ItineraryViewerComponent},
+  {path: 'itinerary-viewer/:id', component: ItineraryViewerComponent},
   {path: '**', redirectTo: 'account'}
 ];
