@@ -20,7 +20,7 @@ import ro.tuiasi.student.carla.proiect.services.ChatGptService
 import ro.tuiasi.student.carla.proiect.services.FilterCitiesService
 
 @RestController
-@RequestMapping("/api/v1/test")
+@RequestMapping("/api/v1/relation-trip")
 @Tag(
     name = "Vacation Planner Controller", description = "This provides all operations for managing vacation planner"
 )

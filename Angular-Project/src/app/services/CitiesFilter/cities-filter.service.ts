@@ -11,7 +11,7 @@ export class CitiesFilterService {
   async filter(text: string) {
     if (text.length >= 2) {
       try {
-        const response = await fetch(`http://localhost:8080/api/v1/test/filter-cities/${text}`, {
+        const response = await fetch(`http://localhost:8080/api/v1/relation-trip/filter-cities/${text}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export class CitiesFilterService {
 
   async inList(city:string) {
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/test/city-exists/${city}`, {
+      const response = await fetch(`http://localhost:8080/api/v1/relation-trip/city-exists/${city}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ export class PlannerService {
     budget: null | string | undefined;
   }) {
     try {
-      const response = await fetch('http://localhost:8080/api/v1/test/temp', {
+      const response = await fetch('http://localhost:8080/api/v1/relation-trip/temp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
