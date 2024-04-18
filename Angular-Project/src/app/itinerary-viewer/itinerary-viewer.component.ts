@@ -40,6 +40,9 @@ export class ItineraryViewerComponent implements OnInit {
   isOpenPhone: boolean[] = [];
   isOpenWebsite: boolean[] = [];
   isOpenAddress: boolean[] = [];
+  viewInfo: string[] = []
+  type = 0;
+  clicked = false;
 
   @ViewChild('myGoogleMap', {static: true}) map!: GoogleMap;
   mapOptions: google.maps.MapOptions = {};
@@ -71,6 +74,12 @@ export class ItineraryViewerComponent implements OnInit {
           return confirmationMessage;
         });
         this.itineraries = this._itinerary.getResult();
+
+        this.itineraries.season = this.itineraries.season == null ? "Unknown" : this.itineraries.season.substring(0, 1).toUpperCase() + this.itineraries.season.substring(1).toLowerCase();
+        this.itineraries.transport = this.itineraries.transport == null ? "Unknown" : this.itineraries.transport.substring(0, 1).toUpperCase() + this.itineraries.transport.substring(1).toLowerCase()
+        this.itineraries.budget = this.itineraries.budget == null ? "Unknown" : this.itineraries.budget.substring(0, 1).toUpperCase() + this.itineraries.budget.substring(1).toLowerCase()
+        this.itineraries.attendant = this.itineraries.attendant == null ? "Unknown" : this.itineraries.attendant.substring(0, 1).toUpperCase() + this.itineraries.attendant.substring(1).toLowerCase()
+
         this.state = 1;
       } else {
         this.itineraries = await db.transaction('r', [db.itineraries], async () => {
@@ -104,6 +113,10 @@ export class ItineraryViewerComponent implements OnInit {
       }
 
       this.calculateMapCenterAndZoom();
+
+      for (let i = 0; i < this.itineraries.pois.length; ++i) {
+        this.viewInfo[i] = ""
+      }
     } catch (error) {
       await this._router.navigate(["/home"])
     }
@@ -186,8 +199,11 @@ export class ItineraryViewerComponent implements OnInit {
       photo: this.itineraries.photo,
       name: this.itineraries.name,
       destination: this.itineraries.destination,
+      startingPoint: this.itineraries.startingPoint,
       season: this.itineraries.season,
       attendant: this.itineraries.attendant,
+      transport: this.itineraries.transport,
+      budget: this.itineraries.budget,
       distance: this.itineraries.distance,
       poisNumber: this.itineraries.poisNumber,
       highlights: this.itineraries.highlights,
@@ -198,5 +214,32 @@ export class ItineraryViewerComponent implements OnInit {
   async deleteItinerary() {
     await db.itineraries.delete(Number(this._route.snapshot.params['id']));
     await this._router.navigate(['/home']);
+  }
+
+  clickToViewInformation(index: number, type: number) {
+    switch (type) {
+      case 1:
+        this.viewInfo[index] = this.itineraries.pois[index].address
+        break;
+      case 2:
+        this.viewInfo[index] = this.itineraries.pois[index].phone
+        break;
+      case 3:
+        this.viewInfo[index] = this.itineraries.pois[index].website
+        break;
+      case 4:
+        this.viewInfo[index] = this.itineraries.pois[index].schedule
+        break;
+      default:
+        break;
+    }
+
+    this.type = type;
+
+    for (let i = 0; i < this.itineraries.pois.length; i++) {
+      if (i !== index) {
+        this.viewInfo[i] = "";
+      }
+    }
   }
 }

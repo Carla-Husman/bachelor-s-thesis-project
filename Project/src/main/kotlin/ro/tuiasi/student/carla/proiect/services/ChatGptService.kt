@@ -83,4 +83,9 @@ class ChatGptService(
 
         return cities
     }
+
+    override fun generatePhoto(destination: String): String {
+        val prompt = "Generate a photo for a tour named $destination"
+        return chatGptGateway.generateImage(prompt)
+    }
 }

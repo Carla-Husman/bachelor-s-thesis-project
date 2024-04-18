@@ -35,9 +35,16 @@ class PlacesApiClient(
 
         val placeDetails = placeDetails(textSearch.getString("place_id"))
 
+        val photoReference = if (placeDetails.has("photos")) {
+            "https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photo_reference=" + textSearch.getJSONArray("photos")
+                .getJSONObject(0).getString("photo_reference") + "&key=" + placesApiKey
+        } else {
+            ""
+        }
+
         return PlaceDetails(
             placeId = textSearch.getString("place_id"),
-            //photoReference = textSearch.getJSONArray("photos").getJSONObject(0).getString("photo_reference"),
+            photoReference = photoReference,
             placeName = textSearch.getString("name"),
             placeAddress = textSearch.getString("formatted_address"),
             latitude = textSearch.getJSONObject("geometry").getJSONObject("location").getDouble("lat"),

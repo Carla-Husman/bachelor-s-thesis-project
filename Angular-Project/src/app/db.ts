@@ -1,4 +1,4 @@
-import Dexie, { Table } from 'dexie';
+import Dexie, {Table} from 'dexie';
 
 export interface Users {
   id?: number;
@@ -31,8 +31,11 @@ export interface Itineraries {
   photo: string;
   name: string;
   destination: string;
+  startingPoint: string;
   season: string | null;
   attendant: string | null;
+  transport: string | null;
+  budget: string | null;
   distance: number;
   poisNumber: number;
   highlights: string[];

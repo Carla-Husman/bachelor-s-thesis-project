@@ -1,10 +1,7 @@
 package ro.tuiasi.student.carla.proiect.gateways.chatgpt
 
-import org.json.JSONObject
 import org.springframework.stereotype.Service
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.client.OpenAiClient
-import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.Itinerary
-import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.ItineraryPoi
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.interfaces.IChatGptGateway
 
 @Service
@@ -14,5 +11,9 @@ class ChatGptGateway(
 
     override fun runPrompt(message: String): String? {
         return openAiClient.chatConversation(message)
+    }
+
+    override fun generateImage(message: String): String {
+        return openAiClient.imageGeneration(message)
     }
 }

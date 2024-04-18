@@ -6,13 +6,11 @@ import org.springframework.stereotype.Service
 import org.springframework.web.client.HttpClientErrorException
 import ro.tuiasi.student.carla.proiect.gateways.chatgpt.dto.ItineraryPoi
 import ro.tuiasi.student.carla.proiect.gateways.places.PlacesApiGateway
-import ro.tuiasi.student.carla.proiect.gateways.search.SearchApiGateway
 import ro.tuiasi.student.carla.proiect.gateways.search.dto.SearchDetails
 import ro.tuiasi.student.carla.proiect.gateways.webScraping.WebScrapingApiGateway
 import ro.tuiasi.student.carla.proiect.models.Poi
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerInput
 import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
-import ro.tuiasi.student.carla.proiect.services.interfaces.ICustomSearchService
 
 @Service
 class VacationPlannerService(
@@ -33,17 +31,19 @@ class VacationPlannerService(
         // not empty list means that we have a continent, a country or nothing as destination
         else {
             val cities = mutableMapOf<String, Int>()
+
+
             // for 2 random results, call web scraping and get the content
             val randomResults = searchResults.shuffled().take(2)
             for (element in randomResults) {
-                println("Link: ${element.link}")
+                println(element.link)
                 val content = webScrapingApiGateway.getWebScrapingResults(element.link) ?: ""
 
                 // for every content, call chatgpt and get the cities
                 if (content != "") {
                     val citiesFromContent =
                         chatGptService.extractCitiesFromText(content, vacationPlannerInput.destination)
-                    println("Cities from content: $citiesFromContent")
+
                     for (city in citiesFromContent) {
                         cities[city] = cities.getOrDefault(city, 0) + 1
                     }
@@ -66,7 +66,7 @@ class VacationPlannerService(
             val mostFrequentCities = cities.filterValues { it == maxFrequency }.keys.toList()
             mostFrequentCities.shuffled().first()
         }
-        println("Destination: $destination")
+
         // generate pois with chatgpt
         val chatGptOutput = chatGptService.generatePoi(
             city = destination,
@@ -84,12 +84,18 @@ class VacationPlannerService(
         // call places api for every poi
         val listOfPois: MutableList<Poi> = buildListOfPois(chatGptOutput.points_of_interest)
 
+        // call OpenAiApi for the photo
+        val photoOfItinerary = chatGptService.generatePhoto(destination)
+
         val vacationPlannerOutput = VacationPlannerOutput(
-            photo = "photo",
+            photo = photoOfItinerary,
             name = chatGptOutput.tour_name,
             destination = destination,
+            startingPoint = vacationPlannerInput.startingPoint,
             season = vacationPlannerInput.season,
             attendant = vacationPlannerInput.attendant,
+            budget = vacationPlannerInput.budget,
+            transport = vacationPlannerInput.transport,
             distance = 0.0,
             poisNumber = listOfPois.size,
             highlights = chatGptOutput.highlights,
@@ -112,7 +118,7 @@ class VacationPlannerService(
                 pois.add(
                     Poi(
                         name = placeDetails.placeName,
-                        photo = "",
+                        photo = placeDetails.photoReference,
                         description = it.description,
                         tags = it.tags,
                         stars = placeDetails.rating,

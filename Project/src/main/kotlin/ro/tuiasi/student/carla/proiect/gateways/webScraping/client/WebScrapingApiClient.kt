@@ -1,13 +1,17 @@
 package ro.tuiasi.student.carla.proiect.gateways.webScraping.client
 
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.http.HttpHeaders
+import org.springframework.http.client.ClientHttpRequestExecution
+import org.springframework.http.client.ClientHttpRequestInterceptor
+import org.springframework.http.client.ClientHttpResponse
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
 
 @Service
 class WebScrapingApiClient(
-    var restTemplate: RestTemplate,
+    final var restTemplate: RestTemplate,
 
     @Value("\${integration.gateway.web-scraping.endpoint}")
     private val webScrapingApiEndpoint: String,
@@ -21,8 +25,13 @@ class WebScrapingApiClient(
     @Value("\${integration.gateway.web-scraping.proxy-type}")
     private val webScrapingProxyType: String,
 ) {
-    fun getContentFromUrl(url: String): String? {
+    init {
         restTemplate = RestTemplate()
+        restTemplate.interceptors.add(UserAgentInterceptor())
+    }
+
+    fun getContentFromUrl(url: String): String? {
+        //restTemplate = RestTemplate()
         val uri = UriComponentsBuilder
             .fromUriString(webScrapingApiEndpoint)
             .queryParam("url", url)
@@ -50,5 +59,16 @@ class WebScrapingApiClient(
 
         // ?
         return noSpaces.replace(Regex("[a-zA-Z0-9-]+?\\{.*?\\}.*"), " ").trim()
+    }
+
+    private class UserAgentInterceptor : ClientHttpRequestInterceptor {
+        override fun intercept(
+            request: org.springframework.http.HttpRequest,
+            body: ByteArray,
+            execution: ClientHttpRequestExecution
+        ): ClientHttpResponse {
+            request.headers[HttpHeaders.USER_AGENT] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.1 Safari/537.36"
+            return execution.execute(request, body)
+        }
     }
 }

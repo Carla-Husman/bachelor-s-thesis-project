@@ -155,7 +155,7 @@ export class SuggestComponent implements OnInit {
       destination: this.thirdFormGroup.get('destination')?.value,
       startingPoint: this.firstFormGroup.get('startingPoint')?.value,
       age: this.firstFormGroup.get('age')?.value == "" ? null : this.firstFormGroup.get('age')?.value,
-      gender: this.firstFormGroup.get('gender')?.value == undefined ? null : this.firstFormGroup.get('gender')?.value?.toUpperCase(),
+      gender: this.firstFormGroup.get('gender')?.value == undefined || this.firstFormGroup.get('gender')?.value == "" ? null : this.firstFormGroup.get('gender')?.value?.toUpperCase(),
       attendant: this.secondFormGroup.get('attendant')?.value == "" ? null : this.secondFormGroup.get('attendant')?.value?.toUpperCase(),
       season: this.secondFormGroup.get('season')?.value == "" ? null : this.secondFormGroup.get('season')?.value?.toUpperCase(),
       transport: this.secondFormGroup.get('transport')?.value == "" ? null : this.secondFormGroup.get('transport')?.value?.toUpperCase(),
@@ -163,6 +163,8 @@ export class SuggestComponent implements OnInit {
       interests: interestss,
       otherInterests: this.optionalTags.length == 0 ? null : otherInterests,
     };
+
+    console.log(planner_input)
 
     const dialogRef = this._dialog.open(LoadingComponent, {
       disableClose: true,
@@ -178,6 +180,7 @@ export class SuggestComponent implements OnInit {
         this._itinerary.setResult(response);
         await this._router.navigate(['/itinerary-viewer/-1']);
       } else {
+        console.log("a intrat pe else")
         this._dialog.open(DialogComponent, {
           data: {
             title: 'Itinerary Generation Error',
@@ -212,14 +215,19 @@ export class SuggestComponent implements OnInit {
   destinationHasError = "";
 
   async onNextThree() {
-    await this._citiesFilter.inList(<string>this.thirdFormGroup.get("destination")?.value).then(response => {
-      if (response) {
-        this.destinationHasError = "";
-        this.stepper.next();
-      } else {
-        this.destinationHasError = "Your choice isn't in our database or  doesn't respect the format.";
-      }
-    });
+    if (this.thirdFormGroup.get("destination")?.value != "") {
+      await this._citiesFilter.inList(<string>this.thirdFormGroup.get("destination")?.value).then(response => {
+        if (response) {
+          this.destinationHasError = "";
+          this.stepper.next();
+        } else {
+          this.destinationHasError = "Your choice isn't in our database or  doesn't respect the format.";
+        }
+      });
+    } else {
+      this.destinationHasError = "";
+      this.stepper.next();
+    }
   }
 
   tagsHasError = "";

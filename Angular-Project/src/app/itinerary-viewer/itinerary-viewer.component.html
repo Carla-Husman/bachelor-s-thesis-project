@@ -6,7 +6,7 @@
       </button>
 
       <div class="image-container">
-        <img [src]="itineraries.photo == 'photo' ? 'assets/images/no-image-available.jpg' : itineraries.photo"
+        <img [src]="itineraries.photo == '' ? 'assets/images/no-image-available.jpg' : itineraries.photo"
              alt="Photo of itinerary"/>
         <div class="overlay-text">{{ itineraries.name }}</div>
       </div>
@@ -49,7 +49,7 @@
             <mat-icon id="delete">delete</mat-icon>
           </button>
         } @else if (state == 1) {
-          <button mat-mini-fab color="primary" (click)="saveItinerary()">
+          <button mat-mini-fab color="primary" [disabled]="clicked" (click)="saveItinerary(); clicked = true;">
             <mat-icon id="favorite">favorite</mat-icon>
           </button>
         }
@@ -94,6 +94,7 @@
 
             <div class="card">
               <div (mouseover)="isOpenAddress[$index] = true" (mouseleave)="isOpenAddress[$index] = false"
+                   (click)="clickToViewInformation($index, 1)"
                    cdkOverlayOrigin
                    #trigger="cdkOverlayOrigin">
                 Address
@@ -113,6 +114,7 @@
 
             <div class="card">
               <div (mouseover)="isOpenPhone[$index] = true" (mouseleave)="isOpenPhone[$index] = false"
+                   (click)="clickToViewInformation($index, 2)"
                    cdkOverlayOrigin
                    #trigger="cdkOverlayOrigin">
                 Phone
@@ -132,6 +134,7 @@
 
             <div class="card">
               <div (mouseover)="isOpenWebsite[$index] = true" (mouseleave)="isOpenWebsite[$index] = false"
+                   (click)="clickToViewInformation($index, 3)"
                    cdkOverlayOrigin
                    #trigger="cdkOverlayOrigin">
                 Website
@@ -151,6 +154,7 @@
 
             <div class="card" id="schedule">
               <div (mouseover)="isOpenSchedule[$index] = true" (mouseleave)="isOpenSchedule[$index] = false"
+                   (click)="clickToViewInformation($index, 4)"
                    cdkOverlayOrigin
                    #trigger="cdkOverlayOrigin">
                 Schedule
@@ -171,6 +175,22 @@
               </ng-template>
             </div>
           </div>
+
+          @if (viewInfo[$index] != "") {
+            @if (type == 4) {
+              <div style="padding-left: 20px; padding-top: 20px">
+                @for (line of viewInfo[$index]; track line) {
+                  <div>
+                    {{ line }}
+                  </div>
+                }
+              </div>
+            } @else {
+              <div style="padding-left: 20px; padding-top: 20px">
+                {{ viewInfo[$index] }}
+              </div>
+            }
+          }
 
           <div id="description">
             {{ poi.description }}
