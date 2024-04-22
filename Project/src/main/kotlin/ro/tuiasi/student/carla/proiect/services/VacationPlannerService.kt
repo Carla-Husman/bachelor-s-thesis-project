@@ -32,11 +32,9 @@ class VacationPlannerService(
         else {
             val cities = mutableMapOf<String, Int>()
 
-
             // for 2 random results, call web scraping and get the content
             val randomResults = searchResults.shuffled().take(2)
             for (element in randomResults) {
-                println(element.link)
                 val content = webScrapingApiGateway.getWebScrapingResults(element.link) ?: ""
 
                 // for every content, call chatgpt and get the cities
@@ -82,7 +80,7 @@ class VacationPlannerService(
         )
 
         // call places api for every poi
-        val listOfPois: MutableList<Poi> = buildListOfPois(chatGptOutput.points_of_interest)
+        val listOfPois: MutableList<Poi> = buildListOfPois(chatGptOutput.points_of_interest, destination)
 
         // call OpenAiApi for the photo
         val photoOfItinerary = chatGptService.generatePhoto(destination)
@@ -109,11 +107,11 @@ class VacationPlannerService(
         return vacationPlannerOutput
     }
 
-    private fun buildListOfPois(pointsOfInterest: List<ItineraryPoi>): MutableList<Poi> {
+    private fun buildListOfPois(pointsOfInterest: List<ItineraryPoi>, destination: String): MutableList<Poi> {
         val pois = mutableListOf<Poi>()
 
         pointsOfInterest.forEach {
-            val placeDetails = placesApiGateway.searchPlace(it.name)
+            val placeDetails = placesApiGateway.searchPlace(it.name + ", " + destination)
             if (placeDetails != null) {
                 pois.add(
                     Poi(

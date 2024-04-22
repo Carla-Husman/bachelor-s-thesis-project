@@ -32,8 +32,3 @@ integration:
       api-key: dMbVtXBoB4yaNBDv6dYBDmzVS7oWcHMw
       render-js: 0
       proxy-type: datacenter
-
-
-
-# Endpoint to access the cache
-# https://webcache.googleusercontent.com/search?q=cache:CACHEDID:LINK
