@@ -43,6 +43,7 @@ export class ItineraryViewerComponent implements OnInit {
   viewInfo: string[] = []
   type = 0;
   clicked = false;
+  itinerariesPhoto = ''
 
   @ViewChild('myGoogleMap', {static: true}) map!: GoogleMap;
   mapOptions: google.maps.MapOptions = {};
@@ -69,7 +70,7 @@ export class ItineraryViewerComponent implements OnInit {
 
       if (Number(this._route.snapshot.params['id']) == -1) {
         window.addEventListener("beforeunload", function (e) {
-          var confirmationMessage = "\o/";
+          const confirmationMessage = "\o/";
           e.returnValue = confirmationMessage;
           return confirmationMessage;
         });
@@ -79,7 +80,7 @@ export class ItineraryViewerComponent implements OnInit {
         this.itineraries.transport = this.itineraries.transport == null ? "Unknown" : this.itineraries.transport.substring(0, 1).toUpperCase() + this.itineraries.transport.substring(1).toLowerCase()
         this.itineraries.budget = this.itineraries.budget == null ? "Unknown" : this.itineraries.budget.substring(0, 1).toUpperCase() + this.itineraries.budget.substring(1).toLowerCase()
         this.itineraries.attendant = this.itineraries.attendant == null ? "Unknown" : this.itineraries.attendant.substring(0, 1).toUpperCase() + this.itineraries.attendant.substring(1).toLowerCase()
-
+        
         this.state = 1;
       } else {
         this.itineraries = await db.transaction('r', [db.itineraries], async () => {

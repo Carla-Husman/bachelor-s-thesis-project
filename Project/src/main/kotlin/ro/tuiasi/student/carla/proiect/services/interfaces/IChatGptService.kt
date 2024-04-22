@@ -15,6 +15,4 @@ interface IChatGptService {
     ): Itinerary?
 
     fun extractCitiesFromText(text: String, destination: String): List<String>
-
-    fun generatePhoto(destination: String): String
 }

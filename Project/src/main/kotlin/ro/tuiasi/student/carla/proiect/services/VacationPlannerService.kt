@@ -15,6 +15,7 @@ import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
 @Service
 class VacationPlannerService(
     private val chatGptService: ChatGptService,
+    private val imageGeneratorService: ImageGeneratorService,
     private val customSearchService: CustomSearchService,
     private val placesApiGateway: PlacesApiGateway,
     private val webScrapingApiGateway: WebScrapingApiGateway
@@ -83,7 +84,7 @@ class VacationPlannerService(
         val listOfPois: MutableList<Poi> = buildListOfPois(chatGptOutput.points_of_interest, destination)
 
         // call OpenAiApi for the photo
-        val photoOfItinerary = chatGptService.generatePhoto(destination)
+        val photoOfItinerary = imageGeneratorService.generateImage(destination)
 
         val vacationPlannerOutput = VacationPlannerOutput(
             photo = photoOfItinerary,
