@@ -1,15 +1,8 @@
+Albania
 Berat, Albania
 Çorovodë, Albania
 Kuçovë, Albania
-Poliçan, Albania
-Ura Vajgurore, Albania
-Bulqizë, Albania
-Burrel, Albania
-Klos, Albania
-Peshkopi, Albania
-Ulëz, Albania
 Durrës, Albania
-Fushë-Krujë, Albania
 Krujë, Albania
 Shijak, Albania
 Sukth, Albania
@@ -18,59 +11,38 @@ Divjakë, Albania
 Fier, Albania
 Fier-Çifçi, Albania
 Lushnjë, Albania
-Patos, Albania
-Patos Fshat, Albania
 Roskovec, Albania
 Gjinkar, Albania
 Gjirokastër, Albania
 Këlcyrë, Albania
 Lazarat, Albania
 Libohovë, Albania
-Memaliaj, Albania
 Përmet, Albania
 Tepelenë, Albania
 Bilisht, Albania
-Ersekë, Albania
 Korçë, Albania
 Leskovik, Albania
-Libonik, Albania
-Maliq, Albania
 Mborje, Albania
 Pogradec, Albania
-Velçan, Albania
 Voskopojë, Albania
 Bajram Curri, Albania
 Krumë, Albania
 Kukës, Albania
-Kurbnesh, Albania
-Laç, Albania
 Lezhë, Albania
-Mamurras, Albania
-Milot, Albania
-Rrëshen, Albania
-Rubik, Albania
 Shëngjin, Albania
-Fushë-Arrëz, Albania
-Koplik, Albania
-Pukë, Albania
 Shkodër, Albania
 Vau i Dejës, Albania
-Vukatanë, Albania
 Kamëz, Albania
 Kavajë, Albania
-Krrabë, Albania
-Rrogozhinë, Albania
-Sinaballaj, Albania
 Tirana, Albania
-Vorë, Albania
 Delvinë, Albania
 Himarë, Albania
 Konispol, Albania
 Ksamil, Albania
 Orikum, Albania
 Sarandë, Albania
-Selenicë, Albania
 Vlorë, Albania
+Albania
 Adrar, Algeria
 Aoulef, Algeria
 Reggane, Algeria
@@ -329,8 +301,9 @@ Ouled Mimoun, Algeria
 Remchi, Algeria
 Sebdou, Algeria
 Sidi Abdelli, Algeria
-Sidi Senoussi سيدي سنوسي, Algeria
+Sidi Senoussi, Algeria
 Tlemcen, Algeria
+Andorra
 Andorra la Vella, Andorra
 Canillo, Andorra
 El Tarter, Andorra
@@ -341,6 +314,7 @@ Arinsal, Andorra
 la Massana, Andorra
 Ordino, Andorra
 Sant Julià de Lòria, Andorra
+Angola
 Caxito, Angola
 Benguela, Angola
 Catumbela, Angola
@@ -380,6 +354,7 @@ Luena, Angola
 Uíge, Angola
 N'zeto, Angola
 Soio, Angola
+Antigua And Barbuda
 Codrington, Antigua And Barbuda
 Piggotts, Antigua And Barbuda
 Saint John’s, Antigua And Barbuda
@@ -388,6 +363,7 @@ Falmouth, Antigua And Barbuda
 Liberta, Antigua And Barbuda
 All Saints, Antigua And Barbuda
 Parham, Antigua And Barbuda
+Argentina
 Balvanera, Argentina
 Barracas, Argentina
 Belgrano, Argentina
@@ -1093,6 +1069,7 @@ Tafí del Valle, Argentina
 Tafí Viejo, Argentina
 Trancas, Argentina
 Yerba Buena, Argentina
+Armenia
 Agarakavan, Armenia
 Aparan, Armenia
 Aragats, Armenia
@@ -1394,6 +1371,7 @@ Jrashen, Armenia
 K’anak’erravan, Armenia
 Vardadzor, Armenia
 Yerevan, Armenia
+Australia
 Acton, Australia
 Ainslie, Australia
 Amaroo, Australia
@@ -5221,6 +5199,7 @@ Yanchep, Australia
 Yangebup, Australia
 Yokine, Australia
 York, Australia
+Austria
 Andau, Austria
 Antau, Austria
 Apetlon, Austria
@@ -7314,6 +7293,7 @@ Viktorsberg, Austria
 Warth, Austria
 Weiler, Austria
 Wolfurt, Austria
+Azerbaijan
 Ceyranbatan, Azerbaijan
 Digah, Azerbaijan
 Gyuzdek, Azerbaijan
@@ -7479,6 +7459,7 @@ Mamrux, Azerbaijan
 Qandax, Azerbaijan
 Zaqatala, Azerbaijan
 Zardob, Azerbaijan
+Bahrain
 Jidd Ḩafş, Bahrain
 Manama, Bahrain
 Sitrah, Bahrain
@@ -7488,6 +7469,7 @@ Al Muharraq, Bahrain
 Ar Rifā‘, Bahrain
 Dār Kulayb, Bahrain
 Madīnat ‘Īsá, Bahrain
+Bangladesh
 Bhāndāria, Bangladesh
 Bhola, Bangladesh
 Burhānuddin, Bangladesh
@@ -7586,6 +7568,7 @@ Habiganj, Bangladesh
 Jahedpur, Bangladesh
 Maulavi Bāzār, Bangladesh
 Sylhet, Bangladesh
+Barbados
 Oistins, Barbados
 Greenland, Barbados
 Holetown, Barbados
@@ -7593,6 +7576,7 @@ Bathsheba, Barbados
 Bridgetown, Barbados
 Speightstown, Barbados
 Crane, Barbados
+Belarus
 Antopal’, Belarus
 Asnyezhytsy, Belarus
 Baranovichi, Belarus
@@ -7820,6 +7804,7 @@ Ushachy, Belarus
 Vidzy, Belarus
 Vitebsk, Belarus
 Vyerkhnyadzvinsk, Belarus
+Belgium
 Brussels, Belgium
 Aalst, Belgium
 Aalter, Belgium
@@ -8354,6 +8339,7 @@ Wavre, Belgium
 Welkenraedt, Belgium
 Wellin, Belgium
 Yvoir, Belgium
+Belize
 San Pedro, Belize
 Belmopan, Belize
 Benque Viejo el Carmen, Belize
@@ -8366,6 +8352,7 @@ Shipyard, Belize
 Dangriga, Belize
 Placencia, Belize
 Punta Gorda, Belize
+Benin
 Banikoara, Benin
 Kandi, Benin
 Malanville, Benin
@@ -8397,10 +8384,12 @@ Sakété, Benin
 Abomey, Benin
 Bohicon, Benin
 Cové, Benin
+Bermuda
 Hamilton, Bermuda
 Somerset, Bermuda
 Southampton, Bermuda
 Warwick, Bermuda
+Bhutan
 Jakar, Bhutan
 Daphu, Bhutan
 Phuntsholing, Bhutan
@@ -8425,6 +8414,7 @@ Tsirang, Bhutan
 Trashi Yangtse, Bhutan
 Panbang, Bhutan
 Shemgang, Bhutan
+Bolivia
 Guayaramerín, Bolivia
 Reyes, Bolivia
 Riberalta, Bolivia
@@ -8539,11 +8529,13 @@ Entre Ríos, Bolivia
 Tarija, Bolivia
 Villamontes, Bolivia
 Yacuiba, Bolivia
+Bonaire, Sint Eustatius and Saba
 Dorp Tera Kora, Bonaire, Sint Eustatius and Saba
 Oranjestad, Bonaire, Sint Eustatius and Saba
 Rincon, Bonaire, Sint Eustatius and Saba
 St. Johns, Bonaire, Sint Eustatius and Saba
 The Bottom, Bonaire, Sint Eustatius and Saba
+Bosnia and Herzegovina
 Brčko, Bosnia and Herzegovina
 Brka, Bosnia and Herzegovina
 Banovići, Bosnia and Herzegovina
@@ -8770,6 +8762,7 @@ Višegrad, Bosnia and Herzegovina
 Vlasenica, Bosnia and Herzegovina
 Živinice, Bosnia and Herzegovina
 Zvornik, Bosnia and Herzegovina
+Botswana
 Gobojango, Botswana
 Gweta, Botswana
 Kalamare, Botswana
@@ -8845,6 +8838,7 @@ Kanye, Botswana
 Khakhea, Botswana
 Mosopa, Botswana
 Sekoma, Botswana
+Brazil
 Brasiléia, Brazil
 Cruzeiro do Sul, Brazil
 Feijó, Brazil
@@ -11115,6 +11109,7 @@ Natividade, Brazil
 Nazaré, Brazil
 Palmas, Brazil
 Taguatinga, Brazil
+Brunei
 Kuala Belait, Brunei
 Seria, Brunei
 Bandar Seri Begawan, Brunei
@@ -11122,6 +11117,7 @@ Kapok, Brunei
 Mentiri, Brunei
 Bangar, Brunei
 Tutong, Brunei
+Bulgaria
 Bansko, Bulgaria
 Belitsa, Bulgaria
 Blagoevgrad, Bulgaria
@@ -11395,6 +11391,7 @@ Bolyarovo, Bulgaria
 Elhovo, Bulgaria
 Straldzha, Bulgaria
 Yambol, Bulgaria
+Burkina Faso
 Barani, Burkina Faso
 Boromo, Burkina Faso
 Dédougou, Burkina Faso
@@ -11442,6 +11439,7 @@ Gorom-Gorom, Burkina Faso
 Batié, Burkina Faso
 Dano, Burkina Faso
 Diébougou, Burkina Faso
+Burundi
 Bubanza, Burundi
 Bujumbura, Burundi
 Bururi, Burundi
@@ -11459,6 +11457,7 @@ Ngozi, Burundi
 Rumonge, Burundi
 Rutana, Burundi
 Ruyigi, Burundi
+Cambodia
 Mongkol Borei, Cambodia
 Paoy Paet, Cambodia
 Sisophon, Cambodia
@@ -11494,6 +11493,7 @@ Stung Treng, Cambodia
 Svay Rieng, Cambodia
 Phumĭ Véal Srê, Cambodia
 Takeo, Cambodia
+Cameroon
 Bankim, Cameroon
 Banyo, Cameroon
 Bélel, Cameroon
@@ -11616,6 +11616,7 @@ Foumbot, Cameroon
 Mbouda, Cameroon
 Ngou, Cameroon
 Tonga, Cameroon
+Canada
 Airdrie, Canada
 Athabasca, Canada
 Banff, Canada
@@ -12627,6 +12628,7 @@ Wynyard, Canada
 Yorkton, Canada
 Watson Lake, Canada
 Whitehorse, Canada
+Cape Verde
 Sal Rei, Cape Verde
 Nova Sintra, Cape Verde
 Vila do Maio, Cape Verde
@@ -12651,6 +12653,7 @@ Calheta, Cape Verde
 Mindelo, Cape Verde
 Tarrafal, Cape Verde
 Tarrafal de São Nicolau, Cape Verde
+Chad
 Moussoro, Chad
 Ati, Chad
 Oum Hadjer, Chad
@@ -12693,6 +12696,7 @@ Laï, Chad
 Aozou, Chad
 Biltine, Chad
 Iriba, Chad
+Chile
 Chile Chico, Chile
 Cochrane, Chile
 Coyhaique, Chile
@@ -12874,6 +12878,7 @@ Santa María, Chile
 Valparaíso, Chile
 Villa Alemana, Chile
 Viña del Mar, Chile
+China
 Anqing, China
 Bengbu, China
 Bozhou, China
@@ -14005,6 +14010,7 @@ Zhaobaoshan, China
 Zhicheng, China
 Zhoushan, China
 Zhuji, China
+Colombia
 El Encanto, Colombia
 La Chorrera, Colombia
 La Pedrera, Colombia
@@ -15032,6 +15038,7 @@ Cumaribo, Colombia
 La Primavera, Colombia
 Puerto Carreño, Colombia
 Santa Rosalia, Colombia
+Comoros
 Adda-Douéni, Comoros
 Antsahé, Comoros
 Assimpao, Comoros
@@ -15120,6 +15127,7 @@ Mtakoudja, Comoros
 Nioumachoua, Comoros
 Ouanani, Comoros
 Ziroudani, Comoros
+Congo
 Kayes, Congo
 Madingou, Congo
 Brazzaville, Congo
@@ -15137,6 +15145,7 @@ Pointe-Noire, Congo
 Kinkala, Congo
 Ouésso, Congo
 Sémbé, Congo
+Costa Rica
 Alajuela, Costa Rica
 Atenas, Costa Rica
 Bijagua, Costa Rica
@@ -15265,6 +15274,7 @@ San Vicente de Moravia, Costa Rica
 Santa Ana, Costa Rica
 Santiago, Costa Rica
 Tejar, Costa Rica
+Cote D'Ivoire
 Abidjan, Cote D'Ivoire
 Abobo, Cote D'Ivoire
 Anyama, Cote D'Ivoire
@@ -15325,6 +15335,7 @@ Bondoukou, Cote D'Ivoire
 Bouna, Cote D'Ivoire
 Sinfra, Cote D'Ivoire
 Tanda, Cote D'Ivoire
+Croatia
 Bjelovar, Croatia
 Čazma, Croatia
 Daruvar, Croatia
@@ -15814,6 +15825,7 @@ Sesvete, Croatia
 Strmec, Croatia
 Zadvorsko, Croatia
 Zagreb, Croatia
+Cuba
 Alquízar, Cuba
 Artemisa, Cuba
 Bahía Honda, Cuba
@@ -15965,6 +15977,7 @@ Rancho Veloz, Cuba
 Ranchuelo, Cuba
 Sagua la Grande, Cuba
 Santa Clara, Cuba
+Cyprus
 Acherítou, Cyprus
 Áchna, Cyprus
 Avgórou, Cyprus
@@ -16052,6 +16065,7 @@ Pégeia, Cyprus
 Pólis, Cyprus
 Tála, Cyprus
 Tsáda, Cyprus
+Czech Republic
 Bavorov, Czech Republic
 Bechyně, Czech Republic
 Benešov nad Černou, Czech Republic
@@ -17320,6 +17334,7 @@ Zlechov, Czech Republic
 Zlín, Czech Republic
 Žlutava, Czech Republic
 Zubří, Czech Republic
+Denmark
 Åkirkeby, Denmark
 Albertslund, Denmark
 Ballerup, Denmark
@@ -17650,6 +17665,7 @@ Viby, Denmark
 Vindinge, Denmark
 Vipperød, Denmark
 Vordingborg, Denmark
+Djibouti
 'Ali Sabieh, Djibouti
 Goubétto, Djibouti
 Holhol, Djibouti
@@ -17662,6 +17678,7 @@ Alaïli Ḏaḏḏa‘, Djibouti
 Obock, Djibouti
 Dorra, Djibouti
 Tadjourah, Djibouti
+Dominica
 Calibishie, Dominica
 Marigot, Dominica
 Wesley, Dominica
@@ -17679,6 +17696,7 @@ La Plaine, Dominica
 Mahaut, Dominica
 Pont Cassé, Dominica
 Colihaut, Dominica
+Dominican Republic
 Azua, Dominican Republic
 El Guayabal, Dominican Republic
 Estebanía, Dominican Republic
@@ -17873,6 +17891,7 @@ La Caya, Dominican Republic
 Laguna Salada, Dominican Republic
 Maizal, Dominican Republic
 Mao, Dominican Republic
+East Timor
 Aileu, East Timor
 Ainaro, East Timor
 Baukau, East Timor
@@ -17888,6 +17907,7 @@ Maubara, East Timor
 Manatutu, East Timor
 Same, East Timor
 Viqueque, East Timor
+Ecuador
 Cuenca, Ecuador
 Gualaceo, Ecuador
 La Unión, Ecuador
@@ -17997,6 +18017,7 @@ Pelileo, Ecuador
 Píllaro, Ecuador
 Yantzaza, Ecuador
 Zamora, Ecuador
+Egypt
 Alexandria, Egypt
 Abu Simbel, Egypt
 Aswan, Egypt
@@ -18114,6 +18135,7 @@ Saint Catherine, Egypt
 Sharm el-Sheikh, Egypt
 Ain Sukhna, Egypt
 Suez, Egypt
+El Salvador
 Ahuachapán, El Salvador
 Atiquizaya, El Salvador
 Concepción de Ataco, El Salvador
@@ -18213,6 +18235,7 @@ San Agustín, El Salvador
 Santa Elena, El Salvador
 Santiago de María, El Salvador
 Usulután, El Salvador
+Equatorial Guinea
 San Antonio de Palé, Equatorial Guinea
 Malabo, Equatorial Guinea
 Rebola, Equatorial Guinea
@@ -18236,6 +18259,7 @@ Añisoc, Equatorial Guinea
 Ayene, Equatorial Guinea
 Mongomo, Equatorial Guinea
 Nsok, Equatorial Guinea
+Eritrea
 Keren, Eritrea
 Adi Keyh, Eritrea
 Dek’emhāre, Eritrea
@@ -18247,6 +18271,7 @@ Asmara, Eritrea
 Massawa, Eritrea
 Assab, Eritrea
 Edd, Eritrea
+Estonia
 Aruküla, Estonia
 Haabneeme, Estonia
 Harku, Estonia
@@ -18353,6 +18378,7 @@ Rõuge, Estonia
 Vana-Antsla, Estonia
 Värska, Estonia
 Võru, Estonia
+Ethiopia
 Addis Ababa, Ethiopia
 Asaita, Ethiopia
 Āwash, Ethiopia
@@ -18457,12 +18483,14 @@ Inda Silasē, Ethiopia
 Korem, Ethiopia
 Maych’ew, Ethiopia
 Mek'ele, Ethiopia
+Fiji Islands
 Suva, Fiji Islands
 Levuka, Fiji Islands
 Labasa, Fiji Islands
 Ba, Fiji Islands
 Lautoka, Fiji Islands
 Nadi, Fiji Islands
+Finland
 Brändö, Finland
 Eckerö, Finland
 Finström, Finland
@@ -18884,6 +18912,7 @@ Tuusula, Finland
 Vantaa, Finland
 Vihti, Finland
 Vuosaari, Finland
+France
 Abondance, France
 Abrest, France
 Aigueblanche, France
@@ -27462,6 +27491,7 @@ Visan, France
 Vitrolles, France
 Volonne, France
 Volx, France
+Gambia The
 Cocobeach, Gabon
 Libreville, Gabon
 Ntoum, Gabon
@@ -27489,6 +27519,7 @@ Port-Gentil, Gabon
 Bitam, Gabon
 Mitzic, Gabon
 Oyem, Gabon
+Gambia The
 Bakau, Gambia The
 Banjul, Gambia The
 Serekunda, Gambia The
@@ -27562,6 +27593,7 @@ Brikama, Gambia The
 Gunjur, Gambia The
 Somita, Gambia The
 Sukuta, Gambia The
+Georgia
 Akhaldaba, Georgia
 Batumi, Georgia
 Chakvi, Georgia
@@ -27639,6 +27671,7 @@ Khashuri, Georgia
 Surami, Georgia
 Ts’khinvali, Georgia
 Tbilisi, Georgia
+Germany
 Aach, Germany
 Aalen, Germany
 Abstatt, Germany
@@ -34636,6 +34669,7 @@ Wünschendorf, Germany
 Wurzbach, Germany
 Zella-Mehlis, Germany
 Zeulenroda, Germany
+Greece
 Agogo, Ghana
 Bekwai, Ghana
 Ejura, Ghana
@@ -34702,6 +34736,7 @@ Sekondi-Takoradi, Ghana
 Shama Junction, Ghana
 Takoradi, Ghana
 Tarkwa, Ghana
+Greece
 Acharnés, Greece
 Aegina, Greece
 Afidnés, Greece
@@ -35707,6 +35742,7 @@ Siátista, Greece
 Tsotíli, Greece
 Velventós, Greece
 Xinó Neró, Greece
+Grenada
 Hillsborough, Grenada
 Grenville, Grenada
 Saint David’s, Grenada
@@ -35714,6 +35750,7 @@ Saint George's, Grenada
 Gouyave, Grenada
 Victoria, Grenada
 Sauteurs, Grenada
+Guatemala
 Cahabón, Guatemala
 Chisec, Guatemala
 Cobán, Guatemala
@@ -36016,6 +36053,7 @@ San Francisco El Alto, Guatemala
 Santa Lucia La Reforma, Guatemala
 Santa María Chiquimula, Guatemala
 Totonicapán, Guatemala
+Guinea
 Boffa, Guinea
 Boké, Guinea
 Fria, Guinea
@@ -36052,6 +36090,7 @@ Lola, Guinea
 Macenta, Guinea
 Nzérékoré, Guinea
 Yomou, Guinea
+Guinea-Bissau
 Bafatá, Guinea-Bissau
 Quinhámel, Guinea-Bissau
 Bolama, Guinea-Bissau
@@ -36065,6 +36104,7 @@ Mansôa, Guinea-Bissau
 Buba, Guinea-Bissau
 Catió, Guinea-Bissau
 Quebo, Guinea-Bissau
+Guyana
 Mabaruma, Guyana
 Bartica, Guyana
 Georgetown, Guyana
@@ -36077,6 +36117,7 @@ Anna Regina, Guyana
 Mahdia, Guyana
 Linden, Guyana
 Lethem, Guyana
+Honduras
 Anse Rouge, Haiti
 Désarmes, Haiti
 Dessalines, Haiti
@@ -36179,6 +36220,7 @@ Jacmel, Haiti
 Kotdefè, Haiti
 Marigot, Haiti
 Thiotte, Haiti
+Honduras
 Arizona, Honduras
 Atenas de San Cristóbal, Honduras
 Corozal, Honduras
@@ -36630,6 +36672,7 @@ Trojas, Honduras
 Victoria, Honduras
 Yorito, Honduras
 Yoro, Honduras
+Hong Kong S.A.R.
 Central, Hong Kong S.A.R.
 Tai O, Hong Kong S.A.R.
 Sai Kung, Hong Kong S.A.R.
@@ -36644,6 +36687,7 @@ Tsuen Wan, Hong Kong S.A.R.
 Causeway Bay, Hong Kong S.A.R.
 Wan Chai, Hong Kong S.A.R.
 Wong Tai Sin, Hong Kong S.A.R.
+Iceland
 Ágasegyháza, Hungary
 Akasztó, Hungary
 Apostag, Hungary
@@ -37496,6 +37540,7 @@ Zalaegerszeg, Hungary
 Zalakomár, Hungary
 Zalalövő, Hungary
 Zalaszentgrót, Hungary
+Iceland
 Álftanes, Iceland
 Garðabær, Iceland
 Hafnarfjörður, Iceland
@@ -37528,6 +37573,7 @@ Borgarnes, Iceland
 Ólafsvík, Iceland
 Stykkishólmur, Iceland
 Ísafjörður, Iceland
+India
 Bamboo Flat, India
 Port Blair, India
 Addanki, India
@@ -39382,6 +39428,7 @@ Sodpur, India
 Solap, India
 Tarakeswar, India
 Ula, India
+Indonesia
 Banda Aceh, Indonesia
 Bireun, Indonesia
 Langsa, Indonesia
@@ -39771,6 +39818,7 @@ Teluk Nibung, Indonesia
 Tomok Bolon, Indonesia
 Tongging, Indonesia
 Tuktuk Sonak, Indonesia
+Iran
 Hashtgerd, Iran
 Karaj, Iran
 Ahram, Iran
@@ -39892,6 +39940,7 @@ Yazd, Iran
 Abhar, Iran
 Alvand, Iran
 Khorramdarreh, Iran
+Ireland
 Athenry, Ireland
 Ballaghaderreen, Ireland
 Ballina, Ireland
@@ -40237,6 +40286,7 @@ Newtown Cunningham, Ireland
 Ramelton, Ireland
 Raphoe, Ireland
 Virginia, Ireland
+Israel
 Bet Dagan, Israel
 Bnei Ayish, Israel
 Elyakhin, Israel
@@ -40366,6 +40416,7 @@ Ramat Gan, Israel
 Ramat HaSharon, Israel
 Tel Aviv, Israel
 Yehud-Monosson, Israel
+Italy
 Abbateggio, Italy
 Acciano, Italy
 Aielli, Italy
@@ -50175,6 +50226,7 @@ Zevio, Italy
 Zoppè di Cadore, Italy
 Zovencedo, Italy
 Zugliano, Italy
+Japan
 Alston, Jamaica
 Ashley, Jamaica
 Banks, Jamaica
@@ -50463,6 +50515,7 @@ Strawberry, Jamaica
 Truro, Jamaica
 Whitehouse, Jamaica
 Williamsfield, Jamaica
+Japan
 Chiryū, Japan
 Chita, Japan
 Gamagōri, Japan
@@ -51286,6 +51339,7 @@ Nirasaki, Japan
 Ōtsuki, Japan
 Ryūō, Japan
 Uenohara, Japan
+Jordan
 ‘Ajlūn, Jordan
 ‘Anjarah, Jordan
 Ḩalāwah, Jordan
@@ -51366,6 +51420,7 @@ Buşayrā, Jordan
 Al Azraq ash Shamālī, Jordan
 Russeifa, Jordan
 Zarqa, Jordan
+Kiribati
 Akkol, Kazakhstan
 Akkol’, Kazakhstan
 Aksu, Kazakhstan
@@ -51564,6 +51619,7 @@ Oral, Kazakhstan
 Peremetnoe, Kazakhstan
 Saykhin, Kazakhstan
 Tasqala, Kazakhstan
+Kiribati
 Baringo, Kenya
 Eldama Ravine, Kenya
 Kabarnet, Kenya
@@ -51672,9 +51728,11 @@ Kapenguria, Kenya
 Taveta, Kenya
 Voi, Kenya
 Wundanyi, Kenya
+Kiribati
 Banaba, Kiribati
 Tamana, Kiribati
 Tarawa, Kiribati
+Kuwait
 Al Aḩmadī, Kuwait
 Al Faḩāḩīl, Kuwait
 Al Finţās, Kuwait
@@ -51699,6 +51757,7 @@ Abu Fatira, Kuwait
 Al Funayţīs, Kuwait
 Al-Masayel, Kuwait
 Şabāḩ as Sālim, Kuwait
+Kyrgyzstan
 Aydarken, Kyrgyzstan
 Batken, Kyrgyzstan
 Iradan, Kyrgyzstan
@@ -51740,6 +51799,7 @@ Nookat, Kyrgyzstan
 Osh, Kyrgyzstan
 Uzgen, Kyrgyzstan
 Talas, Kyrgyzstan
+Latvia
 Attapeu, Laos
 Ban Houakhoua, Laos
 Ban Houayxay, Laos
@@ -51759,6 +51819,7 @@ Savannakhet, Laos
 Ban Thatèng, Laos
 Lamam, Laos
 Vientiane, Laos
+Latvia
 Aizkraukle, Latvia
 Aizpute, Latvia
 Aknīste, Latvia
@@ -51872,6 +51933,7 @@ Viesīte, Latvia
 Viļaka, Latvia
 Viļāni, Latvia
 Zilupe, Latvia
+Lebanon
 Baalbek, Lebanon
 Beirut, Lebanon
 Ra’s Bayrūt, Lebanon
@@ -51893,6 +51955,7 @@ En Nâqoûra, Lebanon
 Ghazieh, Lebanon
 Sidon, Lebanon
 Tyre, Lebanon
+Lesotho
 Teyateyaneng, Lesotho
 Butha-Buthe, Lesotho
 Leribe, Lesotho
@@ -51905,6 +51968,7 @@ Mokhotlong, Lesotho
 Qacha’s Nek, Lesotho
 Quthing, Lesotho
 Thaba-Tseka, Lesotho
+Libya
 Tubmanburg, Liberia
 Gbarnga, Liberia
 Bopolu, Liberia
@@ -51921,6 +51985,7 @@ Ganta, Liberia
 New Yekepa, Liberia
 Sanniquellie, Liberia
 Greenville, Liberia
+Libya
 Ajdabiya, Libya
 Al Burayqah, Libya
 Awjilah, Libya
@@ -51969,6 +52034,7 @@ Az Zāwīyah, Libya
 Şabrātah, Libya
 Şurmān, Libya
 Zawiya, Libya
+Liechtenstein
 Balzers, Liechtenstein
 Eschen, Liechtenstein
 Gamprin, Liechtenstein
@@ -51980,6 +52046,7 @@ Schellenberg, Liechtenstein
 Triesen, Liechtenstein
 Triesenberg, Liechtenstein
 Vaduz, Liechtenstein
+Madagascar
 Alytus, Lithuania
 Daugai, Lithuania
 Druskininkai, Lithuania
@@ -52090,6 +52157,7 @@ Ukmerge, Lithuania
 Vievis, Lithuania
 Vilkpėdė, Lithuania
 Vilnius, Lithuania
+Madagascar
 Bascharage, Luxembourg
 Bridel, Luxembourg
 Capellen, Luxembourg
@@ -52227,6 +52295,7 @@ Goesdorf, Luxembourg
 Wiltz, Luxembourg
 Wilwerwiltz, Luxembourg
 Winseler, Luxembourg
+Madagascar
 Ampasimanolotra, Madagascar
 Andovoranto, Madagascar
 Mahanoro, Madagascar
@@ -52234,6 +52303,7 @@ Mahavelona, Madagascar
 Marolambo, Madagascar
 Toamasina, Madagascar
 Vohibinany, Madagascar
+Maldives
 Chipoka, Malawi
 Dedza, Malawi
 Dowa, Malawi
@@ -52267,6 +52337,7 @@ Nsanje, Malawi
 Phalombe, Malawi
 Thyolo, Malawi
 Zomba, Malawi
+Maldives
 Bakri, Malaysia
 Batu Pahat, Malaysia
 Buloh Kasap, Malaysia
@@ -52427,6 +52498,7 @@ Kuala Besut, Malaysia
 Kuala Terengganu, Malaysia
 Marang, Malaysia
 Paka, Malaysia
+Maldives
 Hithadhoo, Maldives
 Meedhoo, Maldives
 Kudahuvadhoo, Maldives
@@ -52446,6 +52518,7 @@ Funadhoo, Maldives
 Mahibadhoo, Maldives
 Veymandoo, Maldives
 Felidhoo, Maldives
+Mali
 Bamako, Mali
 Ansongo, Mali
 Gao, Mali
@@ -52483,6 +52556,7 @@ Araouane, Mali
 Goundam, Mali
 Niafunké, Mali
 Timbuktu, Mali
+Mauritius
 Attard, Malta
 Balzan, Malta
 Vittoriosa, Malta
@@ -52550,6 +52624,7 @@ Haz-Zebbug, Malta
 Żebbuġ, Malta
 Żejtun, Malta
 Żurrieq, Malta
+Mauritius
 Atar, Mauritania
 Chingueṭṭi, Mauritania
 Barkéwol, Mauritania
@@ -52566,6 +52641,7 @@ Arafat, Mauritania
 Zouerate, Mauritania
 Rosso, Mauritania
 Tékane, Mauritania
+Mauritius
 Vingt Cinq, Mauritius
 Albion, Mauritius
 Bambous, Mauritius
@@ -52671,6 +52747,7 @@ Rivière des Anguilles, Mauritius
 Saint Aubin, Mauritius
 Souillac, Mauritius
 Surinam, Mauritius
+Mexico
 Aguascalientes, Mexico
 Arellano, Mexico
 Asientos, Mexico
@@ -60436,6 +60513,7 @@ Villa Hidalgo, Mexico
 Villanueva, Mexico
 Zacatecas, Mexico
 Zoquite, Mexico
+Micronesia
 Murilo, Micronesia
 Nema, Micronesia
 Weno, Micronesia
@@ -60444,6 +60522,7 @@ Kolonia, Micronesia
 Ngatik, Micronesia
 Palikir - National Government Center, Micronesia
 Fais, Micronesia
+Moldova
 Anenii Noi, Moldova
 Varniţa, Moldova
 Bălţi, Moldova
@@ -60516,6 +60595,7 @@ Slobozia, Moldova
 Tiraspol, Moldova
 Tiraspolul Nou, Moldova
 Ungheni, Moldova
+Mongolia
 Tsetserleg, Mongolia
 Altay, Mongolia
 Ölgii, Mongolia
@@ -60545,6 +60625,7 @@ Dzuunmod, Mongolia
 Ulaanhudag, Mongolia
 Ulaangom, Mongolia
 Uliastay, Mongolia
+Montenegro
 Andrijevica, Montenegro
 Bar, Montenegro
 Stari Bar, Montenegro
@@ -60579,6 +60660,7 @@ Rožaje, Montenegro
 Tivat, Montenegro
 Ulcinj, Montenegro
 Žabljak, Montenegro
+Morocco
 Agadir, Morocco
 Agadir Melloul, Morocco
 Aoulouz, Morocco
@@ -60763,6 +60845,7 @@ Targuist, Morocco
 Tirhanimîne, Morocco
 Zinat, Morocco
 Zoumi, Morocco
+Mozambique
 Mocímboa, Mozambique
 Montepuez, Mozambique
 Pemba, Mozambique
@@ -60788,6 +60871,7 @@ Dondo, Mozambique
 Tete, Mozambique
 Chinde, Mozambique
 Quelimane, Mozambique
+Myanmar
 Bogale, Myanmar
 Hinthada, Myanmar
 Kyaiklat, Myanmar
@@ -60862,6 +60946,7 @@ Syriam, Myanmar
 Thongwa, Myanmar
 Twante, Myanmar
 Yangon, Myanmar
+Namibia
 Arandis, Namibia
 Karibib, Namibia
 Omaruru, Namibia
@@ -60904,6 +60989,7 @@ Otavi, Namibia
 Otjiwarongo, Namibia
 Bagani, Namibia
 Katima Mulilo, Namibia
+Nauru
 Arijejen, Nauru
 Anabar, Nauru
 Baiti, Nauru
@@ -60911,6 +60997,7 @@ Ijuw, Nauru
 Menen, Nauru
 Uaboe, Nauru
 Yaren, Nauru
+Nepal
 Banepā, Nepal
 Bharatpur, Nepal
 Birgañj, Nepal
@@ -60961,6 +61048,7 @@ Pokhara, Nepal
 Siddharthanagar, Nepal
 Tānsen, Nepal
 Wāliṅ, Nepal
+Netherlands
 Dorp Tera Kora, Netherlands
 Oranjestad, Netherlands
 Rincon, Netherlands
@@ -62372,6 +62460,7 @@ Yerseke, Netherlands
 Zaamslag, Netherlands
 Zierikzee, Netherlands
 Zoutelande, Netherlands
+New Caledonia
 Houaïlou, New Caledonia
 Koné, New Caledonia
 Poindimié, New Caledonia
@@ -62379,6 +62468,7 @@ Bourail, New Caledonia
 Dumbéa, New Caledonia
 Nouméa, New Caledonia
 Païta, New Caledonia
+New Zealand
 Auckland, New Zealand
 Mangere, New Zealand
 Muriwai Beach, New Zealand
@@ -62516,6 +62606,7 @@ Wellington, New Zealand
 Greymouth, New Zealand
 Hokitika, New Zealand
 Westport, New Zealand
+Nicaragua
 Boaco, Nicaragua
 Camoapa, Nicaragua
 San Lorenzo, Nicaragua
@@ -62645,6 +62736,7 @@ El Tortuguero, Nicaragua
 La Cruz de Río Grande, Nicaragua
 Muelle de los Bueyes, Nicaragua
 Nueva Guinea, Nicaragua
+Niger
 Agadez, Niger
 Alaghsas, Niger
 Arlit, Niger
@@ -63098,6 +63190,7 @@ Maru, Nigeria
 Moriki, Nigeria
 Sauri, Nigeria
 Tsafe, Nigeria
+North Macedonia
 Арачиново, North Macedonia
 Berovo, North Macedonia
 Rusinovo, North Macedonia
@@ -63289,6 +63382,7 @@ Sedlarevo, North Macedonia
 Strimnica, North Macedonia
 Zelino, North Macedonia
 Zrnovci, North Macedonia
+Norway
 Farsund, Norway
 Flekkefjord, Norway
 Justvik, Norway
@@ -63718,6 +63812,7 @@ Tranby, Norway
 Våler, Norway
 Vestby, Norway
 Vikersund, Norway
+Oman
 Adam, Oman
 Bahlā’, Oman
 Bidbid, Oman
@@ -63745,6 +63840,7 @@ Madḩā’ al Jadīdah, Oman
 Bawshar, Oman
 Muscat, Oman
 Seeb, Oman
+Pakistan
 Kotli, Pakistan
 Muzaffarābād, Pakistan
 New Mirpur, Pakistan
@@ -64133,6 +64229,7 @@ Thul, Pakistan
 Ubauro, Pakistan
 Umarkot, Pakistan
 Warah, Pakistan
+Palau
 Ngchemiangel, Palau
 Ngetkib, Palau
 Angaur State, Palau
@@ -64145,6 +64242,7 @@ Ngchesar Hamlet, Palau
 Imeong Hamlet, Palau
 Ngerkeai, Palau
 Kloulklubed, Palau
+Panama
 Almirante, Panama
 Barranco, Panama
 Barranco Adentro, Panama
@@ -64646,6 +64744,7 @@ Tebario, Panama
 Utirá, Panama
 Viguí, Panama
 Zapotillo, Panama
+Papua new Guinea
 Arawa, Papua new Guinea
 Kieta, Papua new Guinea
 Panguna, Papua new Guinea
@@ -64682,6 +64781,7 @@ Mount Hagen, Papua new Guinea
 Daru, Papua new Guinea
 Kiunga, Papua new Guinea
 Morehead, Papua new Guinea
+Paraguay
 Capitán Pablo Lagerenza, Paraguay
 Fuerte Olimpo, Paraguay
 Ciudad del Este, Paraguay
@@ -64800,6 +64900,7 @@ San Pedro de Ycuamandiyú, Paraguay
 Tacuatí, Paraguay
 Unión, Paraguay
 Yataity del Norte, Paraguay
+Peru
 Bagua Grande, Peru
 Cajaruro, Peru
 Chachapoyas, Peru
@@ -65102,6 +65203,7 @@ Zarumilla, Peru
 Zorritos, Peru
 Atalaya, Peru
 Pucallpa, Peru
+Philippines
 Adams, Philippines
 Agno, Philippines
 Agoo, Philippines
@@ -71293,6 +71395,7 @@ Tucuran, Philippines
 Tungawan, Philippines
 Vitali, Philippines
 Zamboanga, Philippines
+Poland
 Babiak, Poland
 Baranów, Poland
 Baranowo, Poland
@@ -74102,6 +74205,7 @@ Widuchowa, Poland
 Wierzchowo, Poland
 Wolin, Poland
 Złocieniec, Poland
+Portugal
 Água de Pau, Portugal
 Angra do Heroísmo, Portugal
 Angústias, Portugal
@@ -75015,6 +75119,7 @@ Treixedo, Portugal
 Vila Nova de Paiva, Portugal
 Viseu, Portugal
 Vouzela, Portugal
+Puerto Rico
 Adjuntas, Puerto Rico
 Aguada, Puerto Rico
 Aguadilla, Puerto Rico
@@ -75092,6 +75197,7 @@ Vieques, Puerto Rico
 Villalba, Puerto Rico
 Yabucoa, Puerto Rico
 Yauco, Puerto Rico
+Qatar
 Al Ghuwayrīyah, Qatar
 Al Khawr, Qatar
 Ar Rayyān, Qatar
@@ -75107,223 +75213,46 @@ Ar Ruways, Qatar
 Fuwayriţ, Qatar
 Madīnat ash Shamāl, Qatar
 Umm Şalāl Muḩammad, Qatar
+Romania
 Abrud, Romania
 Aiud, Romania
 Aiudul de Sus, Romania
 Alba Iulia, Romania
 Albac, Romania
-Almaşu Mare, Romania
 Arieşeni, Romania
-Avram Iancu, Romania
-Baia de Arieş, Romania
-Bălcaciu, Romania
-Bărăbanț, Romania
-Berghin, Romania
-Biia, Romania
-Bistra, Romania
 Blaj, Romania
-Blândiana, Romania
-Blideşti, Romania
-Bucerdea-Grânoasă, Romania
-Bucium, Romania
 Câlnic, Romania
 Câmpeni, Romania
-Cenade, Romania
-Cergău Mare, Romania
-Cergău Mic, Romania
-Ceru-Băcăinţi, Romania
 Cetatea de Baltă, Romania
 Ciugud, Romania
-Ciumbrud, Romania
-Ciuruleasa, Romania
-Crăciunelu de Jos, Romania
-Cricău, Romania
-Cugir, Romania
-Cut, Romania
-Daia Română, Romania
-Dobra, Romania
-Doştat, Romania
-Fărău, Romania
-Feisa, Romania
-Feneș, Romania
-Galda de Jos, Romania
-Gârbova, Romania
 Gârda de Sus, Romania
-Hopârta, Romania
 Horea, Romania
-Ighiel, Romania
-Ighiu, Romania
-Intregalde, Romania
 Izvoarele, Romania
 Jidvei, Romania
-Lancrăm, Romania
-Livezile, Romania
-Lopadea Nouă, Romania
-Lunca Mureşului, Romania
 Lupşa, Romania
-Meteş, Romania
-Micești, Romania
-Mihalţ, Romania
-Mirăslău, Romania
-Mogoș, Romania
-Noşlac, Romania
-Oarda, Romania
 Ocna Mureş, Romania
 Ocoliş, Romania
-Ohaba, Romania
-Petrești, Romania
-Pianu de Jos, Romania
-Pianu de Sus, Romania
-Poiana Vadului, Romania
-Poienile-Mogoş, Romania
-Ponor, Romania
 Poşaga de Sus, Romania
-Rădeşti, Romania
-Războieni-Cetate, Romania
 Rimetea, Romania
 Roşia de Secaş, Romania
 Roșia Montană, Romania
 Sălciua de Sus, Romania
-Săliștea, Romania
-Săliştea-Deal, Romania
-Sâncel, Romania
-Sâncrai, Romania
-Sântimbru, Romania
-Șard, Romania
-Săsciori, Romania
 Scărişoara, Romania
-Sebeş, Romania
-Sebeșel, Romania
-Şibot, Romania
-Sohodol, Romania
-Şona, Romania
-Şpring, Romania
-Stremţ, Romania
-Şugag, Romania
-Teiuş, Romania
-Țelna, Romania
-Tiur, Romania
-Uioara de Jos, Romania
-Unirea, Romania
-Vadu Moţilor, Romania
-Veseuș, Romania
-Veza, Romania
-Vidra, Romania
-Vinerea, Romania
-Vințu de Jos, Romania
-Vurpăr, Romania
 Zlatna, Romania
-Adea, Romania
-Agrișu Mare, Romania
-Almaş, Romania
-Andrei Șaguna, Romania
-Apateu, Romania
 Arad, Romania
-Archiş, Romania
-Bârsa, Romania
-Bârzava, Romania
-Bata, Romania
-Beliu, Romania
-Birchiş, Romania
-Bocsig, Romania
-Brazii, Romania
-Buteni, Romania
-Caporal Alexa, Romania
-Cărand, Romania
-Cermei, Romania
-Chereluș, Romania
-Chesinț, Romania
-Chier, Romania
-Chisindia, Romania
-Chişineu-Criş, Romania
-Cintei, Romania
-Conop, Romania
-Covăsinţ, Romania
-Craiva, Romania
-Curtici, Romania
-Cuvin, Romania
-Dezna, Romania
-Dieci, Romania
-Dorgoş, Romania
-Dorobanți, Romania
-Drauț, Romania
 Fântânele, Romania
-Felnac, Romania
-Frumușeni, Romania
 Galșa, Romania
 Ghioroc, Romania
-Grăniceri, Romania
-Gurahonţ, Romania
-Gurba, Romania
 Hălmăgel, Romania
-Hălmagiu, Romania
-Hășmaș, Romania
-Horia, Romania
-Igneşti, Romania
 Ineu, Romania
-Iratoşu, Romania
 Lipova, Romania
 Livada, Romania
 Macea, Romania
-Măderat, Romania
-Mailat, Romania
-Mănăștur, Romania
-Mândruloc, Romania
-Mâsca, Romania
-Mișca, Romania
 Moneasa, Romania
-Nadab, Romania
-Nadăș, Romania
 Nădlac, Romania
-Neudorf, Romania
-Olari, Romania
-Pâncota, Romania
-Păuliş, Romania
 Pecica, Romania
-Peregu Mare, Romania
-Peregu Mic, Romania
-Petriş, Romania
-Pilu, Romania
-Pleşcuţa, Romania
-Radna, Romania
-Şagu, Romania
-Sâmbăteni, Romania
-Sânmartin, Romania
-Sânpetru German, Romania
 Sântana, Romania
-Satu Mare, Romania
-Săvârşin, Romania
-Sebiş, Romania
-Secusigiu, Romania
-Şeitin, Romania
-Seleuş, Romania
-Semlac, Romania
-Șepreuș, Romania
-Șiclău, Romania
-Şicula, Romania
-Şilindia, Romania
-Şimand, Romania
-Sintea Mare, Romania
 Şiria, Romania
-Şiştarovăţ, Romania
-Socodor, Romania
-Şofronea, Romania
-Târnova, Romania
-Tauţ, Romania
-Țipar, Romania
-Turnu, Romania
-Ususău, Romania
-Vânători, Romania
-Vărădia de Mureş, Romania
-Vârfurile, Romania
-Vinga, Romania
-Vladimirescu, Romania
-Zăbrani, Romania
-Zădăreni, Romania
-Zărand, Romania
-Zerind, Romania
-Zimandu Nou, Romania
-Albeşti, Romania
 Albeştii Pământeni, Romania
 Albeștii Ungureni, Romania
 Albota, Romania
@@ -75553,8 +75482,6 @@ Lespezi, Romania
 Letea Veche, Romania
 Lilieci, Romania
 Lipova, Romania
-Livezi, Romania
-Livezi-Vale, Romania
 Ludași, Romania
 Luizi-Călugăra, Romania
 Măgireşti, Romania
@@ -75797,7 +75724,6 @@ Ilva Mică, Romania
 Josenii Bârgăului, Romania
 Lechinţa, Romania
 Leşu, Romania
-Livezile, Romania
 Lunca Ilvei, Romania
 Lunca Leșului, Romania
 Măgura Ilvei, Romania
@@ -75852,7 +75778,6 @@ Viișoara, Romania
 Zagra, Romania
 Adășeni, Romania
 Alba, Romania
-Albeşti, Romania
 Avrămeni, Romania
 Bajura, Romania
 Băluşeni, Romania
@@ -75952,7 +75877,6 @@ Suharău, Romania
 Sulița, Romania
 Șupitca, Romania
 Tocileni, Romania
-Todireni, Romania
 Truşeşti, Romania
 Tudor Vladimirescu, Romania
 Tudora, Romania
@@ -76018,7 +75942,6 @@ Surdila-Greci, Romania
 Tătaru, Romania
 Tichileşti, Romania
 Traian, Romania
-Tudor Vladimirescu, Romania
 Tufeşti, Romania
 Ulmu, Romania
 Unirea, Romania
@@ -76505,7 +76428,6 @@ Viişoara, Romania
 Vultureni, Romania
 Adamclisi, Romania
 Agigea, Romania
-Albeşti, Romania
 Aliman, Romania
 Amzacea, Romania
 Băneasa, Romania
@@ -76536,7 +76458,6 @@ Dunăreni, Romania
 Eforie Nord, Romania
 Eforie Sud, Romania
 Făclia, Romania
-Fântânele, Romania
 Gârliciu, Romania
 Ghindăreşti, Romania
 Grădina, Romania
@@ -76693,7 +76614,6 @@ Drăgăești Ungureni, Romania
 Dragodana, Romania
 Dragodănești, Romania
 Dragomireşti, Romania
-Fântânele, Romania
 Fieni, Romania
 Fierbinți, Romania
 Finta Mare, Romania
@@ -76978,7 +76898,6 @@ Cudalbi, Romania
 Cuza Vodă, Romania
 Drăgăneşti, Romania
 Drăguşeni, Romania
-Fântânele, Romania
 Fârţăneşti, Romania
 Folteşti, Romania
 Frumuşiţa, Romania
@@ -77026,7 +76945,6 @@ Târgu Bujor, Romania
 Tecuci, Romania
 Ţepu, Romania
 Toflea, Romania
-Tudor Vladimirescu, Romania
 Tuluceşti, Romania
 Umbrăreşti, Romania
 Umbrărești-Deal, Romania
@@ -77498,24 +77416,19 @@ Costești, Romania
 Costuleni, Romania
 Cotnari, Romania
 Covasna, Romania
-Cozia, Romania
 Cozmeşti, Romania
 Cristeşti, Romania
 Crivești, Romania
 Crucea, Romania
 Cucuteni, Romania
 Dagâţa, Romania
-Dancu, Romania
-Deleni, Romania
 Dobrovăţ, Romania
-Dolheşti, Romania
 Domnița, Romania
 Drăgușeni, Romania
 Dumbrava, Romania
 Dumbrăvița, Romania
 Dumeşti, Romania
 Erbiceni, Romania
-Fântânele, Romania
 Fărcășeni, Romania
 Fetești, Romania
 Focuri, Romania
@@ -77536,7 +77449,6 @@ Hârtoape, Romania
 Heci, Romania
 Heleșteni, Romania
 Hodora, Romania
-Holboca, Romania
 Horleşti, Romania
 Iaşi, Romania
 Iazu Nou, Romania
@@ -77555,7 +77467,6 @@ Mănăstirea, Romania
 Maxut, Romania
 Mirceşti, Romania
 Mironeasa, Romania
-Miroslava, Romania
 Miroslovești, Romania
 Mogoşeşti, Romania
 Mogoşeşti-Siret, Romania
@@ -77611,7 +77522,6 @@ Tătăruşi, Romania
 Ţibana, Romania
 Ţibăneşti, Romania
 Ţigănaşi, Romania
-Todireşti, Romania
 Tomeşti, Romania
 Topile, Romania
 Totoești, Romania
@@ -77737,7 +77647,6 @@ Deseşti, Romania
 Dragomireşti, Romania
 Dumbrava, Romania
 Dumbrăviţa, Romania
-Fântânele, Romania
 Fărcaşa, Romania
 Ferești, Romania
 Gârdani, Romania
@@ -77868,7 +77777,6 @@ Jiana, Romania
 Jiana Veche, Romania
 Jidoștița, Romania
 Jirov, Romania
-Livezile, Romania
 Malovăţ, Romania
 Nicolae Bălcescu, Romania
 Obârșia de Câmp, Romania
@@ -77946,7 +77854,6 @@ Dobra, Romania
 Dumbrava, Romania
 Eremitu, Romania
 Ernei, Romania
-Fântânele, Romania
 Fărăgău, Romania
 Gănești, Romania
 Gheja, Romania
@@ -78378,7 +78285,6 @@ Drajna de Sus, Romania
 Dumbrava, Romania
 Dumbrăveşti, Romania
 Făgetu, Romania
-Fântânele, Romania
 Filipeştii de Pădure, Romania
 Filipeştii de Târg, Romania
 Floreşti, Romania
@@ -78806,7 +78712,6 @@ Dumbrăvița, Romania
 Falcău, Romania
 Fălticeni, Romania
 Fântâna Mare, Romania
-Fântânele, Romania
 Forăşti, Romania
 Frasin, Romania
 Frătăuţii Noi, Romania
@@ -78897,7 +78802,6 @@ Stulpicani, Romania
 Suceava, Romania
 Suceviţa, Romania
 Țibeni, Romania
-Todireşti, Romania
 Udeşti, Romania
 Ulma, Romania
 Vadu Moldovei, Romania
@@ -78959,7 +78863,6 @@ Drăgăneşti de Vede, Romania
 Drăgăneşti-Vlaşca, Romania
 Drăghinești, Romania
 Dudu, Romania
-Fântânele, Romania
 Frăsinet, Romania
 Frumoasa, Romania
 Furculești, Romania
@@ -79038,7 +78941,6 @@ Teleormanu, Romania
 Traian, Romania
 Trivalea-Moşteni, Romania
 Troianul, Romania
-Tudor Vladimirescu, Romania
 Turnu Măgurele, Romania
 Uda-Clocociov, Romania
 Uda-Paciurea, Romania
@@ -79117,7 +79019,6 @@ Jebel, Romania
 Jimbolia, Romania
 Lenauheim, Romania
 Liebling, Romania
-Livezile, Romania
 Lovrin, Romania
 Lugoj, Romania
 Mănăştiur, Romania
@@ -79289,7 +79190,6 @@ Lăcusteni, Romania
 Lădeşti, Romania
 Laloşu, Romania
 Livadia, Romania
-Livezi, Romania
 Lungeşti, Romania
 Mădulari, Romania
 Malaia, Romania
@@ -79346,8 +79246,6 @@ Voiceşti, Romania
 Voineasa, Romania
 Zătreni, Romania
 Zlătărei, Romania
-Albeşti, Romania
-Alexandru Vlăhuţă, Romania
 Arsura, Romania
 Băcani, Romania
 Băceşti, Romania
@@ -79357,7 +79255,6 @@ Bălteni, Romania
 Banca, Romania
 Bârlad, Romania
 Bârzești, Romania
-Berezeni, Romania
 Blăgeşti, Romania
 Bogdana, Romania
 Bogdănești, Romania
@@ -79365,27 +79262,14 @@ Bogdăniţa, Romania
 Boţeşti, Romania
 Brodoc, Romania
 Buda, Romania
-Buneşti, Romania
 Cârja, Romania
 Chircești, Romania
 Chițoc, Romania
 Ciocani, Romania
 Codăeşti, Romania
-Corni-Albești, Romania
 Coroieşti, Romania
-Costeşti, Romania
-Cozmești, Romania
-Crețești, Romania
-Dăneşti, Romania
-Deleni, Romania
-Deleşti, Romania
-Dodești, Romania
-Dragomireşti, Romania
-Drânceni, Romania
-Duda, Romania
 Dumeşti, Romania
 Emil Racoviță, Romania
-Epureni, Romania
 Fălciu, Romania
 Fâstâci, Romania
 Ferești, Romania
@@ -79393,26 +79277,16 @@ Fruntișeni, Romania
 Găgeşti, Romania
 Gârceni, Romania
 Ghergheşti, Romania
-Ghermănești, Romania
 Griviţa, Romania
 Gugești, Romania
 Hălărești, Romania
-Hoceni, Romania
 Hurdugi, Romania
 Huşi, Romania
-Iana, Romania
-Ibănești, Romania
-Ivănești, Romania
-Iveşti, Romania
 Laza, Romania
 Lipovăţ, Romania
 Lunca Banului, Romania
 Măluşteni, Romania
 Micleşti, Romania
-Moara Domnească, Romania
-Moara Grecilor, Romania
-Muntenii de Jos, Romania
-Muntenii de Sus, Romania
 Murgeni, Romania
 Negreşti, Romania
 Olteneşti, Romania
@@ -79421,9 +79295,6 @@ Pădureni, Romania
 Perieni, Romania
 Pochidia, Romania
 Pogana, Romania
-Pogănești, Romania
-Pogonești, Romania
-Poieneşti, Romania
 Popeni, Romania
 Pribești, Romania
 Puieşti, Romania
@@ -79438,13 +79309,10 @@ Roşieşti, Romania
 Satu Nou, Romania
 Sauca, Romania
 Soleşti, Romania
-Stănileşti, Romania
 Ştefan cel Mare, Romania
 Şuletea, Romania
 Tăcuta, Romania
 Tanacu, Romania
-Tătărăni, Romania
-Todireşti, Romania
 Trestiana, Romania
 Tutova, Romania
 Vaslui, Romania
@@ -79557,6 +79425,7 @@ Voetin, Romania
 Vrâncioaia, Romania
 Vulcăneasa, Romania
 Vulturu, Romania
+Rwanda
 Kibungo, Rwanda
 Rwamagana, Rwanda
 Kigali, Rwanda
@@ -79568,6 +79437,7 @@ Nzega, Rwanda
 Cyangugu, Rwanda
 Gisenyi, Rwanda
 Kibuye, Rwanda
+Saint Kitts And Nevis
 Market Shop, Saint Kitts And Nevis
 Newcastle, Saint Kitts And Nevis
 Fig Tree, Saint Kitts And Nevis
@@ -79578,6 +79448,7 @@ Monkey Hill, Saint Kitts And Nevis
 Cotton Ground, Saint Kitts And Nevis
 Middle Island, Saint Kitts And Nevis
 Trinity, Saint Kitts And Nevis
+Saint Lucia
 Anse La Raye, Saint Lucia
 Canaries, Saint Lucia
 Jacmel, Saint Lucia
@@ -79625,6 +79496,7 @@ Sulphur Springs, Saint Lucia
 Beausejour, Saint Lucia
 Esperance, Saint Lucia
 Vieux Fort, Saint Lucia
+Saint Vincent And The Grenadines
 Biabou, Saint Vincent And The Grenadines
 Georgetown, Saint Vincent And The Grenadines
 Port Elizabeth, Saint Vincent And The Grenadines
@@ -79633,6 +79505,7 @@ Chateaubelair, Saint Vincent And The Grenadines
 Kingstown, Saint Vincent And The Grenadines
 Kingstown Park, Saint Vincent And The Grenadines
 Barrouallie, Saint Vincent And The Grenadines
+Samoa
 Fasito‘outa, Samoa
 Leulumoega, Samoa
 Nofoali‘i, Samoa
@@ -79653,6 +79526,7 @@ Vailima, Samoa
 Vaiusu, Samoa
 Samamea, Samoa
 Asau, Samoa
+San Marino
 Acquaviva, San Marino
 Borgo Maggiore, San Marino
 Poggio di Chiesanuova, San Marino
@@ -79662,8 +79536,10 @@ Fiorentino, San Marino
 Monte Giardino, San Marino
 San Marino, San Marino
 Serravalle, San Marino
+Sao Tome and Principe
 São Tomé, Sao Tome and Principe
 Trindade, Sao Tome and Principe
+Saudi Arabia
 Abha, Saudi Arabia
 Al Majāridah, Saudi Arabia
 Khamis Mushait, Saudi Arabia
@@ -79752,6 +79628,7 @@ Tumayr, Saudi Arabia
 Al Wajh, Saudi Arabia
 Duba, Saudi Arabia
 Tabuk, Saudi Arabia
+Senegal
 Dakar, Senegal
 Mermoz Boabab, Senegal
 N’diareme limamoulaye, Senegal
@@ -79809,6 +79686,7 @@ Bignona, Senegal
 Oussouye, Senegal
 Tionk Essil, Senegal
 Ziguinchor, Senegal
+Serbia
 Aranđelovac, Serbia
 Arilje, Serbia
 Badovinci, Serbia
@@ -80132,6 +80010,7 @@ Vršac, Serbia
 Žitište, Serbia
 Zmajevo, Serbia
 Zrenjanin, Serbia
+Seychelles
 Anse Boileau, Seychelles
 Anse Royale, Seychelles
 Beau Vallon, Seychelles
@@ -80140,6 +80019,7 @@ Cascade, Seychelles
 Victoria, Seychelles
 Port Glaud, Seychelles
 Takamaka, Seychelles
+Sierra Leone
 Barma, Sierra Leone
 Blama, Sierra Leone
 Boajibu, Sierra Leone
@@ -80220,11 +80100,13 @@ Freetown, Sierra Leone
 Hastings, Sierra Leone
 Kent, Sierra Leone
 Waterloo, Sierra Leone
+Singapore
 Geylang, Singapore
 Marine Parade, Singapore
 Singapore, Singapore
 Sengkang, Singapore
 Woodlands, Singapore
+Slovakia
 Banská Bystrica, Slovakia
 Banská Štiavnica, Slovakia
 Brezno, Slovakia
@@ -80379,6 +80261,7 @@ Turzovka, Slovakia
 Tvrdošín, Slovakia
 Vrútky, Slovakia
 Žilina, Slovakia
+Slovenia
 Ajdovščina, Slovenia
 Cirkulane, Slovenia
 Lokavec, Slovenia
@@ -80670,6 +80553,7 @@ Zavrč, Slovenia
 Žiri, Slovenia
 Zreče, Slovenia
 Žužemberk, Slovenia
+Solomon Islands
 Tulagi, Solomon Islands
 Honiara, Solomon Islands
 Buala, Solomon Islands
@@ -80677,6 +80561,7 @@ Kirakira, Solomon Islands
 Auki, Solomon Islands
 Lata, Solomon Islands
 Gizo, Solomon Islands
+South Africa
 Adelaide, South Africa
 Alice, South Africa
 Aliwal North, South Africa
@@ -80935,6 +80820,7 @@ Vredendal, South Africa
 Wellington, South Africa
 Worcester, South Africa
 Zoar, South Africa
+South Korea
 Busan, South Korea
 Gijang, South Korea
 Daegu, South Korea
@@ -81055,6 +80941,7 @@ Yeongam, South Korea
 Yeonggwang, South Korea
 Yeosu, South Korea
 Ulsan, South Korea
+Spain
 Abegondo, Spain
 Aranga, Spain
 Ares, Spain
@@ -87628,6 +87515,7 @@ Villarroya del Campo, Spain
 Vistabella, Spain
 Zaragoza, Spain
 Zuera, Spain
+Sri Lanka
 Dambulla, Sri Lanka
 Hatton, Sri Lanka
 Kandy, Sri Lanka
@@ -87701,6 +87589,7 @@ Pita Kotte, Sri Lanka
 Sri Jayewardenepura Kotte, Sri Lanka
 Wattala, Sri Lanka
 Welisara, Sri Lanka
+Suriname
 Brokopondo, Suriname
 Brownsweg, Suriname
 Mariënburg, Suriname
@@ -87714,6 +87603,7 @@ Onverwacht, Suriname
 Paramaribo, Suriname
 Groningen, Suriname
 Lelydorp, Suriname
+Swaziland
 Bulembu, Swaziland
 Lobamba, Swaziland
 Mbabane, Swaziland
@@ -87735,6 +87625,7 @@ Hluti, Swaziland
 Kubuta, Swaziland
 Lavumisa, Swaziland
 Nhlangano, Swaziland
+Sweden
 Bräkne-Hoby, Sweden
 Hällevik, Sweden
 Hasslö, Sweden
@@ -88531,6 +88422,7 @@ Vargön, Sweden
 Västra Frölunda, Sweden
 Vinninga, Sweden
 Viskafors, Sweden
+Switzerland
 Aarau, Switzerland
 Aarburg, Switzerland
 Aristau, Switzerland
@@ -89658,6 +89550,7 @@ Zollikerberg, Switzerland
 Zollikon, Switzerland
 Zumikon, Switzerland
 Zürich, Switzerland
+Taiwan
 Yuanlin, Taiwan
 Pizitou, Taiwan
 Hsinchu, Taiwan
@@ -89683,6 +89576,7 @@ Daxi, Taiwan
 Taoyuan, Taiwan
 Yilan, Taiwan
 Douliu, Taiwan
+Tajikistan
 Darband, Tajikistan
 Hisor, Tajikistan
 Karakenja, Tajikistan
@@ -89742,6 +89636,7 @@ Shaydon, Tajikistan
 Shŭrob, Tajikistan
 Taboshar, Tajikistan
 Vorukh, Tajikistan
+Tanzania
 Arusha, Tanzania
 Kingori, Tanzania
 Kiratu, Tanzania
@@ -90016,6 +89911,7 @@ Mahonda, Tanzania
 Nganane, Tanzania
 Sokoni, Tanzania
 Zanzibar, Tanzania
+Thailand
 Amnat Charoen, Thailand
 Ang Thong, Thailand
 Ban Thai Tan, Thailand
@@ -90383,6 +90279,7 @@ Uttaradit, Thailand
 Betong, Thailand
 Yala, Thailand
 Yasothon, Thailand
+The Bahamas
 Marsh Harbour, The Bahamas
 Colonel Hill, The Bahamas
 High Rock, The Bahamas
@@ -90391,58 +90288,37 @@ Lucaya, The Bahamas
 Abraham’s Bay, The Bahamas
 Nassau, The Bahamas
 San Andros, The Bahamas
-Port Nelson, The Bahamas
 Spanish Wells, The Bahamas
 West End, The Bahamas
-Sokodé, Togo
-Sotouboua, Togo
-Tchamba, Togo
-Bafilo, Togo
-Bassar, Togo
-Kandé, Togo
+Togo
 Kara, Togo
 Niamtougou, Togo
-Pagouda, Togo
 Aného, Togo
 Lomé, Togo
 Tabligbo, Togo
 Tsévié, Togo
-Vogan, Togo
-Amlamé, Togo
 Atakpamé, Togo
-Badou, Togo
 Kpalimé, Togo
-Notsé, Togo
 Dapaong, Togo
-Pangai, Tonga
-‘Ohonua, Tonga
+Tonga
 Hihifo, Tonga
-Haveluloto, Tonga
-Kolonga, Tonga
 Nuku‘alofa, Tonga
-Vaini, Tonga
 Neiafu, Tonga
+Trinidad And Tobago
 Arima, Trinidad And Tobago
-Chaguanas, Trinidad And Tobago
-Couva, Trinidad And Tobago
-Tabaquite, Trinidad And Tobago
 Petit Valley, Trinidad And Tobago
 Scarborough, Trinidad And Tobago
 Debe, Trinidad And Tobago
 Peñal, Trinidad And Tobago
 Point Fortin, Trinidad And Tobago
-Mucurapo, Trinidad And Tobago
 Port of Spain, Trinidad And Tobago
-Marabella, Trinidad And Tobago
-Mon Repos, Trinidad And Tobago
 San Fernando, Trinidad And Tobago
 Laventille, Trinidad And Tobago
-Sangre Grande, Trinidad And Tobago
 Siparia, Trinidad And Tobago
 Arouca, Trinidad And Tobago
 Paradise, Trinidad And Tobago
 Tunapuna, Trinidad And Tobago
-Rio Claro, Trinidad And Tobago
+Tunisia
 Ariana, Tunisia
 Béja, Tunisia
 Goubellat, Tunisia
@@ -90574,6 +90450,7 @@ Sidi Bou Saïd, Tunisia
 Tunis, Tunisia
 El Fahs, Tunisia
 Zaghouan, Tunisia
+Turkey
 Aladağ, Turkey
 Ceyhan, Turkey
 Feke, Turkey
@@ -91490,6 +91367,7 @@ Gökçebey, Turkey
 Kilimli, Turkey
 Kozlu, Turkey
 Merkez, Turkey
+Turkmenistan
 Abadan, Turkmenistan
 Arçabil, Turkmenistan
 Baharly, Turkmenistan
@@ -91518,7 +91396,9 @@ Mary, Turkmenistan
 Serhetabat, Turkmenistan
 Seydi, Turkmenistan
 Yolöten, Turkmenistan
+Tuvalu
 Funafuti, Tuvalu
+Uganda
 Bweyogerere, Uganda
 Byakabanda, Uganda
 Entebbe, Uganda
@@ -91598,17 +91478,13 @@ Muhororo, Uganda
 Ntungamo, Uganda
 Nyachera, Uganda
 Rukungiri, Uganda
-Ar Ruways, United Arab Emirates
-Musaffah, United Arab Emirates
-Muzayri‘, United Arab Emirates
-Manama, United Arab Emirates
+United Arab Emirates
 Dubai, United Arab Emirates
-Dibba Al-Fujairah, United Arab Emirates
 Dibba Al-Hisn, United Arab Emirates
 Adh Dhayd, United Arab Emirates
 Khawr Fakkān, United Arab Emirates
-Murbaḩ, United Arab Emirates
 Sharjah, United Arab Emirates
+United Kingdom
 Abbey Wood, United Kingdom
 Abbots Bromley, United Kingdom
 Abbots Langley, United Kingdom
@@ -95340,6 +95216,7 @@ Wrexham, United Kingdom
 Y Felinheli, United Kingdom
 Ynysybwl, United Kingdom
 Ystalyfera, United Kingdom
+United States
 Abbeville, United States
 Adamsville, United States
 Alabaster, United States
@@ -98182,7 +98059,6 @@ South Palm Beach, United States
 South Pasadena, United States
 South Patrick Shores, United States
 South Sarasota, United States
-South Venice, United States
 Southchase, United States
 Southeast Arcadia, United States
 Southgate, United States
@@ -98244,7 +98120,6 @@ Upper Grand Lagoon, United States
 Valparaiso, United States
 Valrico, United States
 Vamo, United States
-Venice, United States
 Venice Gardens, United States
 Vero Beach, United States
 Vero Beach South, United States
@@ -99558,9 +99433,7 @@ Uptown, United States
 Urbana, United States
 Valmeyer, United States
 Vandalia, United States
-Venice, United States
 Vernon Hills, United States
-Vienna, United States
 Villa Grove, United States
 Villa Park, United States
 Virden, United States
@@ -100934,7 +100807,6 @@ Thibodaux, United States
 Timberlane, United States
 Urania, United States
 Vidalia, United States
-Vienna Bend, United States
 Ville Platte, United States
 Vinton, United States
 Violet, United States
@@ -103268,7 +103140,6 @@ Valley Park, United States
 Van Buren, United States
 Vandalia, United States
 Versailles, United States
-Vienna, United States
 Villa Ridge, United States
 Vinita Park, United States
 Wardsville, United States
@@ -106330,7 +106201,6 @@ New Middletown, United States
 New Paris, United States
 New Philadelphia, United States
 New Richmond, United States
-New Vienna, United States
 New Waterford, United States
 Newark, United States
 Newburgh Heights, United States
@@ -110395,7 +110265,6 @@ Union Hall, United States
 University Center, United States
 Verona, United States
 Victoria, United States
-Vienna, United States
 Vinton, United States
 Virginia Beach, United States
 Warm Springs, United States
@@ -110951,7 +110820,6 @@ Teays Valley, United States
 Terra Alta, United States
 Tornado, United States
 Union, United States
-Vienna, United States
 Washington, United States
 Wayne, United States
 Webster Springs, United States
@@ -111442,6 +111310,7 @@ Wheatland, United States
 Wilson, United States
 Worland, United States
 Wright, United States
+Uruguay
 Artigas, Uruguay
 Baltasar Brum, Uruguay
 Bella Unión, Uruguay
@@ -111567,6 +111436,7 @@ Santa Clara de Olimar, Uruguay
 Treinta y Tres, Uruguay
 Vergara, Uruguay
 Villa Sara, Uruguay
+Uzbekistan
 Andijon, Uzbekistan
 Asaka, Uzbekistan
 Marhamat, Uzbekistan
@@ -111661,6 +111531,7 @@ Zafar, Uzbekistan
 Gurlan, Uzbekistan
 Hazorasp, Uzbekistan
 Urganch, Uzbekistan
+Vanuatu
 Lakatoro, Vanuatu
 Norsup, Vanuatu
 Luganville, Vanuatu
@@ -111668,6 +111539,7 @@ Port-Olry, Vanuatu
 Port-Vila, Vanuatu
 Isangel, Vanuatu
 Sola, Vanuatu
+Venezuela
 Maroa, Venezuela
 Puerto Ayacucho, Venezuela
 San Carlos de Río Negro, Venezuela
@@ -111783,6 +111655,7 @@ Machiques, Venezuela
 Maracaibo, Venezuela
 San Carlos del Zulia, Venezuela
 Santa Rita, Venezuela
+Vietnam
 Long Xuyên, Vietnam
 Côn Sơn, Vietnam
 Vũng Tàu, Vietnam
@@ -111805,7 +111678,7 @@ Cờ Đỏ, Vietnam
 Thới Lai, Vietnam
 Vĩnh Thạnh, Vietnam
 Cao Bằng, Vietnam
-Da Nang, Vietnam
+Da Nang, Vietnam111866
 Buôn Ma Thuột, Vietnam
 Dien Bien Phu, Vietnam
 Biên Hòa, Vietnam
@@ -111874,16 +111747,16 @@ Tuyên Quang, Vietnam
 Vĩnh Long, Vietnam
 Vĩnh Yên, Vietnam
 Yên Bái, Vietnam
+Virgin Islands
 Christiansted, Virgin Islands
 East End, Virgin Islands
 Good Hope, Virgin Islands
 Central, Virgin Islands
 Cruz Bay, Virgin Islands
-East End, Virgin Islands
 Charlotte Amalie, Virgin Islands
-East End, Virgin Islands
 Southside, Virgin Islands
 West End, Virgin Islands
+Zambia
 Chibombo, Zambia
 Kabwe, Zambia
 Kapiri Mposhi, Zambia
@@ -111951,68 +111824,43 @@ Lukulu, Zambia
 Mongu, Zambia
 Senanga, Zambia
 Sesheke, Zambia
+Zimbabwe
 Bulawayo, Zimbabwe
 Chitungwiza, Zimbabwe
 Epworth, Zimbabwe
 Harare, Zimbabwe
 Chimanimani, Zimbabwe
-Chipinge, Zimbabwe
-Dorowa Mining Lease, Zimbabwe
-Headlands, Zimbabwe
 Mutare, Zimbabwe
 Nyanga, Zimbabwe
-Nyazura, Zimbabwe
-Odzi, Zimbabwe
 Penhalonga, Zimbabwe
 Rusape, Zimbabwe
 Bindura, Zimbabwe
-Centenary, Zimbabwe
-Concession, Zimbabwe
-Glendale, Zimbabwe
-Mazowe, Zimbabwe
-Mount Darwin, Zimbabwe
 Mvurwi, Zimbabwe
-Shamva, Zimbabwe
 Beatrice, Zimbabwe
-Chivhu, Zimbabwe
 Macheke, Zimbabwe
 Marondera, Zimbabwe
 Murehwa, Zimbabwe
-Mutoko, Zimbabwe
 Ruwa, Zimbabwe
 Banket, Zimbabwe
-Chakari, Zimbabwe
-Chegutu, Zimbabwe
 Chinhoyi, Zimbabwe
-Chirundu, Zimbabwe
 Kadoma, Zimbabwe
 Kariba, Zimbabwe
-Karoi, Zimbabwe
-Mhangura, Zimbabwe
 Norton, Zimbabwe
-Raffingora, Zimbabwe
-Chiredzi, Zimbabwe
 Mashava, Zimbabwe
 Masvingo, Zimbabwe
-Zvishavane, Zimbabwe
 Binga, Zimbabwe
-Dete, Zimbabwe
 Hwange, Zimbabwe
-Inyati, Zimbabwe
-Kamativi Mine, Zimbabwe
-Lupane, Zimbabwe
 Victoria Falls, Zimbabwe
 Beitbridge, Zimbabwe
-Esigodini, Zimbabwe
-Filabusi, Zimbabwe
 Gwanda, Zimbabwe
-Insiza, Zimbabwe
-Plumtree, Zimbabwe
 Gokwe, Zimbabwe
 Gweru, Zimbabwe
 Kwekwe, Zimbabwe
-Lalapanzi, Zimbabwe
-Mvuma, Zimbabwe
-Redcliff, Zimbabwe
-Shangani, Zimbabwe
 Shurugwi, Zimbabwe
+Asia
+Africa
+Europe
+North America
+South America
+Australia
+Antarctica

@@ -208,5 +208,21 @@ export class RegisterComponent {
 
   changeState() {
     this.registerState = !this.registerState;
+    this.clearAndSetValidators()
+  }
+
+  clearAndSetValidators(){
+    this.username.reset()
+    this.gender.reset()
+    this.password.reset()
+    this.email.reset()
+    this.yearOfBirth.reset()
+
+    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z][A-Za-z0-9_.]{8,29}$")]);
+    this.location = new FormControl('', [Validators.required]);
+    this.yearOfBirth = new FormControl('');
+    this.password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")]);
+    this.gender = new FormControl('');
   }
 }

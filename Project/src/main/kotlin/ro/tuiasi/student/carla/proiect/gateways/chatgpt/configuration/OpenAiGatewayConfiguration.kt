@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate
 import ro.tuiasi.student.carla.proiect.gateways.GatewayConfiguration
 
 @Configuration
-class ChatGptGatewayConfiguration(
+class OpenAiGatewayConfiguration(
     @Value("\${integration.gateway.chatgpt.number-of-connections-pool}")
     private val numberOfConnectionsPool: Int,
 

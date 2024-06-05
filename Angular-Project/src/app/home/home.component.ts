@@ -74,6 +74,7 @@ export class HomeComponent implements OnInit {
   vacationsList: any = [];
   displayed!: Itineraries | undefined;
   thisYear = new Date().getFullYear();
+  itinerariesPhoto = ''
   @ViewChild('avatar') myAvatar!: ElementRef;
 
   constructor(private _router: Router) {
@@ -99,6 +100,7 @@ export class HomeComponent implements OnInit {
       }
 
       this.displayed = this.vacationsList.length != 0 ? this.vacationsList[0] : undefined;
+
       this.numberOfItineraries = this.vacationsList.length;
 
       const image = new Image();

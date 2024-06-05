@@ -164,8 +164,6 @@ export class SuggestComponent implements OnInit {
       otherInterests: this.optionalTags.length == 0 ? null : otherInterests,
     };
 
-    console.log(planner_input)
-
     const dialogRef = this._dialog.open(LoadingComponent, {
       disableClose: true,
       data: {
@@ -180,7 +178,6 @@ export class SuggestComponent implements OnInit {
         this._itinerary.setResult(response);
         await this._router.navigate(['/itinerary-viewer/-1']);
       } else {
-        console.log("a intrat pe else")
         this._dialog.open(DialogComponent, {
           data: {
             title: 'Itinerary Generation Error',

@@ -8,7 +8,7 @@ import ro.tuiasi.student.carla.proiect.gateways.webScraping.interfaces.IWebScrap
 class WebScrapingApiGateway(
     private val webScrapingClient: WebScrapingApiClient
 ) : IWebScrapingApiGateway {
-    override fun getWebScrapingResults(url: String): String? {
+    override fun getWebScrapingResults(url: String): String {
         return webScrapingClient.getContentFromUrl(url)
     }
 }

@@ -91,9 +91,8 @@
 
           <mat-divider id="vertical-line" [vertical]="true"></mat-divider>
           <img id="ticket-image"
-               [ngSrc]="displayed.photo != undefined ? displayed.photo : 'assets/images/no-image-available.jpg'"
-               width="300"
-               height="300" alt="An image with your itinerary" priority>
+               [src]="displayed.photo != '' ? displayed.photo : 'assets/images/no-image-available.jpg'"
+               style="width:300px; height:300px" alt="An image with your itinerary">
         </mat-card-content>
 
         <mat-action-list

@@ -15,6 +15,7 @@ import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
 import ro.tuiasi.student.carla.proiect.models.utils.*
 import ro.tuiasi.student.carla.proiect.services.ChatGptService
 import ro.tuiasi.student.carla.proiect.services.FilterCitiesService
+import ro.tuiasi.student.carla.proiect.services.ImageGeneratorService
 
 @RestController
 @RequestMapping("/api/v1/relation-trip")
@@ -28,7 +29,8 @@ class VacationPlannerController(
     private val placesApiGateway: PlacesApiGateway,
     private val searchGateway: SearchApiGateway,
     private val webScrapingGateway: WebScrapingApiGateway,
-    private val citiesService: FilterCitiesService
+    private val citiesService: FilterCitiesService,
+    private val imageGeneratorService: ImageGeneratorService
 ) {
     @Operation(
         summary = "Vacation Planner",
@@ -149,5 +151,11 @@ class VacationPlannerController(
     @GetMapping("/city-exists/{city}")
     fun cityExists(@PathVariable city: String): Boolean {
         return citiesService.existsCity(city)
+    }
+
+    @GetMapping("/test")
+    fun test(): String {
+        var text = imageGeneratorService.generateImage("Venice, Italy")
+        return text
     }
 }

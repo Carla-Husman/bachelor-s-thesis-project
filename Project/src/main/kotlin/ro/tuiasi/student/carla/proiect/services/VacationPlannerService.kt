@@ -15,6 +15,7 @@ import ro.tuiasi.student.carla.proiect.models.VacationPlannerOutput
 @Service
 class VacationPlannerService(
     private val chatGptService: ChatGptService,
+    private val imageGeneratorService: ImageGeneratorService,
     private val customSearchService: CustomSearchService,
     private val placesApiGateway: PlacesApiGateway,
     private val webScrapingApiGateway: WebScrapingApiGateway
@@ -25,7 +26,7 @@ class VacationPlannerService(
         val searchResults: List<SearchDetails> = customSearchService.search(searchPrompt)
 
         // empty list means that we have a city as destination, and we will use it for chatgpt
-        val destination: String = if (searchResults.isEmpty()) {
+        var destination: String = if (searchResults.isEmpty()) {
             vacationPlannerInput.destination
         }
         // not empty list means that we have a continent, a country or nothing as destination
@@ -33,18 +34,25 @@ class VacationPlannerService(
             val cities = mutableMapOf<String, Int>()
 
             // for 2 random results, call web scraping and get the content
-            val randomResults = searchResults.shuffled().take(2)
-            for (element in randomResults) {
-                val content = webScrapingApiGateway.getWebScrapingResults(element.link) ?: ""
-
-                // for every content, call chatgpt and get the cities
+            val randomSearchResultsContent = mutableListOf<String>()
+            for (element in searchResults.shuffled()) {
+                val content = webScrapingApiGateway.getWebScrapingResults(element.link)
                 if (content != "") {
-                    val citiesFromContent =
-                        chatGptService.extractCitiesFromText(content, vacationPlannerInput.destination)
+                    randomSearchResultsContent.add(content)
+                }
 
-                    for (city in citiesFromContent) {
-                        cities[city] = cities.getOrDefault(city, 0) + 1
-                    }
+                if (randomSearchResultsContent.size == 2) {
+                    break
+                }
+            }
+
+            for (content in randomSearchResultsContent) {
+                // for every content, call chatgpt and get the cities
+                val citiesFromContent =
+                    chatGptService.extractCitiesFromText(content, vacationPlannerInput.destination)
+
+                for (city in citiesFromContent) {
+                    cities[city] = cities.getOrDefault(city, 0) + 1
                 }
             }
 
@@ -66,6 +74,7 @@ class VacationPlannerService(
         }
 
         // generate pois with chatgpt
+        destination = if (destination.split(",").size == 2) destination else "$destination, ${vacationPlannerInput.destination}"
         val chatGptOutput = chatGptService.generatePoi(
             city = destination,
             gender = vacationPlannerInput.gender,
@@ -83,7 +92,7 @@ class VacationPlannerService(
         val listOfPois: MutableList<Poi> = buildListOfPois(chatGptOutput.points_of_interest, destination)
 
         // call OpenAiApi for the photo
-        val photoOfItinerary = chatGptService.generatePhoto(destination)
+        val photoOfItinerary = imageGeneratorService.generateImage(destination)
 
         val vacationPlannerOutput = VacationPlannerOutput(
             photo = photoOfItinerary,
