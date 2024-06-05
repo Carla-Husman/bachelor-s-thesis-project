@@ -75,12 +75,12 @@ export class ItineraryViewerComponent implements OnInit {
           return confirmationMessage;
         });
         this.itineraries = this._itinerary.getResult();
-
+        console.log(this.itineraries)
         this.itineraries.season = this.itineraries.season == null ? "Unknown" : this.itineraries.season.substring(0, 1).toUpperCase() + this.itineraries.season.substring(1).toLowerCase();
         this.itineraries.transport = this.itineraries.transport == null ? "Unknown" : this.itineraries.transport.substring(0, 1).toUpperCase() + this.itineraries.transport.substring(1).toLowerCase()
         this.itineraries.budget = this.itineraries.budget == null ? "Unknown" : this.itineraries.budget.substring(0, 1).toUpperCase() + this.itineraries.budget.substring(1).toLowerCase()
         this.itineraries.attendant = this.itineraries.attendant == null ? "Unknown" : this.itineraries.attendant.substring(0, 1).toUpperCase() + this.itineraries.attendant.substring(1).toLowerCase()
-        
+        console.log(this.itineraries)
         this.state = 1;
       } else {
         this.itineraries = await db.transaction('r', [db.itineraries], async () => {
@@ -90,13 +90,14 @@ export class ItineraryViewerComponent implements OnInit {
           console.error(error);
         });
       }
-
+      console.log("dupa if")
       this.isOpenSchedule = this.itineraries.pois.map(() => false);
       this.isOpenPhone = this.itineraries.pois.map(() => false);
       this.isOpenSchedule = this.itineraries.pois.map(() => false);
       this.isOpenAddress = this.itineraries.pois.map(() => false);
-
+      console.log("dupa ceva iniitializari")
       for (let poi of this.itineraries.pois) {
+        console.log("in for")
         this.markers.push({
           position: {
             lat: poi.latitude,
@@ -112,9 +113,9 @@ export class ItineraryViewerComponent implements OnInit {
           }
         });
       }
-
+      console.log("dupa for")
       this.calculateMapCenterAndZoom();
-
+      console.log("supa calculare centru si zoom")
       for (let i = 0; i < this.itineraries.pois.length; ++i) {
         this.viewInfo[i] = ""
       }
@@ -143,7 +144,7 @@ export class ItineraryViewerComponent implements OnInit {
 
     // average of lat and log
     const centerLat = (minLat + maxLat) / 2;
-    const centerLng = (minLng + maxLng) / 2 - 5;
+    const centerLng = (minLng + maxLng) / 2;
 
     // vertical and horizontal distance between bounds
     const latDelta = maxLat - minLat;

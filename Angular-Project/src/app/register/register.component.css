@@ -92,6 +92,24 @@ a:hover {
   font-weight: bold;
 }
 
+@media screen and (max-width: 1000px) {
+  #left-logo img {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #left-logo img {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  #left-logo img {
+    width: 25%;
+  }
+}
+
 @media screen and (max-width: 650px) {
   #right-content {
     width: 100%;

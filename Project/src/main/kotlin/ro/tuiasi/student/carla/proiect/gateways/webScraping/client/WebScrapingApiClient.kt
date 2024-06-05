@@ -33,20 +33,24 @@ class WebScrapingApiClient(
         restTemplate.interceptors.add(UserAgentInterceptor())
     }
 
-    fun getContentFromUrl(url: String): String? {
-        val uri = UriComponentsBuilder
-            .fromUriString(webScrapingApiEndpoint)
-            .queryParam("url", url)
-            .queryParam("render_js", webScrapingRenderJs)
-            .queryParam("proxy_type", webScrapingProxyType)
-            .queryParam("api_key", webScrapingApiKey)
-            .build()
-            .toUri()
+    fun getContentFromUrl(url: String): String {
+        try {
+            val uri = UriComponentsBuilder
+                .fromUriString(webScrapingApiEndpoint)
+                .queryParam("url", url)
+                .queryParam("render_js", webScrapingRenderJs)
+                .queryParam("proxy_type", webScrapingProxyType)
+                .queryParam("api_key", webScrapingApiKey)
+                .build()
+                .toUri()
 
-        val content: String = restTemplate.getForObject(uri, String::class.java).toString()
-        val doc: Document = Jsoup.parse(content)
+            val content: String = restTemplate.getForObject(uri, String::class.java).toString()
+            val doc: Document = Jsoup.parse(content)
 
-        return doc.body().text()
+            return doc.body().text()
+        } catch (e: Exception) {
+            return ""
+        }
     }
 
     private class UserAgentInterceptor : ClientHttpRequestInterceptor {
@@ -55,7 +59,8 @@ class WebScrapingApiClient(
             body: ByteArray,
             execution: ClientHttpRequestExecution
         ): ClientHttpResponse {
-            request.headers[HttpHeaders.USER_AGENT] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.1 Safari/537.36"
+            request.headers[HttpHeaders.USER_AGENT] =
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.1 Safari/537.36"
             return execution.execute(request, body)
         }
     }

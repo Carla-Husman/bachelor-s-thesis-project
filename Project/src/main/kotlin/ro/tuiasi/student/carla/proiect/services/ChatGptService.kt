@@ -23,7 +23,7 @@ class ChatGptService(
         otherInterests: String?
     ): Itinerary? {
         val prompt =
-            "Imagine curating an unforgettable journey through the illustrious streets of $city, a place steeped in rich " +
+            "Design an unforgettable journey through the streets of $city, a place steeped in rich " +
                     "history, vibrant culture, and cherished traditions. Craft a tour experience that captivates the " +
                     "imagination of travelers, offering a glimpse into the soul of this remarkable destination.\n\n" +
                     "Your task is to design a tour itinerary for a person with interests in ${
@@ -34,27 +34,25 @@ class ChatGptService(
                         transport?.let { "$it, " } ?: ""
                     }${
                         attendant?.let { "$it, " } ?: ""
-                    }and plan the perfect ${
+                    } and plan the perfect adventure for ${
                         season?.let { "$it " } ?: "all-season "
-                    }adventure, featuring no more than 5 points of interest.\n\n" +
-                    "As you construct the tour, delve into the intricacies of each point of interest (POI), infusing the " +
+                    }, featuring no more than 5 points of interest.\n\n" +
+                    "As you construct the tour, search into the complexity of each point of interest (POI), completing the " +
                     "narrative with historical anecdotes, cultural insights, and tales passed down through generations. " +
                     "Let the tour highlights unfold like chapters in a captivating story, each revealing a facet of $city's allure.\n\n" +
-                    "Your final output should include a comprehensive description of the tour, intricately woven with vivid " +
-                    "imagery and engaging storytelling. Aim for a description that spans approximately one page in length, " +
-                    "providing readers with a rich tapestry of details that immerse them in the essence of $city.\n\n" +
-                    "For each POI, provide a detailed and long description that transports the reader to that location, " +
+                    "For each POI, provide a detailed and long description (200 words) that transports the reader to that location, " +
                     "evoking the sights, sounds, and sensations unique to $city. Additionally, include representative " +
                     "tags that encapsulate the essence of each POI, ensuring that the tour resonates with a diverse audience.\n\n" +
                     "JSON Parameters:\n" +
                     "- tour_name\n" +
-                    "- tour_description\n" +
                     "- tour_highlights\n" +
                     "- points_of_interest (name, description, tags)"
 
         val content = JSONObject(chatGptGateway.runPrompt(prompt))
 
         val pointsOfInterest = mutableListOf<ItineraryPoi>()
+
+        println("lungimea points_of_interest: ${content.getJSONArray("points_of_interest").length()}")
         for (i in 0 until content.getJSONArray("points_of_interest").length()) {
             pointsOfInterest.add(ItineraryPoi(
                 name = content.getJSONArray("points_of_interest").getJSONObject(i).getString("name"),
@@ -63,7 +61,8 @@ class ChatGptService(
                     .map { it.toString() }
             ))
         }
-
+        println("Tour highlights: ${content.get("tour_highlights")} ")
+        println("Outputul este: $content")
         return Itinerary(
             tour_name = content.getString("tour_name"),
             highlights = if (content.has("tour_highlights")) {
@@ -94,7 +93,8 @@ class ChatGptService(
         val content = JSONObject(chatGptGateway.runPrompt(prompt))
 
         val cities = mutableListOf<String>()
-
+        println("Lungimea cities: ${content.getJSONArray("cities").length()}    ")
+        println("Cities: ${content.getJSONArray("cities")} ")
         for (i in 0 until content.getJSONArray("cities").length()) {
             cities.add(content.getJSONArray("cities").getString(i))
         }

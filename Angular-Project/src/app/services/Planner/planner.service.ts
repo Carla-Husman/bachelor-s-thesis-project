@@ -28,7 +28,14 @@ export class PlannerService {
         },
         body: JSON.stringify(planner_input),
       });
-      return await response.json();
+
+      let itinerary = await response.json();
+      console.log(itinerary)
+      if (itinerary.statusCode != undefined){
+        return null;
+      }
+
+      return itinerary;
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
       return null;
