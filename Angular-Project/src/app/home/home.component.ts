@@ -73,8 +73,8 @@ export class HomeComponent implements OnInit {
   index = 0;
   vacationsList: any = [];
   displayed!: Itineraries | undefined;
-  thisYear = new Date().getFullYear();
-  itinerariesPhoto = ''
+  readonly thisYear = new Date().getFullYear();
+
   @ViewChild('avatar') myAvatar!: ElementRef;
 
   constructor(private _router: Router) {
@@ -88,16 +88,20 @@ export class HomeComponent implements OnInit {
         console.error("Error occurred while fetching user:", error);
       });
 
-      this.vacationsList = await db.transaction('r', [db.itineraries], async () => {
-        return db.itineraries.toArray();
-      }).catch(error => {
-        console.error("Error occurred while fetching itineraries:", error);
-      });
-
-      if (this.vacationsList == undefined || this.user == undefined) {
+      if (this.user == undefined) {
         await this._router.navigate(["/account"]);
         return;
       }
+
+      this.vacationsList = await db.transaction('r', [db.itineraries], async () => {
+        try {
+          const allItineraries = await db.itineraries.toArray();
+          return allItineraries.filter(itinerary => itinerary.userId === this.user?.id);
+        } catch (error) {
+          console.error("Error occurred while fetching itineraries:", error);
+          return [];
+        }
+      });
 
       this.displayed = this.vacationsList.length != 0 ? this.vacationsList[0] : undefined;
 

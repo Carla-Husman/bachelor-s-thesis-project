@@ -17,19 +17,19 @@ class FilterCitiesService : IFilterCitiesService {
             .take(10)
     }
 
-    fun uploadCities() {
-        val inputStream: InputStream? = javaClass.classLoader.getResourceAsStream("city_country.txt")
-        val inputString = inputStream?.bufferedReader().use { it?.readText() ?: "" }
+    override fun existsCity(city: String): Boolean {
+        val normalizedCity = city.trim().removeDiacritics().lowercase(Locale.getDefault())
+        return cities.any { it.trim().removeDiacritics().lowercase(Locale.getDefault()) == normalizedCity }
+    }
+
+    override fun uploadCities() {
+        val inputFile: InputStream? = javaClass.classLoader.getResourceAsStream("city_country.txt")
+        val inputString = inputFile?.bufferedReader().use { it?.readText() ?: "" }
         cities = inputString.split("\n").toMutableList()
     }
 
-    fun String.removeDiacritics(): String {
+    private fun String.removeDiacritics(): String {
         return Normalizer.normalize(this, Normalizer.Form.NFD)
             .replace("\\p{InCombiningDiacriticalMarks}+".toRegex(), "")
-    }
-
-    fun existsCity(city: String): Boolean {
-        val normalizedCity = city.trim().removeDiacritics().lowercase(Locale.getDefault())
-        return cities.any { it.trim().removeDiacritics().lowercase(Locale.getDefault()) == normalizedCity }
     }
 }

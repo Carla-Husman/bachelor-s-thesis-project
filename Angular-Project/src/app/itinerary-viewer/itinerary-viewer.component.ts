@@ -43,7 +43,6 @@ export class ItineraryViewerComponent implements OnInit {
   viewInfo: string[] = []
   type = 0;
   clicked = false;
-  itinerariesPhoto = ''
 
   @ViewChild('myGoogleMap', {static: true}) map!: GoogleMap;
   mapOptions: google.maps.MapOptions = {};
@@ -74,13 +73,13 @@ export class ItineraryViewerComponent implements OnInit {
           e.returnValue = confirmationMessage;
           return confirmationMessage;
         });
+
         this.itineraries = this._itinerary.getResult();
-        console.log(this.itineraries)
         this.itineraries.season = this.itineraries.season == null ? "Unknown" : this.itineraries.season.substring(0, 1).toUpperCase() + this.itineraries.season.substring(1).toLowerCase();
         this.itineraries.transport = this.itineraries.transport == null ? "Unknown" : this.itineraries.transport.substring(0, 1).toUpperCase() + this.itineraries.transport.substring(1).toLowerCase()
         this.itineraries.budget = this.itineraries.budget == null ? "Unknown" : this.itineraries.budget.substring(0, 1).toUpperCase() + this.itineraries.budget.substring(1).toLowerCase()
         this.itineraries.attendant = this.itineraries.attendant == null ? "Unknown" : this.itineraries.attendant.substring(0, 1).toUpperCase() + this.itineraries.attendant.substring(1).toLowerCase()
-        console.log(this.itineraries)
+
         this.state = 1;
       } else {
         this.itineraries = await db.transaction('r', [db.itineraries], async () => {
@@ -90,14 +89,13 @@ export class ItineraryViewerComponent implements OnInit {
           console.error(error);
         });
       }
-      console.log("dupa if")
+
       this.isOpenSchedule = this.itineraries.pois.map(() => false);
       this.isOpenPhone = this.itineraries.pois.map(() => false);
       this.isOpenSchedule = this.itineraries.pois.map(() => false);
       this.isOpenAddress = this.itineraries.pois.map(() => false);
-      console.log("dupa ceva iniitializari")
+
       for (let poi of this.itineraries.pois) {
-        console.log("in for")
         this.markers.push({
           position: {
             lat: poi.latitude,
@@ -113,9 +111,7 @@ export class ItineraryViewerComponent implements OnInit {
           }
         });
       }
-      console.log("dupa for")
       this.calculateMapCenterAndZoom();
-      console.log("supa calculare centru si zoom")
       for (let i = 0; i < this.itineraries.pois.length; ++i) {
         this.viewInfo[i] = ""
       }
@@ -132,28 +128,24 @@ export class ItineraryViewerComponent implements OnInit {
     // find min and max
     let minLat = this.markers[0].position.lat;
     let maxLat = this.markers[0].position.lat;
-    let minLng = this.markers[0].position.lng;
-    let maxLng = this.markers[0].position.lng;
+    let minLong = this.markers[0].position.lng;
+    let maxLong = this.markers[0].position.lng;
 
     this.markers.forEach(marker => {
       minLat = Math.min(minLat, marker.position.lat);
       maxLat = Math.max(maxLat, marker.position.lat);
-      minLng = Math.min(minLng, marker.position.lng);
-      maxLng = Math.max(maxLng, marker.position.lng);
+      minLong = Math.min(minLong, marker.position.lng);
+      maxLong = Math.max(maxLong, marker.position.lng);
     });
 
     // average of lat and log
     const centerLat = (minLat + maxLat) / 2;
-    const centerLng = (minLng + maxLng) / 2;
-
-    // vertical and horizontal distance between bounds
-    const latDelta = maxLat - minLat;
-    const lngDelta = maxLng - minLng;
+    const centerLng = (minLong + maxLong) / 2;
 
     // zoom based on vertical or horizontal distance, taking the max zoom
-    const verticalZoom = Math.floor(Math.log2(180 / latDelta));
-    const horizontalZoom = Math.floor(Math.log2(360 / lngDelta));
-    const zoom = Math.max(verticalZoom, horizontalZoom);
+    const vZoom = Math.floor(Math.log2(180 / (maxLat - minLat)));
+    const hZoom = Math.floor(Math.log2(360 / (maxLong - minLong)));
+    const zoom = Math.max(vZoom, hZoom);
 
     // set map options
     this.mapOptions = {

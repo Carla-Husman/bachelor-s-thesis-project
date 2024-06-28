@@ -1,5 +1,5 @@
 package ro.tuiasi.student.carla.proiect.services.interfaces
 
 interface IImageGeneratorService {
-    fun generateImage(destination: String): String
+    fun generateImage(itineraryName: String): String
 }

@@ -49,10 +49,8 @@ class ChatGptService(
                     "- points_of_interest (name, description, tags)"
 
         val content = JSONObject(chatGptGateway.runPrompt(prompt))
-
         val pointsOfInterest = mutableListOf<ItineraryPoi>()
 
-        println("lungimea points_of_interest: ${content.getJSONArray("points_of_interest").length()}")
         for (i in 0 until content.getJSONArray("points_of_interest").length()) {
             pointsOfInterest.add(ItineraryPoi(
                 name = content.getJSONArray("points_of_interest").getJSONObject(i).getString("name"),
@@ -61,8 +59,7 @@ class ChatGptService(
                     .map { it.toString() }
             ))
         }
-        println("Tour highlights: ${content.get("tour_highlights")} ")
-        println("Outputul este: $content")
+
         return Itinerary(
             tour_name = content.getString("tour_name"),
             highlights = if (content.has("tour_highlights")) {
@@ -83,22 +80,18 @@ class ChatGptService(
         text: String,
         destination: String
     ): List<String> {
-        var textForDestination = ""
-        if (destination != "") {
-            textForDestination = " for $destination"
-        }
-        val prompt = "Extract just the cities $textForDestination from the following text:\n$text \n" +
+        // limit the text to 16385 characters
+        val textWithLimit = if (text.length > 16180) { text.substring(0, 16180) } else  { text }
+        val textForDestination = if (destination != "") " from $destination " else ""
+        val prompt = "Extract all the cities name $textForDestination from the following text:\n$textWithLimit \n" +
+                "Return them as a list of values in the format `city_name, country_name`\n" +
                 "Parameters of json: cities"
 
         val content = JSONObject(chatGptGateway.runPrompt(prompt))
-
         val cities = mutableListOf<String>()
-        println("Lungimea cities: ${content.getJSONArray("cities").length()}    ")
-        println("Cities: ${content.getJSONArray("cities")} ")
         for (i in 0 until content.getJSONArray("cities").length()) {
             cities.add(content.getJSONArray("cities").getString(i))
         }
-
         return cities
     }
 }

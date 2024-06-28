@@ -30,15 +30,12 @@ class VacationPlannerExceptionHandler : ResponseEntityExceptionHandler() {
         when (ex.statusCode) {
             HttpStatus.NOT_FOUND,
             HttpStatus.NO_CONTENT -> log.info(message.message)
-
             HttpStatus.UNAUTHORIZED -> log.warn(message.message)
-
             HttpStatus.FORBIDDEN,
             HttpStatus.BAD_REQUEST,
             HttpStatus.UNPROCESSABLE_ENTITY,
             HttpStatus.CONFLICT,
             HttpStatus.INTERNAL_SERVER_ERROR -> log.error(message.message)
-
             else -> log.error(message.message)
         }
         return ResponseEntity<ErrorMessage>(message, ex.statusCode)

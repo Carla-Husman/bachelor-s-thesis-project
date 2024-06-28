@@ -85,21 +85,21 @@ export class SuggestComponent implements OnInit {
   });
   stepperOrientation: Observable<StepperOrientation>;
   isEditable = true;
-  attendant = ['Family', 'Friends', 'Couple', 'Single'];
-  budget = ['Cheap', 'Affordable', 'Medium', 'Midrange', 'Expensive', 'Luxury'];
-  transport = ['Car', 'Bus', 'Train', 'Plane', 'Boat', 'Bicycle', 'Motorcycle', 'Walking'];
-  gender = ['Female', 'Male', 'Other'];
-  interests = [
+  readonly attendant = ['Family', 'Friends', 'Couple', 'Single'];
+  readonly budget = ['Cheap', 'Affordable', 'Medium', 'Midrange', 'Expensive', 'Luxury'];
+  readonly transport = ['Car', 'Bus', 'Train', 'Plane', 'Boat', 'Bicycle', 'Motorcycle', 'Walking'];
+  readonly gender = ['Female', 'Male', 'Other'];
+  readonly interests = [
     'Adventure', 'Aquarium', 'Architecture', 'Art', 'Bar', 'Beach', 'Books', 'Camping',
     'Cinema', 'Concert', 'Cultural', 'Fishing', 'Food', 'Gallery', 'Hiking', 'History',
     'Hunting', 'Library', 'Mountain', 'Movies', 'Museum', 'Music', 'Nature', 'Park',
     'Photography', 'Relaxing', 'Religious', 'Restaurant', 'Romantic', 'Shopping',
     'Skiing', 'Theatre', 'Wildlife', 'Zoo'
   ];
-  season = ['Spring', 'Summer', 'Autumn', 'Winter'];
+  readonly season = ['Spring', 'Summer', 'Autumn', 'Winter'];
   filteredDestination: Observable<string[]> | undefined;
-  user: Users | undefined | void;
-  thisYear = new Date().getFullYear();
+  private _user: Users | undefined | void;
+  private readonly _thisYear = new Date().getFullYear();
 
   constructor(private _formBuilder: FormBuilder, private _http: HttpClient, private _breakpointObserver: BreakpointObserver,
               private _plannerService: PlannerService, private _dialog: MatDialog, private _router: Router, private _itinerary: ItineraryService,
@@ -116,18 +116,18 @@ export class SuggestComponent implements OnInit {
     );
 
     if (window.localStorage.getItem('username') != undefined || window.localStorage.getItem('username') != null) {
-      this.user = await db.transaction('r', [db.users], async () => {
+      this._user = await db.transaction('r', [db.users], async () => {
         return db.users.get({username: window.localStorage.getItem('username')});
       }).catch(error => {
         console.error("Error occurred while fetching user:", error);
       });
     }
 
-    if (this.user != undefined) {
+    if (this._user != undefined) {
       this.firstFormGroup.setValue({
-        startingPoint: this.user.location,
-        age: this.user.yearOfBirth != null ? (this.thisYear - this.user.yearOfBirth).toString() : '',
-        gender: this.user.gender != null ? this.user.gender.charAt(0).toUpperCase() + this.user.gender.slice(1) : ''
+        startingPoint: this._user.location,
+        age: this._user.yearOfBirth != null ? (this._thisYear - this._user.yearOfBirth).toString() : '',
+        gender: this._user.gender != null ? this._user.gender.charAt(0).toUpperCase() + this._user.gender.slice(1) : ''
       });
     }
   }
@@ -239,11 +239,11 @@ export class SuggestComponent implements OnInit {
     }
   }
 
-  addOnBlur = true;
+  readonly addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   optionalTags: string[] = [];
 
-  announcer = inject(LiveAnnouncer);
+  private _announcer = inject(LiveAnnouncer);
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -263,7 +263,7 @@ export class SuggestComponent implements OnInit {
     if (index >= 0) {
       this.optionalTags.splice(index, 1);
 
-      await this.announcer.announce(`Removed ${optionalTag}`);
+      await this._announcer.announce(`Removed ${optionalTag}`);
     }
   }
 

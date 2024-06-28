@@ -30,7 +30,6 @@ class VacationPlannerController(
     private val searchGateway: SearchApiGateway,
     private val webScrapingGateway: WebScrapingApiGateway,
     private val citiesService: FilterCitiesService,
-    private val imageGeneratorService: ImageGeneratorService
 ) {
     @Operation(
         summary = "Vacation Planner",
@@ -39,6 +38,24 @@ class VacationPlannerController(
     @PostMapping("/planner")
     fun vacationPlanner(@RequestBody vacationPlannerInput: VacationPlannerInput): VacationPlannerOutput {
         return vacationPlannerService.vacationPlanner(vacationPlannerInput)
+    }
+
+    @Operation(
+        summary = "City Exists",
+        description = "Checks if a city exists in the database. The operation returns true if the city exists, otherwise false."
+    )
+    @GetMapping("/city-exists/{city}")
+    fun cityExists(@PathVariable city: String): Boolean {
+        return citiesService.existsCity(city)
+    }
+
+    @Operation(
+        summary = "Filter Cities",
+        description = "Filters cities based on the provided text. The operation returns a list of cities that match the text."
+    )
+    @GetMapping("/filter-cities/{text}")
+    fun filterCities(@PathVariable text: String): List<String> {
+        return citiesService.filterCities(text)
     }
 
     @Operation(
@@ -133,29 +150,5 @@ class VacationPlannerController(
     @GetMapping("/web-scraping", params = ["url"])
     fun webScraping(@RequestParam(required = true) url: String): String? {
         return webScrapingGateway.getWebScrapingResults(url)
-    }
-
-    @Operation(
-        summary = "Filter Cities",
-        description = "Filters cities based on the provided text. The operation returns a list of cities that match the text."
-    )
-    @GetMapping("/filter-cities/{text}")
-    fun filterCities(@PathVariable text: String): List<String> {
-        return citiesService.filterCities(text)
-    }
-
-    @Operation(
-        summary = "City Exists",
-        description = "Checks if a city exists in the database. The operation returns true if the city exists, otherwise false."
-    )
-    @GetMapping("/city-exists/{city}")
-    fun cityExists(@PathVariable city: String): Boolean {
-        return citiesService.existsCity(city)
-    }
-
-    @GetMapping("/test")
-    fun test(): String {
-        var text = imageGeneratorService.generateImage("Venice, Italy")
-        return text
     }
 }

@@ -10,13 +10,12 @@ import java.net.URL
 import java.util.*
 import javax.imageio.ImageIO
 
-
 @Service
-class ImageGeneratorService (
+class ImageGeneratorService(
     private val dalleGateway: IOpenAiGateway
-): IImageGeneratorService {
-    override fun generateImage(destination: String): String {
-        val prompt = "Generate a photo for a tour named $destination"
+) : IImageGeneratorService {
+    override fun generateImage(itineraryName: String): String {
+        val prompt = "Generate a photo for a tour named $itineraryName"
         val imageUrl = dalleGateway.generateImage(prompt)
 
         // Reading the image from the URL

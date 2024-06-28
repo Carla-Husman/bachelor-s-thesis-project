@@ -76,13 +76,16 @@ export const MY_FORMATS = {
 })
 export class RegisterComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
-  username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z][A-Za-z0-9_.]{8,29}$")]);
-  location = new FormControl('', [Validators.required]);
+  username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z0-9_.]{8,29}$")]);
+  location = new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+,\\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+\$")]);
   yearOfBirth = new FormControl('');
   password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")]);
   gender = new FormControl('');
 
   registerState = true;
+  private readonly _currentYear = new Date().getFullYear();
+  readonly minDate = new Date(this._currentYear - 100, 0, 1);
+  readonly maxDate = new Date(this._currentYear - 18, 11, 31);
 
   constructor(private _snackBar: MatSnackBar, private _encrDecrService: EncrDecrService, private _router: Router) {
     if (window.localStorage.getItem("username") != null || window.localStorage.getItem("username") != undefined) {
@@ -154,51 +157,39 @@ export class RegisterComponent {
   }
 
   getEmailErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.email.hasError('required'))
       return 'You must enter a value';
-    }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   getPasswordErrorMessage() {
-    if (this.password.hasError('required')) {
+    if (this.password.hasError('required'))
       return 'You must enter a value';
-    }
-
-    if (this.password.hasError('minlength')) {
+    else if (this.password.hasError('minlength'))
       return "Must contain at least 8 characters";
-    }
-
-    if (this.password.hasError('maxlength')) {
+    else if (this.password.hasError('maxlength'))
       return "Must contain at most 29 characters";
-    }
 
     return this.password.hasError("pattern") ? "Must contain number, uppercase and lowercase letter" : '';
   }
 
   getUsernameErrorMessage() {
-    if (this.username.hasError('required')) {
+    if (this.username.hasError('required'))
       return 'You must enter a value';
-    }
-
-    if (this.username.hasError('minlength')) {
+    else if (this.username.hasError('minlength'))
       return "Must contain at least 8 characters";
-    }
-
-    if (this.username.hasError('maxlength')) {
+    else if (this.username.hasError('maxlength'))
       return "Must contain at most 29 characters";
-    }
 
     return "Invalid username format";
   }
 
   getLocationErrorMessage() {
-    if (this.location.hasError('required')) {
-      return 'You must choose a location';
-    }
+    if (this.location.hasError('required'))
+      return 'You must write a location';
 
-    return "";
+    return "Format is City, Country";
   }
 
   setYear(normalizedYear: Moment, datepicker: MatDatepicker<Moment>) {
@@ -219,8 +210,8 @@ export class RegisterComponent {
     this.yearOfBirth.reset()
 
     this.email = new FormControl('', [Validators.required, Validators.email]);
-    this.username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z][A-Za-z0-9_.]{8,29}$")]);
-    this.location = new FormControl('', [Validators.required]);
+    this.username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z0-9_.]{8,29}$")]);
+    this.location = new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+,\\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+\$")]);
     this.yearOfBirth = new FormControl('');
     this.password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")]);
     this.gender = new FormControl('');
