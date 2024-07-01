@@ -77,7 +77,7 @@ export const MY_FORMATS = {
 export class RegisterComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z0-9_.]{8,29}$")]);
-  location = new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+,\\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+\$")]);
+  location = new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+,\\s[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+\$")]);
   yearOfBirth = new FormControl('');
   password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")]);
   gender = new FormControl('');
@@ -211,7 +211,7 @@ export class RegisterComponent {
 
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.username = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("^[A-Za-z0-9_.]{8,29}$")]);
-    this.location = new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+,\\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+\$")]);
+    this.location = new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+,\\s[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\\s]+\$")]);
     this.yearOfBirth = new FormControl('');
     this.password = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(29), Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")]);
     this.gender = new FormControl('');

@@ -67,7 +67,7 @@ import {scheduleReadableStreamLike} from "rxjs/internal/scheduled/scheduleReadab
 })
 export class SuggestComponent implements OnInit {
   firstFormGroup = this._formBuilder.group({
-    startingPoint: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿĀ-žǍ-ȳ\'’.`\\s]+,\\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ\'’.`\\s]+$')]],
+    startingPoint: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿĀ-žǍ-ȳ\'’.`\\s]+,\\s[a-zA-ZÀ-ÿĀ-žǍ-ȳ\'’.`\\s]+$')]],
     age: ['', [Validators.min(18), Validators.max(100)]],
     gender: ['']
   });
@@ -195,7 +195,7 @@ export class SuggestComponent implements OnInit {
 
   onNextOne() {
     const startingPointValue = this.firstFormGroup.get('startingPoint')?.value;
-    const startingPointPattern = /^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+,\s?[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+$/;
+    const startingPointPattern = /^[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+,\s[a-zA-ZÀ-ÿĀ-žǍ-ȳ'’.`\s]+$/;
 
     if (!this.firstFormGroup.valid) {
       if (this.firstFormGroup.get('startingPoint')?.value == "") {
