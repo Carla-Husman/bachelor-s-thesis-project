@@ -20,9 +20,6 @@ integration:
         endpoint-text-search: https://maps.googleapis.com/maps/api/place/textsearch/json
         endpoint-details: https://maps.googleapis.com/maps/api/place/details/json
         api-key: AIzaSyCI1fWshdzjt6duD1oftwVk8FECV92VoRs
-      elevation:
-        endpoint: https://maps.googleapis.com
-        api-key: AIzaSyAlXNAAHt9wpg0knB8wtZ2qW-My-u_gP4Q
     google-search:
       endpoint: https://www.googleapis.com/customsearch/v1?
       api-key: AIzaSyDI8i1fKP2Hztqtt8JOqY-Vmnz_Dw5cDLo
